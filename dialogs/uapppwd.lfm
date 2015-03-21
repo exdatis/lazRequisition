@@ -1,0 +1,96 @@
+object dlgAppPwd: TdlgAppPwd
+  Left = 365
+  Height = 175
+  Top = 220
+  Width = 385
+  Caption = 'Provera korisnika'
+  ClientHeight = 175
+  ClientWidth = 385
+  Font.Height = -12
+  Position = poDesktopCenter
+  LCLVersion = '1.2.6.0'
+  object GroupBox1: TGroupBox
+    Left = 11
+    Height = 124
+    Top = 1
+    Width = 360
+    Anchors = [akTop, akLeft, akRight]
+    Caption = ' Korisnik aplikacije '
+    ClientHeight = 106
+    ClientWidth = 358
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 5
+      Height = 17
+      Top = 3
+      Width = 344
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = ' Korisničko ime'
+      Color = clSilver
+      ParentColor = False
+      Transparent = False
+    end
+    object edtUser: TEdit
+      Left = 5
+      Height = 27
+      Top = 23
+      Width = 345
+      Anchors = [akTop, akLeft, akRight]
+      Constraints.MaxHeight = 27
+      TabOrder = 0
+    end
+    object Label2: TLabel
+      Left = 5
+      Height = 17
+      Top = 52
+      Width = 343
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = ' Lozinka (password)'
+      Color = clSilver
+      ParentColor = False
+      Transparent = False
+    end
+    object edtPwd: TEdit
+      Left = 5
+      Height = 27
+      Top = 72
+      Width = 345
+      Anchors = [akTop, akLeft, akRight]
+      Constraints.MaxHeight = 27
+      Constraints.MinHeight = 27
+      EchoMode = emPassword
+      PasswordChar = '*'
+      TabOrder = 1
+    end
+  end
+  object btnOk: TButton
+    Cursor = crHandPoint
+    Left = 205
+    Height = 25
+    Hint = 'Uloguj se'
+    Top = 138
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Proveri'
+    ModalResult = 1
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object btnCancel: TButton
+    Cursor = crHandPoint
+    Left = 285
+    Height = 25
+    Hint = 'Odustani'
+    Top = 138
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Odustani'
+    ModalResult = 2
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+  end
+end

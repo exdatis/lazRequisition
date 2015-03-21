@@ -30,6 +30,8 @@ type
 
 var
   dbm: Tdbm;
+const
+  DB_PORT : String = '5432';
 
 implementation
 uses

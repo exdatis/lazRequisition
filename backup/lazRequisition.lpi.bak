@@ -47,7 +47,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="4">
+    <Units Count="6">
       <Unit0>
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -65,6 +65,7 @@
         <Filename Value="udbm.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dbm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="udbm"/>
       </Unit2>
@@ -73,6 +74,20 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uexdatis"/>
       </Unit3>
+      <Unit4>
+        <Filename Value="dialogs/uapppwd.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dlgAppPwd"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uapppwd"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="dialogs/uopendatasets.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dlgOpenDataSets"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uopendatasets"/>
+      </Unit5>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -82,6 +97,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="dialogs"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>

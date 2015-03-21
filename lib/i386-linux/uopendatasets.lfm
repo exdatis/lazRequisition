@@ -1,0 +1,18 @@
+object dlgOpenDataSets: TdlgOpenDataSets
+  Left = 317
+  Height = 29
+  Top = 214
+  Width = 598
+  Caption = 'Molim sačekajte...'
+  ClientHeight = 29
+  ClientWidth = 598
+  LCLVersion = '1.2.6.0'
+  object progBar: TProgressBar
+    Left = 15
+    Height = 20
+    Top = 3
+    Width = 569
+    Anchors = [akTop, akLeft, akRight]
+    TabOrder = 0
+  end
+end

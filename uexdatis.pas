@@ -10,6 +10,8 @@ uses
 procedure mainAfterConnect;
 procedure mainAfterDisconnect;
 function getUserId : Integer;
+function getSupplierStorageId : Integer;
+function getUserStorageId : Integer;
 
 implementation
 
@@ -48,6 +50,16 @@ end;
 function getUserId: Integer;
 begin
   result:= frmMain.userId;
+end;
+
+function getSupplierStorageId: Integer;
+begin
+  result:= frmMain.supplierStorageId;
+end;
+
+function getUserStorageId: Integer;
+begin
+  result:= frmMain.userStorageId;
 end;
 
 end.

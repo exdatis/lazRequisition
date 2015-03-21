@@ -1,12 +1,12 @@
 object frmMain: TfrmMain
   Left = 194
-  Height = 504
+  Height = 535
   Top = 173
   Width = 1036
   Caption = 'Trebovanje robe'
   ChildSizing.LeftRightSpacing = 3
   ChildSizing.TopBottomSpacing = 3
-  ClientHeight = 481
+  ClientHeight = 512
   ClientWidth = 1036
   Font.Height = -12
   Menu = MainMenu1
@@ -17,7 +17,7 @@ object frmMain: TfrmMain
   object StatusBar1: TStatusBar
     Left = 3
     Height = 19
-    Top = 459
+    Top = 490
     Width = 1030
     AutoHint = True
     Panels = <    
@@ -33,11 +33,11 @@ object frmMain: TfrmMain
   end
   object Panel1: TPanel
     Left = 3
-    Height = 456
+    Height = 487
     Top = 3
     Width = 213
     Align = alLeft
-    ClientHeight = 456
+    ClientHeight = 487
     ClientWidth = 213
     ParentColor = False
     TabOrder = 1
@@ -169,6 +169,7 @@ object frmMain: TfrmMain
         Top = 59
         Width = 189
         Caption = 'Konektuj se'
+        OnClick = btnConnectClick
         ParentShowHint = False
         ShowHint = True
         TabOrder = 2
@@ -183,18 +184,19 @@ object frmMain: TfrmMain
       Width = 200
       Caption = 'Sačuvaj podešavanja'
       Enabled = False
+      OnClick = btnSaveDbIniClick
       ParentShowHint = False
       ShowHint = True
       TabOrder = 4
     end
     object GroupBox2: TGroupBox
       Left = 8
-      Height = 119
+      Height = 148
       Hint = 'Podešavanja korisnika'
       Top = 296
       Width = 200
       Caption = ' Korisnik aplikacije '
-      ClientHeight = 101
+      ClientHeight = 130
       ClientWidth = 198
       ParentShowHint = False
       ShowHint = True
@@ -257,13 +259,24 @@ object frmMain: TfrmMain
         Style = csDropDownList
         TabOrder = 1
       end
+      object btnSaveStorageIni: TButton
+        Cursor = crHandPoint
+        Left = 6
+        Height = 25
+        Hint = 'Podrazumevani magacini'
+        Top = 100
+        Width = 189
+        Caption = 'Sačuvaj podešavanja'
+        OnClick = btnSaveStorageIniClick
+        TabOrder = 2
+      end
     end
     object ledConnection: TuELED
       Cursor = crHandPoint
       Left = 8
       Height = 24
       Hint = 'Diskonektovan'
-      Top = 422
+      Top = 453
       Width = 24
       Active = True
       LedType = ledRound
@@ -278,7 +291,7 @@ object frmMain: TfrmMain
     object lblConnectionState: TLabel
       Left = 39
       Height = 17
-      Top = 426
+      Top = 457
       Width = 79
       Anchors = [akLeft, akBottom]
       Caption = 'Diskonektovan'
@@ -287,7 +300,7 @@ object frmMain: TfrmMain
   end
   object formPanel: TBCPanel
     Left = 221
-    Height = 456
+    Height = 487
     Top = 3
     Width = 812
     Align = alRight
@@ -368,7 +381,7 @@ object frmMain: TfrmMain
     object Image1: TImage
       Left = 655
       Height = 90
-      Top = 336
+      Top = 367
       Width = 112
       Align = alCustom
       Anchors = [akRight, akBottom]

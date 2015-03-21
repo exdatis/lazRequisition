@@ -59,7 +59,7 @@ var
   pingOk : Boolean = False;
   errorMsg : String;
   svr : TTCPBlockSocket;
-  test : Integer = -1;   //greska kao inicijalna vrednost o je ok
+  test : Integer = -1;   //greska kao inicijalna vrednost nula(o) je ok
 begin
   svr := TTCPBlockSocket.Create;
   try

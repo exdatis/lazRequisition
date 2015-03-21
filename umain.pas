@@ -18,6 +18,7 @@ type
     btnGetDb: TButton;
     btnConnect: TButton;
     btnSaveDbIni: TButton;
+    btnSaveStorageIni: TButton;
     cmbDb: TComboBox;
     cmbUserStorage: TComboBox;
     cmbSupplierStorage: TComboBox;
@@ -42,8 +43,10 @@ type
     Panel1: TPanel;
     StatusBar1: TStatusBar;
     ledConnection: TuELED;
+    procedure btnConnectClick(Sender: TObject);
     procedure btnGetDbClick(Sender: TObject);
     procedure btnSaveDbIniClick(Sender: TObject);
+    procedure btnSaveStorageIniClick(Sender: TObject);
     procedure doQuitAppExecute(Sender: TObject);
     procedure edtHostChange(Sender: TObject);
     procedure edtPwdChange(Sender: TObject);
@@ -61,12 +64,17 @@ type
     procedure writeDbIni;
     function tryPgConnection : Boolean;
     function tryNewConnection : Boolean;
-    function checkAppUser : Boolean;
+    function checkAppUser(const thisUser, thisPwd : String) : Boolean;
+    procedure fillStorages;
+    procedure setStorages;
+    procedure clearOldForms;
 
   public
     { public declarations }
     {Morar: ID korisnika}
     userId : Integer;
+    supplierStorageId : Integer;
+    userStorageId : Integer;
     {Morar: const isConnected True/False}
     isConnected : Boolean;
   end;
@@ -76,9 +84,10 @@ var
 const
   xorMagic : String = 'exdatis013';
   DEFAULT_DB : String = 'postgres';
+  STORAGE_INI : String = 'storage.cfg';
 implementation
 uses
-  udbm;
+  udbm, uapppwd, uopendatasets;
 {$R *.lfm}
 
 { TfrmMain }
@@ -103,6 +112,8 @@ begin
   {read ini file}
   readDbIni;
   userId:= 0; // nema korisnika
+  supplierStorageId:= 0;
+  userStorageId:= 0;
 end;
 
 procedure TfrmMain.enableToSaveIni;
@@ -209,12 +220,173 @@ end;
 
 function TfrmMain.tryNewConnection: Boolean;
 begin
-
+  dbm.closeCurrConnection;
+  //set params
+  dbm.dbh.UserName:= edtUser.Text;
+  dbm.dbh.Password:= edtPwd.Text;
+  dbm.dbh.HostName:= edtHost.Text;
+  dbm.dbh.DatabaseName:= cmbDb.Text;
+  try
+    dbm.dbh.Connected:= True;
+  except
+    on e : Exception do
+    begin
+      ShowMessage(e.Message);
+      result:= False;
+      Exit;
+    end;
+  end;
+  result:= True
 end;
 
-function TfrmMain.checkAppUser: Boolean;
+function TfrmMain.checkAppUser(const thisUser, thisPwd : String) : Boolean;
+const
+  WRONG_USER : String = 'Nepoznat korisnik/lozinka.';
+var
+  sql : String;
+  currHost : String;
 begin
+  {pinguj trenutno izabrani host}
+  currHost:= edtHost.Text;
+  if not dbm.checkServer(currHost, DB_PORT) then
+    begin
+      dbm.closeCurrConnection;
+      result:= False;
+      Exit;// izadji ako je mreza u prekidu
+    end;
+  sql:= 'select user_id from user_lite where user_login = ' +  QuotedStr(thisUser);
+  sql:= sql + ' and user_pass = ' + QuotedStr(thisPwd);
+  //run query
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      ShowMessage(e.Message);
+      result:= False;
+      Exit;
+    end;
+  end;
+  //if empty return false
+  if dbm.qGeneral.IsEmpty then
+    begin
+      ShowMessage(WRONG_USER);
+      dbm.closeCurrConnection;
+      result:= False;
+      Exit;
+    end;
+  // if ok find new user_id
+  userId:= dbm.qGeneral.Fields[0].AsInteger;
+  result:= True;
+end;
 
+procedure TfrmMain.fillStorages;
+const
+  EMPTY_SET : String = 'Nema definisanih magacina.';
+var
+  sql : String;
+  currHost : String;
+  currStorage : String;
+  storageList : TStringList;
+  userStorageIndex : Integer = -1;
+  supplierStorageIndex : Integer = -1;
+begin
+  {pinguj trenutno izabrani host}
+  currHost:= edtHost.Text;
+  if not dbm.checkServer(currHost, DB_PORT) then
+    begin
+      dbm.closeCurrConnection;
+      Exit;// izadji ako je mreza u prekidu
+    end;
+  sql:= 'select m_naziv from magacin order by m_naziv';
+  //run query
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      ShowMessage(e.Message);
+      Exit;
+    end;
+  end;
+  //ako je prazan prikazi i zatvori vezu
+  if dbm.qGeneral.IsEmpty then
+    begin
+      ShowMessage(EMPTY_SET);
+      dbm.closeCurrConnection;
+      Exit;
+    end;
+  //fill cmb
+  while not dbm.qGeneral.EOF do
+    begin
+      currStorage:= dbm.qGeneral.Fields[0].AsString;
+      cmbSupplierStorage.Items.Append(currStorage);
+      cmbUserStorage.Items.Append(currStorage);
+      dbm.qGeneral.Next;
+    end;
+  //default storages
+  if FileExistsUTF8(STORAGE_INI) then
+    begin
+      storageList:= TStringList.Create;
+      storageList.LoadFromFile(STORAGE_INI);
+      if storageList.Count < 2 then
+        Exit;
+      //else find storages
+      supplierStorageIndex:= cmbSupplierStorage.Items.IndexOf(storageList[0]);
+      userStorageIndex:= cmbUserStorage.Items.IndexOf(storageList[1]);
+      cmbSupplierStorage.ItemIndex:= supplierStorageIndex;
+      cmbUserStorage.ItemIndex:= userStorageIndex;
+    end;
+end;
+
+procedure TfrmMain.setStorages;
+var
+  sql : String;
+begin
+  //find supplier id
+  sql:= 'select m_id From magacin Where m_naziv = ' + QuotedStr(cmbSupplierStorage.Text);
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      ShowMessage(e.Message);
+      Exit;
+    end;
+  end;
+  if dbm.qGeneral.IsEmpty then Exit;
+  supplierStorageId:= dbm.qGeneral.Fields[0].AsInteger;
+  //find user id
+  sql:= 'select m_id From magacin Where m_naziv = ' + QuotedStr(cmbUserStorage.Text);
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      ShowMessage(e.Message);
+      Exit;
+    end;
+  end;
+  if dbm.qGeneral.IsEmpty then Exit;
+  userStorageId:= dbm.qGeneral.Fields[0].AsInteger;
+end;
+
+procedure TfrmMain.clearOldForms;
+begin
+  if formPanel.ControlCount > 2 then
+    TForm(formPanel.Controls[2]).Close;
 end;
 
 procedure TfrmMain.doQuitAppExecute(Sender: TObject);
@@ -224,14 +396,12 @@ begin
 end;
 
 procedure TfrmMain.btnGetDbClick(Sender: TObject);
-const
-  DB_PORT : String = '5432';
 var
   currHost : String;
 begin
   {pinguj trenutno izabrani host}
   currHost:= edtHost.Text;
-  if not dbm.checkServer(currHost,DB_PORT) then
+  if not dbm.checkServer(currHost, DB_PORT) then
     begin
       dbm.closeCurrConnection;
       Exit;// izadji ako je mreza u prekidu
@@ -257,10 +427,75 @@ begin
       end;
 end;
 
+procedure TfrmMain.btnConnectClick(Sender: TObject);
+const
+  SUCCESS_MSG : String = 'Uspešna prijava na sistem.';
+var
+  newDlg : TdlgAppPwd;
+  thisUser, ThisPwd : String;
+  checkThisUser : Boolean = False;
+begin
+  //najpre proveri konekciju
+  if isConnected then
+    begin
+      clearOldForms;
+      dbm.closeCurrConnection;
+      cmbDb.Items.Clear;
+      cmbSupplierStorage.Items.Clear;
+      cmbUserStorage.Items.Clear;
+      cmbSupplierStorage.Enabled:= True;
+      cmbUserStorage.Enabled:= True;
+      Exit;
+    end;
+  thisUser:= '';
+  ThisPwd:= '';
+  newDlg:= TdlgAppPwd.Create(nil);
+  if(newDlg.ShowModal = mrOK) then
+    begin
+      thisUser:= newDlg.edtUser.Text;
+      ThisPwd:= newDlg.edtPwd.Text;
+      checkThisUser:= True;
+    end;
+  //free dialog
+  newDlg.Free;
+
+  if checkThisUser then
+    if tryNewConnection then
+      if checkAppUser(thisUser, ThisPwd) then
+        begin
+          fillStorages;
+          setStorages;
+          cmbSupplierStorage.Enabled:= False;
+          cmbUserStorage.Enabled:= False;
+          // ovde treba otvoriti dataSets
+          ShowMessage(SUCCESS_MSG);
+        end;
+end;
+
 procedure TfrmMain.btnSaveDbIniClick(Sender: TObject);
 begin
   writeDbIni;
   btnSaveDbIni.Enabled:= False;
+end;
+
+procedure TfrmMain.btnSaveStorageIniClick(Sender: TObject);
+const
+  EMPTY_SET : String = 'Nema definisnih magacina.';
+  SUCCESS_MSG : String = 'Podešavanja su sačuvana.';
+var
+  storageList : TStringList;
+begin
+  if cmbSupplierStorage.Items.Count = 0 then
+    begin
+      ShowMessage(EMPTY_SET);
+      Exit;
+    end;
+  storageList:= TStringList.Create;
+  storageList.Append(cmbSupplierStorage.Text);
+  storageList.Append(cmbUserStorage.Text);
+  storageList.SaveToFile(STORAGE_INI);
+  storageList.Free;
+  ShowMessage(SUCCESS_MSG);
 end;
 
 procedure TfrmMain.edtHostChange(Sender: TObject);
