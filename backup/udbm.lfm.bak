@@ -1,0 +1,45 @@
+object dbm: Tdbm
+  OldCreateOrder = False
+  Height = 392
+  HorizontalOffset = 285
+  VerticalOffset = 201
+  Width = 629
+  object qGeneral: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <>
+    Database = dbh
+    Transaction = dbt
+    Params = <>
+    left = 96
+    top = 200
+  end
+  object dbh: TPQConnection
+    Connected = False
+    LoginPrompt = False
+    AfterConnect = dbhAfterConnect
+    AfterDisconnect = dbhAfterDisconnect
+    DatabaseName = 'edh2015'
+    KeepConnection = False
+    Password = 'morar013'
+    Transaction = dbt
+    UserName = 'exdatis'
+    HostName = 'localhost'
+    LogEvents = []
+    left = 48
+    top = 24
+  end
+  object dbLib: TSQLDBLibraryLoader
+    Enabled = False
+    ConnectionType = 'PostgreSQL'
+    LibraryName = 'libpq.so.5'
+    left = 138
+    top = 28
+  end
+  object dbt: TSQLTransaction
+    Active = False
+    Action = caNone
+    Database = dbh
+    left = 51
+    top = 92
+  end
+end
