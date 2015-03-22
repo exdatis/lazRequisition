@@ -10,8 +10,8 @@ object dbm: Tdbm
     Database = dbh
     Transaction = dbt
     Params = <>
-    left = 96
-    top = 200
+    left = 40
+    top = 176
   end
   object dbh: TPQConnection
     Connected = False
@@ -41,5 +41,254 @@ object dbm: Tdbm
     Database = dbh
     left = 51
     top = 92
+  end
+  object qStorages: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <    
+      item
+        Name = 'm_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'm_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 50
+      end>
+    Database = dbh
+    Transaction = dbt
+    SQL.Strings = (
+      'select m_id, m_naziv from magacin'
+      'order by m_naziv'
+    )
+    Params = <>
+    left = 52
+    top = 242
+    object qStoragesm_id: TLongintField
+      Alignment = taLeftJustify
+      DisplayLabel = 'ID'
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'm_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qStoragesm_naziv: TStringField
+      DisplayLabel = 'Magacin'
+      DisplayWidth = 35
+      FieldKind = fkData
+      FieldName = 'm_naziv'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+  end
+  object dsStorages: TDataSource
+    DataSet = qStorages
+    left = 96
+    top = 264
+  end
+  object qProducts: TSQLQuery
+    PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'art_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'art_sifra'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'art_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end    
+      item
+        Name = 'jm_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 15
+      end    
+      item
+        Name = 'jm_oznaka'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end    
+      item
+        Name = 'ag_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end>
+    Database = dbh
+    Transaction = dbt
+    SQL.Strings = (
+      'SELECT'
+      '  art_id,'
+      '  art_sifra,'
+      '  art_naziv,'
+      '  jm_naziv,'
+      '  jm_oznaka,'
+      '  ag_naziv'
+      'FROM'
+      '  vproduct'
+      'order by art_naziv'
+      ''
+    )
+    Params = <>
+    left = 167
+    top = 185
+    object qProductsart_id: TLongintField
+      Alignment = taLeftJustify
+      DisplayLabel = 'ID'
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'art_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qProductsart_sifra: TStringField
+      DisplayLabel = 'Šifra'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'art_sifra'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qProductsart_naziv: TStringField
+      DisplayLabel = 'Artikal'
+      DisplayWidth = 35
+      FieldKind = fkData
+      FieldName = 'art_naziv'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 70
+    end
+    object qProductsjm_naziv: TStringField
+      DisplayLabel = 'Mera'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'jm_naziv'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qProductsjm_oznaka: TStringField
+      DisplayLabel = 'JM'
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'jm_oznaka'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object qProductsag_naziv: TStringField
+      DisplayLabel = 'Grupa'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ag_naziv'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object dsProducts: TDataSource
+    DataSet = qProducts
+    left = 217
+    top = 201
+  end
+  object qTemplate: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <>
+    Database = dbh
+    Transaction = dbt
+    SQL.Strings = (
+      'SELECT'
+      '  tmp_id,'
+      '  tmp_artikal,'
+      '  tmp_kol,'
+      '  tmp_magacin,'
+      '  art_sifra,'
+      '  art_naziv,'
+      '  jm_naziv,'
+      '  jm_oznaka'
+      'FROM'
+      '  vtmptr'
+      'where'
+      '  tmp_magacin = :tmp_magacin'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE tmptr'
+      'SET'
+      '  tmp_artikal=:tmp_artikal,'
+      '  tmp_kol=:tmp_kol,'
+      '  tmp_magacin=:tmp_magacin'
+      'WHERE'
+      '  tmp_id=:tmp_id'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO'
+      'tmptr('
+      '     tmp_id,'
+      '     tmp_artikal,'
+      '     tmp_kol,'
+      '     tmp_magacin)'
+      '    VALUES ('
+      '    :tmp_id,'
+      '    :tmp_artikal,'
+      '    :tmp_kol,'
+      '    :tmp_magacin)'
+    )
+    DeleteSQL.Strings = (
+      'DELETE'
+      'FROM'
+      '  tmptr'
+      'WHERE'
+      '  tmp_id = :tmp_id'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'tmp_magacin'
+        ParamType = ptInput
+      end>
+    left = 201
+    top = 273
   end
 end

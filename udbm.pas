@@ -5,17 +5,31 @@ unit udbm;
 interface
 
 uses
-  Classes, SysUtils, sqldb, sqldblib, pqconnection, FileUtil, blcksock, Dialogs;
+  Classes, SysUtils, sqldb, sqldblib, db, pqconnection, FileUtil, blcksock,
+  Dialogs;
 
 type
 
   { Tdbm }
 
   Tdbm = class(TDataModule)
+    dsProducts: TDataSource;
+    dsStorages: TDataSource;
     dbh: TPQConnection;
     dbLib: TSQLDBLibraryLoader;
     qGeneral: TSQLQuery;
     dbt: TSQLTransaction;
+    qProductsag_naziv: TStringField;
+    qProductsart_id: TLongintField;
+    qProductsart_naziv: TStringField;
+    qProductsart_sifra: TStringField;
+    qProductsjm_naziv: TStringField;
+    qProductsjm_oznaka: TStringField;
+    qStorages: TSQLQuery;
+    qStoragesm_id: TLongintField;
+    qStoragesm_naziv: TStringField;
+    qProducts: TSQLQuery;
+    qTemplate: TSQLQuery;
     procedure dbhAfterConnect(Sender: TObject);
     procedure dbhAfterDisconnect(Sender: TObject);
   private
