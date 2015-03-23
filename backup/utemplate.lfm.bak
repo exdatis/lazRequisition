@@ -1,0 +1,26 @@
+object frmTemplate: TfrmTemplate
+  Left = 371
+  Height = 487
+  Top = 204
+  Width = 812
+  BorderStyle = bsNone
+  Caption = 'frmTemplate'
+  ClientHeight = 487
+  ClientWidth = 812
+  LCLVersion = '1.2.6.0'
+  object lblFormCaption: TLabel
+    Left = -3
+    Height = 17
+    Top = -3
+    Width = 818
+    Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    Caption = 'lblFormCaption'
+    Color = clSilver
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+    Transparent = False
+  end
+end

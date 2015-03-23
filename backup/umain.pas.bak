@@ -68,7 +68,8 @@ type
     procedure fillStorages;
     procedure setStorages;
     procedure clearOldForms;
-
+    procedure disableStorages;
+    procedure enableStorages;
   public
     { public declarations }
     {Morar: ID korisnika}
@@ -386,7 +387,34 @@ end;
 procedure TfrmMain.clearOldForms;
 begin
   if formPanel.ControlCount > 2 then
-    TForm(formPanel.Controls[2]).Close;
+    begin
+      TForm(formPanel.Controls[2]).Close;
+      enableStorages;
+    end;
+end;
+
+procedure TfrmMain.disableStorages;
+begin
+  if cmbSupplierStorage.Enabled then
+    cmbSupplierStorage.Enabled:= False;
+  if cmbUserStorage.Enabled then
+    cmbUserStorage.Enabled:= False;
+  if btnSaveStorageIni.Enabled then
+    btnSaveStorageIni.Enabled:= False;
+  if btnSaveStorageIni.Enabled then
+    btnSaveStorageIni.Enabled:= False;
+end;
+
+procedure TfrmMain.enableStorages;
+begin
+  if not cmbSupplierStorage.Enabled then
+    cmbSupplierStorage.Enabled:= True;
+  if not cmbUserStorage.Enabled then
+    cmbUserStorage.Enabled:= True;
+  if not btnSaveStorageIni.Enabled then
+    btnSaveStorageIni.Enabled:= True;
+  if not btnSaveStorageIni.Enabled then
+    btnSaveStorageIni.Enabled:= True;
 end;
 
 procedure TfrmMain.doQuitAppExecute(Sender: TObject);
@@ -438,6 +466,7 @@ begin
   //najpre proveri konekciju
   if isConnected then
     begin
+      clearOldForms;
       dbm.closeCurrConnection;
       cmbDb.Items.Clear;
       cmbSupplierStorage.Items.Clear;
@@ -464,8 +493,6 @@ begin
         begin
           fillStorages;
           setStorages;
-          cmbSupplierStorage.Enabled:= False;
-          cmbUserStorage.Enabled:= False;
           // ovde treba otvoriti dataSets
           ShowMessage(SUCCESS_MSG);
         end;

@@ -9,6 +9,7 @@ uses
 
 procedure mainAfterConnect;
 procedure mainAfterDisconnect;
+procedure enableStorageSettings;
 function getUserId : Integer;
 function getSupplierStorageId : Integer;
 function getUserStorageId : Integer;
@@ -45,6 +46,11 @@ begin
   frmMain.isConnected:= False;
   frmMain.ledConnection.Color:= clRed;
   frmMain.lblConnectionState.Caption:= 'Diskonektovan';
+end;
+
+procedure enableStorageSettings;
+begin
+  frmMain.enableStorages;
 end;
 
 function getUserId: Integer;

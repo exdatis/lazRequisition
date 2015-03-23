@@ -51,7 +51,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -93,6 +93,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uopendatasets"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="utemplate.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmTemplate"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="utemplate"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

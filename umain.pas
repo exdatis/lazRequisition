@@ -68,7 +68,7 @@ type
     procedure fillStorages;
     procedure setStorages;
     procedure clearOldForms;
-
+    procedure disableStorages;
   public
     { public declarations }
     {Morar: ID korisnika}
@@ -77,6 +77,7 @@ type
     userStorageId : Integer;
     {Morar: const isConnected True/False}
     isConnected : Boolean;
+    procedure enableStorages;
   end;
 
 var
@@ -386,7 +387,34 @@ end;
 procedure TfrmMain.clearOldForms;
 begin
   if formPanel.ControlCount > 2 then
-    TForm(formPanel.Controls[2]).Close;
+    begin
+      TForm(formPanel.Controls[2]).Close;
+      enableStorages;
+    end;
+end;
+
+procedure TfrmMain.disableStorages;
+begin
+  if cmbSupplierStorage.Enabled then
+    cmbSupplierStorage.Enabled:= False;
+  if cmbUserStorage.Enabled then
+    cmbUserStorage.Enabled:= False;
+  if btnSaveStorageIni.Enabled then
+    btnSaveStorageIni.Enabled:= False;
+  if btnSaveStorageIni.Enabled then
+    btnSaveStorageIni.Enabled:= False;
+end;
+
+procedure TfrmMain.enableStorages;
+begin
+  if not cmbSupplierStorage.Enabled then
+    cmbSupplierStorage.Enabled:= True;
+  if not cmbUserStorage.Enabled then
+    cmbUserStorage.Enabled:= True;
+  if not btnSaveStorageIni.Enabled then
+    btnSaveStorageIni.Enabled:= True;
+  if not btnSaveStorageIni.Enabled then
+    btnSaveStorageIni.Enabled:= True;
 end;
 
 procedure TfrmMain.doQuitAppExecute(Sender: TObject);
@@ -465,8 +493,6 @@ begin
         begin
           fillStorages;
           setStorages;
-          cmbSupplierStorage.Enabled:= False;
-          cmbUserStorage.Enabled:= False;
           // ovde treba otvoriti dataSets
           ShowMessage(SUCCESS_MSG);
         end;

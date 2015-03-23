@@ -1,8 +1,8 @@
 object dbm: Tdbm
   OldCreateOrder = False
   Height = 392
-  HorizontalOffset = 285
-  VerticalOffset = 201
+  HorizontalOffset = 423
+  VerticalOffset = 253
   Width = 629
   object qGeneral: TSQLQuery
     PacketRecords = -1
@@ -14,7 +14,7 @@ object dbm: Tdbm
     top = 176
   end
   object dbh: TPQConnection
-    Connected = True
+    Connected = False
     LoginPrompt = False
     AfterConnect = dbhAfterConnect
     AfterDisconnect = dbhAfterDisconnect
@@ -36,7 +36,7 @@ object dbm: Tdbm
     top = 28
   end
   object dbt: TSQLTransaction
-    Active = True
+    Active = False
     Action = caNone
     Database = dbh
     left = 51
@@ -98,7 +98,6 @@ object dbm: Tdbm
   end
   object qProducts: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'art_id'

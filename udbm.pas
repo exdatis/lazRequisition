@@ -32,6 +32,7 @@ type
     qTemplate: TSQLQuery;
     procedure dbhAfterConnect(Sender: TObject);
     procedure dbhAfterDisconnect(Sender: TObject);
+    procedure qTemplateBeforeOpen(DataSet: TDataSet);
   private
     { private declarations }
   public
@@ -68,6 +69,11 @@ begin
   if dbh.DatabaseName = 'postgres' then Exit;
 
   mainAfterDisconnect;  //exdatis common
+end;
+
+procedure Tdbm.qTemplateBeforeOpen(DataSet: TDataSet);
+begin
+  TSQLQuery(DataSet).Params[0].AsInteger:= getUserStorageId;
 end;
 
 function Tdbm.checkServer(const currHost, currPort : String) : Boolean;
