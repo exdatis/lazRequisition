@@ -23,4 +23,15 @@ object frmTemplate: TfrmTemplate
     ShowHint = True
     Transparent = False
   end
+  object hcBtns: THeaderControl
+    Left = 0
+    Height = 30
+    Top = 457
+    Width = 812
+    DragReorder = False
+    Sections = <>
+    Align = alBottom
+    ShowHint = True
+    ParentShowHint = False
+  end
 end

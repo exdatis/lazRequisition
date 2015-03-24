@@ -234,6 +234,7 @@ object dbm: Tdbm
   object qTemplate: TSQLQuery
     PacketRecords = -1
     FieldDefs = <>
+    BeforeOpen = qTemplateBeforeOpen
     Database = dbh
     Transaction = dbt
     SQL.Strings = (

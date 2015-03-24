@@ -69,7 +69,6 @@ type
     procedure setStorages;
     procedure clearOldForms;
     procedure disableStorages;
-    procedure enableStorages;
   public
     { public declarations }
     {Morar: ID korisnika}
@@ -78,6 +77,7 @@ type
     userStorageId : Integer;
     {Morar: const isConnected True/False}
     isConnected : Boolean;
+    procedure enableStorages;
   end;
 
 var
@@ -427,6 +427,7 @@ procedure TfrmMain.btnGetDbClick(Sender: TObject);
 var
   currHost : String;
 begin
+  ShowMessage('Ovde sam');
   {pinguj trenutno izabrani host}
   currHost:= edtHost.Text;
   if not dbm.checkServer(currHost, DB_PORT) then

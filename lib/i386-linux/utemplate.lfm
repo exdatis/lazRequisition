@@ -13,8 +13,8 @@ object frmTemplate: TfrmTemplate
     Height = 17
     Top = -3
     Width = 818
+    Align = alTop
     Alignment = taCenter
-    Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'lblFormCaption'
     Color = clSilver

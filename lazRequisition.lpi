@@ -97,6 +97,7 @@
         <Filename Value="utemplate.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmTemplate"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="utemplate"/>
       </Unit6>

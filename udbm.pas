@@ -40,7 +40,6 @@ type
     function checkServer(const currHost, currPort : String) : Boolean;
     procedure closeCurrConnection;
     function selectDatabases : Boolean;
-
   end;
 
 var
@@ -84,21 +83,16 @@ var
   test : Integer = -1;   //greska kao inicijalna vrednost nula(o) je ok
 begin
   svr := TTCPBlockSocket.Create;
+  svr.ConnectionTimeout:= 1; //jedan sekund, nemoze manje
   try
-    svr.Bind(currHost,currPort);
-    svr.Listen;
-    test := svr.LastError;
-    Svr.CloseSocket;
+    svr.Connect(currHost,currPort);
+    //svr.Listen;   //verovatno nije potrebno
+    test:= svr.LastError;
   finally
+    Svr.CloseSocket;
     svr.Free;
   end;
-   if test = 0 then
-     begin
-       pingOk:= True;
-       result:= pingOk;
-       Exit;
-     end
-  else
+  if test <> 0 then
     begin
       errorMsg:= 'Mrežna konekcija u prekidu!' + #13#10;
       errorMsg:= errorMsg + 'Pozovite Dejana ili Bobana:' + #13#10;
@@ -106,7 +100,11 @@ begin
       errorMsg:= errorMsg + 'Stefanovski Boban: 062-804-8326' + #13#10;
       ShowMessage(errorMsg);
       result:= pingOk; // false
+      Exit;
     end;
+  //else ok
+  pingOk:= True;
+  result:= pingOk;
 end;
 
 procedure Tdbm.closeCurrConnection;
