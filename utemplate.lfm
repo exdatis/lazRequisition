@@ -7,12 +7,13 @@ object frmTemplate: TfrmTemplate
   Caption = 'frmTemplate'
   ClientHeight = 487
   ClientWidth = 812
+  OnClose = FormClose
   LCLVersion = '1.2.6.0'
   object lblFormCaption: TLabel
-    Left = -3
+    Left = 0
     Height = 17
-    Top = -3
-    Width = 818
+    Top = 0
+    Width = 812
     Align = alTop
     Alignment = taCenter
     AutoSize = False
@@ -23,15 +24,197 @@ object frmTemplate: TfrmTemplate
     ShowHint = True
     Transparent = False
   end
-  object hcBtns: THeaderControl
+  object Panel1: TPanel
     Left = 0
-    Height = 30
-    Top = 457
+    Height = 31
+    Top = 456
     Width = 812
-    DragReorder = False
-    Sections = <>
     Align = alBottom
-    ShowHint = True
-    ParentShowHint = False
+    BorderStyle = bsSingle
+    ChildSizing.LeftRightSpacing = 1
+    ChildSizing.HorizontalSpacing = 1
+    ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+    ChildSizing.ShrinkVertical = crsHomogenousChildResize
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ClientHeight = 31
+    ClientWidth = 812
+    TabOrder = 0
+    object btnFirst: TButton
+      Cursor = crHandPoint
+      Left = 2
+      Height = 29
+      Top = 1
+      Width = 86
+      Action = acFirstRec
+      Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object btnPrior: TButton
+      Cursor = crHandPoint
+      Left = 89
+      Height = 29
+      Top = 1
+      Width = 91
+      Action = acPriorRec
+      Align = alLeft
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+    end
+    object btnNext: TButton
+      Cursor = crHandPoint
+      Left = 181
+      Height = 29
+      Top = 1
+      Width = 91
+      Action = acNextRec
+      Align = alLeft
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+    end
+    object btnLast: TButton
+      Cursor = crHandPoint
+      Left = 273
+      Height = 29
+      Top = 1
+      Width = 79
+      Action = acLastError
+      Align = alLeft
+      TabOrder = 3
+    end
+    object btnNew: TButton
+      Cursor = crHandPoint
+      Left = 353
+      Height = 29
+      Top = 1
+      Width = 75
+      Action = acNewRec
+      Align = alLeft
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
+    end
+    object btnDelete: TButton
+      Cursor = crHandPoint
+      Left = 429
+      Height = 29
+      Top = 1
+      Width = 75
+      Action = acRemoveRec
+      Align = alLeft
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+    end
+    object btnSave: TButton
+      Cursor = crHandPoint
+      Left = 505
+      Height = 29
+      Top = 1
+      Width = 75
+      Action = acSaveRec
+      Align = alLeft
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 6
+    end
+    object btnCancel: TButton
+      Cursor = crHandPoint
+      Left = 581
+      Height = 29
+      Top = 1
+      Width = 75
+      Action = acCancelAll
+      Align = alLeft
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 7
+    end
+    object btnEdit: TButton
+      Cursor = crHandPoint
+      Left = 657
+      Height = 29
+      Top = 1
+      Width = 75
+      Action = acEditRec
+      Align = alLeft
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 8
+    end
+    object btnClose: TButton
+      Cursor = crHandPoint
+      Left = 733
+      Height = 29
+      Top = 1
+      Width = 75
+      Action = acCloseForm
+      Align = alLeft
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 9
+    end
+  end
+  object alTemplate: TActionList
+    left = 122
+    top = 198
+    object acFirstRec: TAction
+      Caption = '<<'
+      Hint = 'Prvi slog'
+      OnExecute = acFirstRecExecute
+    end
+    object acPriorRec: TAction
+      Caption = '<'
+      Hint = 'Prethodni slog'
+      OnExecute = acPriorRecExecute
+    end
+    object acNextRec: TAction
+      Caption = '>'
+      Hint = 'Naredni slog'
+      OnExecute = acNextRecExecute
+    end
+    object acLastError: TAction
+      Caption = '>>'
+      Hint = 'Poslednji slog'
+      OnExecute = acLastErrorExecute
+    end
+    object acNewRec: TAction
+      Caption = 'Dodaj'
+      Hint = 'Noci zapis'
+      OnExecute = acNewRecExecute
+      ShortCut = 16457
+    end
+    object acRemoveRec: TAction
+      Caption = 'Obriši'
+      Hint = 'Brisanje zapisa'
+      OnExecute = acRemoveRecExecute
+    end
+    object acSaveRec: TAction
+      Caption = 'Sačuvaj'
+      Hint = 'Sačuvaj izmene'
+      OnExecute = acSaveRecExecute
+      ShortCut = 16467
+    end
+    object acCancelAll: TAction
+      Caption = 'Odustani'
+      Hint = 'Odbaci izmene'
+      OnExecute = acCancelAllExecute
+      ShortCut = 16474
+    end
+    object acEditRec: TAction
+      Caption = 'Izmena'
+      Hint = 'Izmena zapisa'
+      OnExecute = acEditRecExecute
+      ShortCut = 16453
+    end
+    object acCloseForm: TAction
+      Caption = 'Zatvori'
+      Hint = 'Zatvori formular'
+      OnExecute = acCloseFormExecute
+    end
   end
 end

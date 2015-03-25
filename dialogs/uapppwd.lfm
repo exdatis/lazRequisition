@@ -3,6 +3,7 @@ object dlgAppPwd: TdlgAppPwd
   Height = 175
   Top = 220
   Width = 385
+  BorderStyle = bsDialog
   Caption = 'Provera korisnika'
   ClientHeight = 175
   ClientWidth = 385
@@ -74,6 +75,7 @@ object dlgAppPwd: TdlgAppPwd
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Proveri'
+    Default = True
     ModalResult = 1
     ParentShowHint = False
     ShowHint = True

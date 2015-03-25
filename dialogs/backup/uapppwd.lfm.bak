@@ -1,10 +1,11 @@
 object dlgAppPwd: TdlgAppPwd
   Left = 365
-  Height = 186
+  Height = 175
   Top = 220
   Width = 385
+  BorderStyle = bsDialog
   Caption = 'Provera korisnika'
-  ClientHeight = 186
+  ClientHeight = 175
   ClientWidth = 385
   Font.Height = -12
   Position = poDesktopCenter
@@ -64,5 +65,33 @@ object dlgAppPwd: TdlgAppPwd
       PasswordChar = '*'
       TabOrder = 1
     end
+  end
+  object btnOk: TButton
+    Cursor = crHandPoint
+    Left = 205
+    Height = 25
+    Hint = 'Uloguj se'
+    Top = 138
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Proveri'
+    ModalResult = 1
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object btnCancel: TButton
+    Cursor = crHandPoint
+    Left = 285
+    Height = 25
+    Hint = 'Odustani'
+    Top = 138
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Odustani'
+    ModalResult = 2
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
   end
 end

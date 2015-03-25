@@ -35,11 +35,14 @@ type
     procedure qTemplateBeforeOpen(DataSet: TDataSet);
   private
     { private declarations }
+    procedure queryBeforePost(var dataSet : TSQLQuery; const idField, sequenceName : String);
   public
     { public declarations }
     function checkServer(const currHost, currPort : String) : Boolean;
     procedure closeCurrConnection;
     function selectDatabases : Boolean;
+    function getNewKey(const sequenceName : String) : Integer;
+    procedure cancelAll(var dataSet : TSQLQuery);
   end;
 
 var
@@ -73,6 +76,24 @@ end;
 procedure Tdbm.qTemplateBeforeOpen(DataSet: TDataSet);
 begin
   TSQLQuery(DataSet).Params[0].AsInteger:= getUserStorageId;
+end;
+
+procedure Tdbm.queryBeforePost(var dataSet: TSQLQuery; const idField,
+  sequenceName: String);
+const
+  idKey : String = 'c_id';
+  sequenceName : String = 'seq_customer';
+var
+  newId : Integer = 0; {error as default}
+begin
+  {if it's a new record}
+  if(dataSet.FieldByName(idField).IsNull) then
+    begin
+      newid:= getNewKey(sequenceName); {find new key}
+      {if result > 0}
+      if(newId > 0) then
+        dataSet.FieldByName(idField).AsInteger:= newId; {set value of id}
+    end;
 end;
 
 function Tdbm.checkServer(const currHost, currPort : String) : Boolean;
@@ -137,6 +158,35 @@ begin
     end;
   end;
   result:= True; // sada moze da se procita rezultat
+end;
+
+function Tdbm.getNewKey(const sequenceName: String): Integer;
+var
+  sql : String;
+begin
+  {sql text}
+  sql:= 'Select nextval(' + QuotedStr(sequenceName) + ')';
+  try
+    qGeneral.Close;
+    qGeneral.SQL.Clear;
+    qGeneral.SQL.Text:= sql;
+    qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      ShowMessage(e.Message);
+      result:= 0;
+      Exit;
+    end;
+  end;
+  //else return result
+  result:= qGeneral.Fields[0].AsInteger;
+end;
+
+procedure Tdbm.cancelAll(var dataSet: TSQLQuery);
+begin
+  dataSet.CancelUpdates;
+  dbt.RollbackRetaining;
 end;
 
 end.

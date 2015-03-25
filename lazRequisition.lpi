@@ -17,7 +17,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
-      <BuildNr Value="1"/>
+      <BuildNr Value="3"/>
       <StringTable Comments="App by Morar" CompanyName="ExDatis" FileDescription="Requisition" InternalName="PhRequisition" OriginalFilename="lazRequisition" ProductName="Requisition" ProductVersion="3"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -51,7 +51,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="9">
       <Unit0>
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -82,6 +82,7 @@
         <Filename Value="dialogs/uapppwd.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dlgAppPwd"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uapppwd"/>
       </Unit4>
@@ -101,6 +102,21 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="utemplate"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="dialogs/udeleteconfirmation.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dlgDeleteConfirmation"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="udeleteconfirmation"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="dialogs/usavechanges.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dlgSaveChanges"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="usavechanges"/>
+      </Unit8>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
