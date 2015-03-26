@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, lazcontrols, umain, udbm, uexdatis, uapppwd, uopendatasets, utemplate,
-  udeleteconfirmation, usavechanges
+  udeleteconfirmation, usavechanges, udefrequisition
   { you can add units after this };
 
 {$R *.res}
@@ -19,6 +19,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdbm, dbm);
+  Application.CreateForm(TfrmDefRequisition, frmDefRequisition);
   //Application.CreateForm(TdlgAppPwd, dlgAppPwd);
   //Application.CreateForm(TdlgOpenDataSets, dlgOpenDataSets);
   //Application.CreateForm(TfrmTemplate, frmTemplate);

@@ -19,11 +19,11 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdbm, dbm);
-  Application.CreateForm(TdlgAppPwd, dlgAppPwd);
-  Application.CreateForm(TdlgOpenDataSets, dlgOpenDataSets);
-  Application.CreateForm(TfrmTemplate, frmTemplate);
-  Application.CreateForm(TdlgDeleteConfirmation, dlgDeleteConfirmation);
-  Application.CreateForm(TdlgSaveChanges, dlgSaveChanges);
+  //Application.CreateForm(TdlgAppPwd, dlgAppPwd);
+  //Application.CreateForm(TdlgOpenDataSets, dlgOpenDataSets);
+  //Application.CreateForm(TfrmTemplate, frmTemplate);
+  //Application.CreateForm(TdlgDeleteConfirmation, dlgDeleteConfirmation);
+  //Application.CreateForm(TdlgSaveChanges, dlgSaveChanges);
   Application.Run;
 end.
 

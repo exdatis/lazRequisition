@@ -3,9 +3,11 @@ object dlgOpenDataSets: TdlgOpenDataSets
   Height = 29
   Top = 214
   Width = 598
+  BorderStyle = bsDialog
   Caption = 'Molim sačekajte...'
   ClientHeight = 29
   ClientWidth = 598
+  Position = poDesktopCenter
   LCLVersion = '1.2.6.0'
   object progBar: TProgressBar
     Left = 15

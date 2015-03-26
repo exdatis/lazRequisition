@@ -13,6 +13,7 @@ type
   { Tdbm }
 
   Tdbm = class(TDataModule)
+    dsTemplate: TDataSource;
     dsProducts: TDataSource;
     dsStorages: TDataSource;
     dbh: TPQConnection;
@@ -30,19 +31,30 @@ type
     qStoragesm_naziv: TStringField;
     qProducts: TSQLQuery;
     qTemplate: TSQLQuery;
+    qTemplateart_naziv: TStringField;
+    qTemplateart_sifra: TStringField;
+    qTemplatejm_naziv: TStringField;
+    qTemplatejm_oznaka: TStringField;
+    qTemplatetmp_artikal: TLongintField;
+    qTemplatetmp_id: TLongintField;
+    qTemplatetmp_kol: TBCDField;
+    qTemplatetmp_magacin: TLongintField;
     procedure dbhAfterConnect(Sender: TObject);
     procedure dbhAfterDisconnect(Sender: TObject);
+    procedure qTemplateAfterDelete(DataSet: TDataSet);
     procedure qTemplateBeforeOpen(DataSet: TDataSet);
+    procedure qTemplateBeforePost(DataSet: TDataSet);
   private
     { private declarations }
-    procedure queryBeforePost(var dataSet : TSQLQuery; const idField, sequenceName : String);
   public
     { public declarations }
     function checkServer(const currHost, currPort : String) : Boolean;
     procedure closeCurrConnection;
     function selectDatabases : Boolean;
     function getNewKey(const sequenceName : String) : Integer;
+    procedure queryBeforePost(var dataSet : TSQLQuery; const idField, sequenceName : String);
     procedure cancelAll(var dataSet : TSQLQuery);
+    procedure postChanges(var dataSet : TSQLQuery);
   end;
 
 var
@@ -73,27 +85,46 @@ begin
   mainAfterDisconnect;  //exdatis common
 end;
 
+procedure Tdbm.qTemplateAfterDelete(DataSet: TDataSet);
+begin
+  postChanges(TSQLQuery(DataSet));
+end;
+
 procedure Tdbm.qTemplateBeforeOpen(DataSet: TDataSet);
 begin
   TSQLQuery(DataSet).Params[0].AsInteger:= getUserStorageId;
 end;
 
+procedure Tdbm.qTemplateBeforePost(DataSet: TDataSet);
+const
+  ID_KEY : String = 'tmp_id';
+  SEQUENCE_NAME : String = 'tmptr_tmp_id_seq';
+begin
+  { check server before}
+  if not checkServer(getCurrentHost, getCurrentPort) then
+    cancelAll(TSQLQuery(DataSet))
+    else
+      begin
+        queryBeforePost(TSQLQuery(DataSet), ID_KEY, SEQUENCE_NAME );
+        postChanges(TSQLQuery(DataSet));
+      end;
+end;
+
 procedure Tdbm.queryBeforePost(var dataSet: TSQLQuery; const idField,
   sequenceName: String);
-const
-  idKey : String = 'c_id';
-  sequenceName : String = 'seq_customer';
 var
   newId : Integer = 0; {error as default}
 begin
   {if it's a new record}
   if(dataSet.FieldByName(idField).IsNull) then
     begin
-      newid:= getNewKey(sequenceName); {find new key}
+      newId:= getNewKey(sequenceName); {find new key}
       {if result > 0}
       if(newId > 0) then
         dataSet.FieldByName(idField).AsInteger:= newId; {set value of id}
-    end;
+    end
+  else
+    cancelAll(dataSet);
 end;
 
 function Tdbm.checkServer(const currHost, currPort : String) : Boolean;
@@ -188,6 +219,38 @@ begin
   dataSet.CancelUpdates;
   dbt.RollbackRetaining;
 end;
+
+procedure Tdbm.postChanges(var dataSet: TSQLQuery);
+var
+  currPosition : Integer;
+  idKey : String;
+begin
+  {save position}
+  idKey:= dataSet.Fields[0].FieldName;
+  currPosition:= dataSet.FieldByName(idKey).AsInteger;
+  {commit}
+  try
+    dataSet.ApplyUpdates;
+    dbt.CommitRetaining;
+  except
+    on e : Exception do
+    begin
+      dataSet.CancelUpdates;
+      dbt.RollbackRetaining;
+      ShowMessage(e.Message);
+      Exit;
+    end;
+  end;
+  //refresh
+  try
+    dataSet.DisableControls;
+    dataSet.Refresh;
+    dataSet.Locate(idKey, currPosition, []);
+  finally
+    dataSet.EnableControls;
+  end;
+end;
+
 
 end.
 

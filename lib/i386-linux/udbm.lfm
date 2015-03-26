@@ -18,7 +18,7 @@ object dbm: Tdbm
     LoginPrompt = False
     AfterConnect = dbhAfterConnect
     AfterDisconnect = dbhAfterDisconnect
-    DatabaseName = 'edh2015'
+    DatabaseName = 'edhlocal'
     KeepConnection = False
     Password = 'morar013'
     Transaction = dbt
@@ -233,8 +233,59 @@ object dbm: Tdbm
   end
   object qTemplate: TSQLQuery
     PacketRecords = -1
-    FieldDefs = <>
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'tmp_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'tmp_artikal'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'tmp_kol'
+        DataType = ftBCD
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'tmp_magacin'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'art_sifra'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'art_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end    
+      item
+        Name = 'jm_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 15
+      end    
+      item
+        Name = 'jm_oznaka'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end>
+    AfterDelete = qTemplateAfterDelete
     BeforeOpen = qTemplateBeforeOpen
+    BeforePost = qTemplateBeforePost
     Database = dbh
     Transaction = dbt
     SQL.Strings = (
@@ -290,5 +341,109 @@ object dbm: Tdbm
       end>
     left = 201
     top = 273
+    object qTemplatetmp_id: TLongintField
+      Alignment = taLeftJustify
+      DisplayLabel = 'ID'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'tmp_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qTemplatetmp_artikal: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'tmp_artikal'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object qTemplatetmp_magacin: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'tmp_magacin'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object qTemplateart_sifra: TStringField
+      DisplayLabel = 'Šifra'
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'art_sifra'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qTemplateart_naziv: TStringField
+      DisplayLabel = 'Proizvod'
+      DisplayWidth = 35
+      FieldKind = fkData
+      FieldName = 'art_naziv'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 70
+    end
+    object qTemplatejm_naziv: TStringField
+      DisplayLabel = 'Mera'
+      DisplayWidth = 9
+      FieldKind = fkData
+      FieldName = 'jm_naziv'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qTemplatejm_oznaka: TStringField
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'jm_oznaka'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 7
+    end
+    object qTemplatetmp_kol: TBCDField
+      DisplayLabel = 'Količina'
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'tmp_kol'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      DisplayFormat = '#0.00'
+      Precision = -1
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+  end
+  object dsTemplate: TDataSource
+    DataSet = qTemplate
+    left = 240
+    top = 284
   end
 end

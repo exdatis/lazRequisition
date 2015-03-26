@@ -13,6 +13,8 @@ procedure enableStorageSettings;
 function getUserId : Integer;
 function getSupplierStorageId : Integer;
 function getUserStorageId : Integer;
+function getCurrentHost : String;
+function getCurrentPort : String;
 
 implementation
 
@@ -66,6 +68,16 @@ end;
 function getUserStorageId: Integer;
 begin
   result:= frmMain.userStorageId;
+end;
+
+function getCurrentHost: String;
+begin
+  result:= frmMain.edtHost.Text;
+end;
+
+function getCurrentPort: String;
+begin
+  result:= '5432'; //postgresql
 end;
 
 end.

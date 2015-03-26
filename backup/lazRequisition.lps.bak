@@ -3,16 +3,16 @@
   <ProjectSession>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="11">
+    <Units Count="12">
       <Unit0>
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="lazRequisition"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="5" Y="26"/>
-        <UsageCount Value="44"/>
+        <CursorPos X="5" Y="27"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -24,9 +24,9 @@
         <UnitName Value="umain"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="411"/>
-        <CursorPos X="34" Y="425"/>
-        <UsageCount Value="44"/>
+        <TopLine Value="477"/>
+        <CursorPos X="38" Y="502"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -37,11 +37,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="udbm"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="67"/>
-        <CursorPos X="7" Y="89"/>
-        <UsageCount Value="43"/>
+        <TopLine Value="89"/>
+        <CursorPos X="42" Y="109"/>
+        <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -49,11 +49,11 @@
         <Filename Value="uexdatis.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uexdatis"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="25" Y="53"/>
-        <UsageCount Value="39"/>
+        <TopLine Value="47"/>
+        <CursorPos X="32" Y="80"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -66,7 +66,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="44" Y="21"/>
-        <UsageCount Value="35"/>
+        <UsageCount Value="44"/>
       </Unit4>
       <Unit5>
         <Filename Value="dialogs/uopendatasets.pas"/>
@@ -75,13 +75,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uopendatasets"/>
-        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="47" Y="2"/>
-        <UsageCount Value="33"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <TopLine Value="13"/>
+        <CursorPos X="5" Y="52"/>
+        <UsageCount Value="42"/>
       </Unit5>
       <Unit6>
         <Filename Value="utemplate.pas"/>
@@ -90,32 +87,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="utemplate"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="55"/>
-        <CursorPos X="54" Y="80"/>
-        <UsageCount Value="29"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <TopLine Value="168"/>
+        <CursorPos X="3" Y="171"/>
+        <UsageCount Value="38"/>
       </Unit6>
       <Unit7>
-        <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/pingsend.pas"/>
-        <UnitName Value="pingsend"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="555"/>
-        <CursorPos X="32" Y="555"/>
-        <UsageCount Value="10"/>
-      </Unit7>
-      <Unit8>
-        <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/blcksock.pas"/>
-        <UnitName Value="blcksock"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="362"/>
-        <CursorPos X="5" Y="310"/>
-        <UsageCount Value="10"/>
-      </Unit8>
-      <Unit9>
         <Filename Value="dialogs/udeleteconfirmation.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dlgDeleteConfirmation"/>
@@ -125,9 +102,9 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="67" Y="15"/>
-        <UsageCount Value="24"/>
-      </Unit9>
-      <Unit10>
+        <UsageCount Value="33"/>
+      </Unit7>
+      <Unit8>
         <Filename Value="dialogs/usavechanges.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dlgSaveChanges"/>
@@ -136,121 +113,125 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="42" Y="13"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="32"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/pingsend.pas"/>
+        <UnitName Value="pingsend"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="555"/>
+        <CursorPos X="32" Y="555"/>
+        <UsageCount Value="9"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/blcksock.pas"/>
+        <UnitName Value="blcksock"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="362"/>
+        <CursorPos X="5" Y="310"/>
+        <UsageCount Value="9"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="dialogs/udefrequisition.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDefRequisition"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="udefrequisition"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="40"/>
+        <CursorPos X="18" Y="36"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit11>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="27" HistoryIndex="26">
+    <JumpHistory Count="20" HistoryIndex="19">
       <Position1>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="43" Column="40" TopLine="17"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="82" Column="34" TopLine="80"/>
       </Position1>
       <Position2>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="53" Column="56" TopLine="23"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="92" Column="3" TopLine="90"/>
       </Position2>
       <Position3>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="195" Column="27" TopLine="167"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="214" Column="3" TopLine="221"/>
       </Position3>
       <Position4>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="39" Column="34" TopLine="20"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="48" Column="52" TopLine="18"/>
       </Position4>
       <Position5>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="210" Column="16" TopLine="173"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="100" Column="99" TopLine="94"/>
       </Position5>
       <Position6>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="43" Column="36" TopLine="25"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="86" Column="3" TopLine="83"/>
       </Position6>
       <Position7>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="121" Column="3" TopLine="145"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="87" Column="3" TopLine="84"/>
       </Position7>
       <Position8>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="128" Column="3" TopLine="128"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="88" Column="3" TopLine="85"/>
       </Position8>
       <Position9>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="78" Column="14" TopLine="63"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="89" Column="3" TopLine="86"/>
       </Position9>
       <Position10>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="80" Column="14" TopLine="65"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="90" Column="3" TopLine="87"/>
       </Position10>
       <Position11>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="85" Column="14" TopLine="83"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="91" Column="3" TopLine="88"/>
       </Position11>
       <Position12>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="92" Column="14" TopLine="90"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="92" Column="3" TopLine="89"/>
       </Position12>
       <Position13>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="87" Column="13" TopLine="85"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="93" Column="3" TopLine="90"/>
       </Position13>
       <Position14>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="94" Column="13" TopLine="92"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="94" Column="3" TopLine="91"/>
       </Position14>
       <Position15>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="89" Column="13" TopLine="87"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="425" Column="34" TopLine="411"/>
       </Position15>
       <Position16>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="91" Column="13" TopLine="89"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="95" Column="3" TopLine="63"/>
       </Position16>
       <Position17>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="96" Column="12" TopLine="94"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="502" Column="33" TopLine="477"/>
       </Position17>
       <Position18>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="98" Column="12" TopLine="96"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="502" Column="38" TopLine="477"/>
       </Position18>
       <Position19>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="113" Column="15" TopLine="111"/>
+        <Filename Value="dialogs/udefrequisition.pas"/>
+        <Caret Line="28" Column="37" TopLine="1"/>
       </Position19>
       <Position20>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="115" Column="15" TopLine="113"/>
+        <Filename Value="dialogs/udefrequisition.pas"/>
+        <Caret Line="36" Column="18" TopLine="40"/>
       </Position20>
-      <Position21>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="120" Column="13" TopLine="118"/>
-      </Position21>
-      <Position22>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="127" Column="13" TopLine="125"/>
-      </Position22>
-      <Position23>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="97" Column="15" TopLine="95"/>
-      </Position23>
-      <Position24>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="99" Column="15" TopLine="97"/>
-      </Position24>
-      <Position25>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="104" Column="13" TopLine="40"/>
-      </Position25>
-      <Position26>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="111" Column="13" TopLine="74"/>
-      </Position26>
-      <Position27>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="106" Column="15" TopLine="104"/>
-      </Position27>
     </JumpHistory>
   </ProjectSession>
   <EditorMacros Count="0"/>

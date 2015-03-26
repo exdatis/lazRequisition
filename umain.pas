@@ -462,6 +462,7 @@ var
   newDlg : TdlgAppPwd;
   thisUser, ThisPwd : String;
   checkThisUser : Boolean = False;
+  dlgProgress :  TdlgOpenDataSets;
 begin
   //najpre proveri konekciju
   if isConnected then
@@ -493,8 +494,14 @@ begin
         begin
           fillStorages;
           setStorages;
-          // ovde treba otvoriti dataSets
+          //success msg
           ShowMessage(SUCCESS_MSG);
+          // ovde treba otvoriti dataSets
+          dlgProgress:= TdlgOpenDataSets.Create(nil);
+          dlgProgress.Show;
+          Application.ProcessMessages;
+          dlgProgress.openDataSets;
+          dlgProgress.Free;
         end;
 end;
 

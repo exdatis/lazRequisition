@@ -427,7 +427,6 @@ procedure TfrmMain.btnGetDbClick(Sender: TObject);
 var
   currHost : String;
 begin
-  ShowMessage('Ovde sam');
   {pinguj trenutno izabrani host}
   currHost:= edtHost.Text;
   if not dbm.checkServer(currHost, DB_PORT) then
@@ -463,6 +462,7 @@ var
   newDlg : TdlgAppPwd;
   thisUser, ThisPwd : String;
   checkThisUser : Boolean = False;
+  dlgProgress :  TdlgOpenDataSets;
 begin
   //najpre proveri konekciju
   if isConnected then
@@ -494,8 +494,13 @@ begin
         begin
           fillStorages;
           setStorages;
-          // ovde treba otvoriti dataSets
+          //success msg
           ShowMessage(SUCCESS_MSG);
+          // ovde treba otvoriti dataSets
+          dlgProgress:= TdlgOpenDataSets.Create(nil);
+          dlgProgress.Show;
+          dlgProgress.openDataSets;
+          dlgProgress.Free;
         end;
 end;
 

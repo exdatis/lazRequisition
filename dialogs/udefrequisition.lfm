@@ -1,0 +1,49 @@
+inherited frmDefRequisition: TfrmDefRequisition
+  inherited lblFormCaption: TLabel
+    Caption = 'Standardno trebovanje'
+  end
+  inherited Panel1: TPanel
+    ClientHeight = 29
+    ClientWidth = 810
+    inherited btnFirst: TButton
+      Height = 27
+      Width = 84
+    end
+    inherited btnPrior: TButton
+      Left = 87
+      Height = 27
+    end
+    inherited btnNext: TButton
+      Left = 179
+      Height = 27
+    end
+    inherited btnLast: TButton
+      Left = 271
+      Height = 27
+    end
+    inherited btnNew: TButton
+      Left = 351
+      Height = 27
+    end
+    inherited btnDelete: TButton
+      Left = 427
+      Height = 27
+    end
+    inherited btnSave: TButton
+      Left = 503
+      Height = 27
+    end
+    inherited btnCancel: TButton
+      Left = 579
+      Height = 27
+    end
+    inherited btnEdit: TButton
+      Left = 655
+      Height = 27
+    end
+    inherited btnClose: TButton
+      Left = 731
+      Height = 27
+    end
+  end
+end
