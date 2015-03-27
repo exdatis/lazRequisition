@@ -233,7 +233,6 @@ object dbm: Tdbm
   end
   object qTemplate: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'tmp_id'

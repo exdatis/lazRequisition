@@ -226,6 +226,7 @@ object frmMain: TfrmMain
         Constraints.MaxHeight = 27
         Constraints.MinHeight = 27
         ItemHeight = 0
+        OnChange = cmbUserStorageChange
         Sorted = True
         Style = csDropDownList
         TabOrder = 0
@@ -255,6 +256,7 @@ object frmMain: TfrmMain
         Constraints.MaxHeight = 27
         Constraints.MinHeight = 27
         ItemHeight = 0
+        OnChange = cmbSupplierStorageChange
         Sorted = True
         Style = csDropDownList
         TabOrder = 1
@@ -368,9 +370,9 @@ object frmMain: TfrmMain
       Left = 35
       Height = 17
       Hint = 'www.exdatis.net'
-      Top = 35
+      Top = 38
       Width = 740
-      Caption = 'ExDatis software'
+      Caption = 'ExDatis software solution'
       Align = alCustom
       Anchors = [akTop, akLeft, akRight]
       Font.Color = clOlive
@@ -379,10 +381,10 @@ object frmMain: TfrmMain
       ShowHint = True
     end
     object Image1: TImage
-      Left = 600
-      Height = 81
-      Top = 396
-      Width = 184
+      Left = 592
+      Height = 89
+      Top = 388
+      Width = 192
       Align = alCustom
       Anchors = [akRight, akBottom]
       Picture.Data = {
@@ -859,6 +861,12 @@ object frmMain: TfrmMain
         Action = doQuitApp
       end
     end
+    object MenuItem3: TMenuItem
+      Caption = 'Nalozi trebovanja'
+      object MenuItem4: TMenuItem
+        Action = acDefaultRequisition
+      end
+    end
   end
   object aclMain: TActionList
     left = 416
@@ -868,6 +876,11 @@ object frmMain: TfrmMain
       Hint = 'Zatvori aplikaciju'
       OnExecute = doQuitAppExecute
       ShortCut = 16465
+    end
+    object acDefaultRequisition: TAction
+      Caption = 'Standardno trebovanje'
+      Hint = 'Standardno trebovanje'
+      OnExecute = acDefaultRequisitionExecute
     end
   end
 end

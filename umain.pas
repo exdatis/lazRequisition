@@ -15,6 +15,7 @@ type
 
   TfrmMain = class(TForm)
     aclMain: TActionList;
+    acDefaultRequisition: TAction;
     btnGetDb: TButton;
     btnConnect: TButton;
     btnSaveDbIni: TButton;
@@ -40,13 +41,18 @@ type
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
     Panel1: TPanel;
     StatusBar1: TStatusBar;
     ledConnection: TuELED;
+    procedure acDefaultRequisitionExecute(Sender: TObject);
     procedure btnConnectClick(Sender: TObject);
     procedure btnGetDbClick(Sender: TObject);
     procedure btnSaveDbIniClick(Sender: TObject);
     procedure btnSaveStorageIniClick(Sender: TObject);
+    procedure cmbSupplierStorageChange(Sender: TObject);
+    procedure cmbUserStorageChange(Sender: TObject);
     procedure doQuitAppExecute(Sender: TObject);
     procedure edtHostChange(Sender: TObject);
     procedure edtPwdChange(Sender: TObject);
@@ -86,9 +92,10 @@ const
   xorMagic : String = 'exdatis013';
   DEFAULT_DB : String = 'postgres';
   STORAGE_INI : String = 'storage.cfg';
+  NO_CONNECTION_ERROR : String = 'Nema konekcije sa bazom podataka.';
 implementation
 uses
-  udbm, uapppwd, uopendatasets;
+  udbm, uapppwd, uopendatasets, udefrequisition;
 {$R *.lfm}
 
 { TfrmMain }
@@ -505,6 +512,37 @@ begin
         end;
 end;
 
+procedure TfrmMain.acDefaultRequisitionExecute(Sender: TObject);
+var
+  newForm : TfrmDefRequisition;
+begin
+  {close any forms}
+  clearOldForms;
+  {proveri konekciju sa bazom}
+  if not dbm.dbh.Connected then
+    begin
+      ShowMessage(NO_CONNECTION_ERROR);
+      Exit;
+    end;
+  {show work commitment}
+  Screen.Cursor:= crHourGlass;
+  try
+    {create new}
+    newForm:= TfrmDefRequisition.Create(nil);
+    {set dbGrid title images}
+    //newForm.setDbGridTitleImages;
+    {set parent ctrl}
+    newForm.Parent:= formPanel;
+    newForm.Align:= alClient;
+    newForm.Show;
+    {onemoguci izmene}
+    disableStorages;
+    Application.ProcessMessages;
+  finally
+    Screen.Cursor:= crDefault;
+  end;
+end;
+
 procedure TfrmMain.btnSaveDbIniClick(Sender: TObject);
 begin
   writeDbIni;
@@ -529,6 +567,16 @@ begin
   storageList.SaveToFile(STORAGE_INI);
   storageList.Free;
   ShowMessage(SUCCESS_MSG);
+end;
+
+procedure TfrmMain.cmbSupplierStorageChange(Sender: TObject);
+begin
+  setStorages;
+end;
+
+procedure TfrmMain.cmbUserStorageChange(Sender: TObject);
+begin
+  setStorages;
 end;
 
 procedure TfrmMain.edtHostChange(Sender: TObject);

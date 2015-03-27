@@ -14,7 +14,7 @@ object dbm: Tdbm
     top = 176
   end
   object dbh: TPQConnection
-    Connected = True
+    Connected = False
     LoginPrompt = False
     AfterConnect = dbhAfterConnect
     AfterDisconnect = dbhAfterDisconnect
@@ -36,7 +36,7 @@ object dbm: Tdbm
     top = 28
   end
   object dbt: TSQLTransaction
-    Active = True
+    Active = False
     Action = caNone
     Database = dbh
     left = 51
@@ -233,7 +233,6 @@ object dbm: Tdbm
   end
   object qTemplate: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'tmp_id'

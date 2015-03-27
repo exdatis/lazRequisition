@@ -7,6 +7,7 @@ object frmTemplate: TfrmTemplate
   Caption = 'frmTemplate'
   ClientHeight = 487
   ClientWidth = 812
+  Font.Height = -12
   OnClose = FormClose
   LCLVersion = '1.2.6.0'
   object lblFormCaption: TLabel
@@ -36,15 +37,15 @@ object frmTemplate: TfrmTemplate
     ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
     ChildSizing.ShrinkVertical = crsHomogenousChildResize
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
-    ClientHeight = 31
-    ClientWidth = 812
+    ClientHeight = 29
+    ClientWidth = 810
     TabOrder = 0
     object btnFirst: TButton
       Cursor = crHandPoint
       Left = 2
-      Height = 29
+      Height = 27
       Top = 1
-      Width = 86
+      Width = 84
       Action = acFirstRec
       Align = alLeft
       Anchors = [akTop, akLeft, akRight, akBottom]
@@ -54,106 +55,117 @@ object frmTemplate: TfrmTemplate
     end
     object btnPrior: TButton
       Cursor = crHandPoint
-      Left = 89
-      Height = 29
+      Left = 87
+      Height = 27
       Top = 1
       Width = 91
       Action = acPriorRec
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
       ParentShowHint = False
       ShowHint = True
       TabOrder = 1
     end
     object btnNext: TButton
       Cursor = crHandPoint
-      Left = 181
-      Height = 29
+      Left = 179
+      Height = 27
       Top = 1
       Width = 91
       Action = acNextRec
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
     end
     object btnLast: TButton
       Cursor = crHandPoint
-      Left = 273
-      Height = 29
+      Left = 271
+      Height = 27
       Top = 1
       Width = 79
       Action = acLastError
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 3
     end
     object btnNew: TButton
       Cursor = crHandPoint
-      Left = 353
-      Height = 29
+      Left = 351
+      Height = 27
       Top = 1
       Width = 75
       Action = acNewRec
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
       ParentShowHint = False
       ShowHint = True
       TabOrder = 4
     end
     object btnDelete: TButton
       Cursor = crHandPoint
-      Left = 429
-      Height = 29
+      Left = 427
+      Height = 27
       Top = 1
       Width = 75
       Action = acRemoveRec
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
       ParentShowHint = False
       ShowHint = True
       TabOrder = 5
     end
     object btnSave: TButton
       Cursor = crHandPoint
-      Left = 505
-      Height = 29
+      Left = 503
+      Height = 27
       Top = 1
       Width = 75
       Action = acSaveRec
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
       ParentShowHint = False
       ShowHint = True
       TabOrder = 6
     end
     object btnCancel: TButton
       Cursor = crHandPoint
-      Left = 581
-      Height = 29
+      Left = 579
+      Height = 27
       Top = 1
       Width = 75
       Action = acCancelAll
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
       ParentShowHint = False
       ShowHint = True
       TabOrder = 7
     end
     object btnEdit: TButton
       Cursor = crHandPoint
-      Left = 657
-      Height = 29
+      Left = 655
+      Height = 27
       Top = 1
       Width = 75
       Action = acEditRec
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
       ParentShowHint = False
       ShowHint = True
       TabOrder = 8
     end
     object btnClose: TButton
       Cursor = crHandPoint
-      Left = 733
-      Height = 29
+      Left = 731
+      Height = 27
       Top = 1
       Width = 75
       Action = acCloseForm
       Align = alLeft
+      Anchors = [akTop, akLeft, akRight, akBottom]
       ParentShowHint = False
       ShowHint = True
       TabOrder = 9
