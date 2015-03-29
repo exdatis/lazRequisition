@@ -42,6 +42,7 @@ type
     procedure dbhAfterConnect(Sender: TObject);
     procedure dbhAfterDisconnect(Sender: TObject);
     procedure qTemplateAfterDelete(DataSet: TDataSet);
+    procedure qTemplateAfterPost(DataSet: TDataSet);
     procedure qTemplateBeforeOpen(DataSet: TDataSet);
     procedure qTemplateBeforePost(DataSet: TDataSet);
   private
@@ -52,7 +53,6 @@ type
     procedure closeCurrConnection;
     function selectDatabases : Boolean;
     function getNewKey(const sequenceName : String) : Integer;
-    procedure queryBeforePost(var dataSet : TSQLQuery; const sequenceName : String);
     procedure cancelAll(var dataSet : TSQLQuery);
     procedure postChanges(var dataSet : TSQLQuery);
   end;
@@ -90,6 +90,11 @@ begin
   postChanges(TSQLQuery(DataSet));
 end;
 
+procedure Tdbm.qTemplateAfterPost(DataSet: TDataSet);
+begin
+  postChanges(TSQLQuery(DataSet));
+end;
+
 procedure Tdbm.qTemplateBeforeOpen(DataSet: TDataSet);
 begin
   TSQLQuery(DataSet).Params[0].AsInteger:= getUserStorageId;
@@ -101,6 +106,7 @@ const
   SEQUENCE_NAME : String = 'tmptr_tmp_id_seq';
 var
   currHost, currPort : String;
+  new_id : Integer = -1;
 begin
   { check server before}
   currHost:= getCurrentHost;
@@ -108,28 +114,13 @@ begin
   //ShowMessage(currHost);
   //ShowMessage(currPort);
   if not checkServer(getCurrentHost, getCurrentPort) then
-    cancelAll(TSQLQuery(DataSet))
+      cancelAll(TSQLQuery(DataSet))
     else
-      begin
-        queryBeforePost(TSQLQuery(DataSet), SEQUENCE_NAME );
-        postChanges(TSQLQuery(DataSet));
-      end;
-end;
-
-procedure Tdbm.queryBeforePost(var dataSet: TSQLQuery; const sequenceName: String);
-var
-  newId : Integer = 0; {error as default}
-begin
-  {if it's a new record}
-  if(dataSet.Fields[0].IsNull) then
-    begin
-      newId:= getNewKey(sequenceName); {find new key}
-      {if result > 0}
-      if(newId > 0) then
-        dataSet.Fields[0].AsInteger:= newId {set value of id}
-      end
-      else
-        cancelAll(dataSet);
+      if TSQLQuery(DataSet).FieldByName(ID_KEY).IsNull then
+        begin
+          new_id:= getNewKey(SEQUENCE_NAME);
+          TSQLQuery(DataSet).FieldByName(ID_KEY).AsInteger:= new_id;
+        end;
 end;
 
 function Tdbm.checkServer(const currHost, currPort : String) : Boolean;

@@ -283,6 +283,7 @@ object dbm: Tdbm
         Size = 7
       end>
     AfterDelete = qTemplateAfterDelete
+    AfterPost = qTemplateAfterPost
     BeforeOpen = qTemplateBeforeOpen
     BeforePost = qTemplateBeforePost
     Database = dbh
