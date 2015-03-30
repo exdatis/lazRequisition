@@ -49,7 +49,7 @@ begin
   self.progBar.StepBy(1);
   Application.ProcessMessages;
   //return ok
-  Sleep(1500);
+  //Sleep(1500);
   self.ModalResult:= mrOK;
   self.Close;
 end;

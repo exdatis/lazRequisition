@@ -8,11 +8,11 @@
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="lazRequisition"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="49" Y="16"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -24,9 +24,9 @@
         <UnitName Value="umain"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="537"/>
-        <CursorPos X="3" Y="559"/>
-        <UsageCount Value="66"/>
+        <TopLine Value="63"/>
+        <CursorPos X="5" Y="81"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -37,11 +37,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="udbm"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="222"/>
-        <CursorPos X="3" Y="231"/>
-        <UsageCount Value="65"/>
+        <TopLine Value="134"/>
+        <CursorPos X="56" Y="166"/>
+        <UsageCount Value="69"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -51,9 +52,9 @@
         <UnitName Value="uexdatis"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="71" Y="12"/>
-        <UsageCount Value="61"/>
+        <TopLine Value="50"/>
+        <CursorPos X="3" Y="63"/>
+        <UsageCount Value="65"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -66,7 +67,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="44" Y="21"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="61"/>
       </Unit4>
       <Unit5>
         <Filename Value="dialogs/uopendatasets.pas"/>
@@ -75,10 +76,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uopendatasets"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="13"/>
-        <CursorPos X="5" Y="52"/>
-        <UsageCount Value="55"/>
+        <TopLine Value="15"/>
+        <CursorPos X="19" Y="56"/>
+        <UsageCount Value="59"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="utemplate.pas"/>
@@ -87,11 +91,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="utemplate"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="200"/>
         <CursorPos X="1" Y="222"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="55"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -104,7 +108,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="67" Y="15"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="50"/>
       </Unit7>
       <Unit8>
         <Filename Value="dialogs/usavechanges.pas"/>
@@ -115,7 +119,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="42" Y="13"/>
-        <UsageCount Value="45"/>
+        <UsageCount Value="49"/>
       </Unit8>
       <Unit9>
         <Filename Value="dialogs/udefrequisition.pas"/>
@@ -124,12 +128,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="udefrequisition"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="96"/>
-        <CursorPos X="58" Y="125"/>
-        <UsageCount Value="34"/>
+        <TopLine Value="93"/>
+        <CursorPos X="46" Y="114"/>
+        <UsageCount Value="38"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit9>
@@ -156,123 +159,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="udbm.pas"/>
-        <Caret Line="95" Column="3" TopLine="93"/>
+        <Caret Line="95" Column="34" TopLine="84"/>
       </Position1>
       <Position2>
         <Filename Value="udbm.pas"/>
-        <Caret Line="231" Column="3" TopLine="183"/>
+        <Caret Line="238" Column="50" TopLine="221"/>
       </Position2>
       <Position3>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="113" Column="3" TopLine="103"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="559" Column="3" TopLine="537"/>
       </Position3>
       <Position4>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="114" Column="1" TopLine="103"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="282" Column="21" TopLine="265"/>
       </Position4>
       <Position5>
         <Filename Value="udbm.pas"/>
-        <Caret Line="115" Column="1" TopLine="103"/>
+        <Caret Line="245" Column="50" TopLine="228"/>
       </Position5>
       <Position6>
         <Filename Value="udbm.pas"/>
-        <Caret Line="118" Column="1" TopLine="103"/>
+        <Caret Line="95" Column="59" TopLine="90"/>
       </Position6>
       <Position7>
         <Filename Value="udbm.pas"/>
-        <Caret Line="122" Column="1" TopLine="103"/>
+        <Caret Line="96" Column="59" TopLine="91"/>
       </Position7>
       <Position8>
         <Filename Value="udbm.pas"/>
-        <Caret Line="124" Column="1" TopLine="103"/>
+        <Caret Line="97" Column="59" TopLine="92"/>
       </Position8>
       <Position9>
         <Filename Value="udbm.pas"/>
-        <Caret Line="125" Column="1" TopLine="103"/>
+        <Caret Line="98" Column="59" TopLine="93"/>
       </Position9>
       <Position10>
         <Filename Value="udbm.pas"/>
-        <Caret Line="128" Column="1" TopLine="103"/>
+        <Caret Line="99" Column="59" TopLine="94"/>
       </Position10>
       <Position11>
         <Filename Value="udbm.pas"/>
-        <Caret Line="129" Column="1" TopLine="103"/>
+        <Caret Line="100" Column="59" TopLine="95"/>
       </Position11>
       <Position12>
         <Filename Value="udbm.pas"/>
-        <Caret Line="131" Column="1" TopLine="103"/>
+        <Caret Line="101" Column="59" TopLine="96"/>
       </Position12>
       <Position13>
-        <Filename Value="utemplate.pas"/>
-        <Caret Line="222" Column="1" TopLine="203"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="102" Column="59" TopLine="97"/>
       </Position13>
       <Position14>
         <Filename Value="udbm.pas"/>
-        <Caret Line="236" Column="1" TopLine="217"/>
+        <Caret Line="103" Column="59" TopLine="98"/>
       </Position14>
       <Position15>
         <Filename Value="udbm.pas"/>
-        <Caret Line="114" Column="1" TopLine="95"/>
+        <Caret Line="104" Column="59" TopLine="99"/>
       </Position15>
       <Position16>
         <Filename Value="udbm.pas"/>
-        <Caret Line="115" Column="1" TopLine="95"/>
+        <Caret Line="105" Column="59" TopLine="100"/>
       </Position16>
       <Position17>
         <Filename Value="udbm.pas"/>
-        <Caret Line="118" Column="1" TopLine="95"/>
+        <Caret Line="106" Column="59" TopLine="101"/>
       </Position17>
       <Position18>
         <Filename Value="udbm.pas"/>
-        <Caret Line="122" Column="1" TopLine="95"/>
+        <Caret Line="107" Column="59" TopLine="102"/>
       </Position18>
       <Position19>
         <Filename Value="udbm.pas"/>
-        <Caret Line="124" Column="1" TopLine="95"/>
+        <Caret Line="108" Column="59" TopLine="103"/>
       </Position19>
       <Position20>
         <Filename Value="udbm.pas"/>
-        <Caret Line="125" Column="1" TopLine="95"/>
+        <Caret Line="109" Column="59" TopLine="104"/>
       </Position20>
       <Position21>
         <Filename Value="udbm.pas"/>
-        <Caret Line="128" Column="1" TopLine="97"/>
+        <Caret Line="110" Column="59" TopLine="105"/>
       </Position21>
       <Position22>
         <Filename Value="udbm.pas"/>
-        <Caret Line="129" Column="1" TopLine="98"/>
+        <Caret Line="111" Column="59" TopLine="106"/>
       </Position22>
       <Position23>
         <Filename Value="udbm.pas"/>
-        <Caret Line="131" Column="1" TopLine="100"/>
+        <Caret Line="112" Column="59" TopLine="107"/>
       </Position23>
       <Position24>
-        <Filename Value="dialogs/udefrequisition.pas"/>
-        <Caret Line="40" Column="44" TopLine="26"/>
+        <Filename Value="udbm.pas"/>
+        <Caret Line="113" Column="59" TopLine="108"/>
       </Position24>
       <Position25>
         <Filename Value="udbm.pas"/>
-        <Caret Line="131" Column="1" TopLine="100"/>
+        <Caret Line="131" Column="42" TopLine="106"/>
       </Position25>
       <Position26>
         <Filename Value="udbm.pas"/>
-        <Caret Line="120" Column="26" TopLine="106"/>
+        <Caret Line="165" Column="3" TopLine="163"/>
       </Position26>
       <Position27>
         <Filename Value="udbm.pas"/>
-        <Caret Line="127" Column="11" TopLine="109"/>
+        <Caret Line="114" Column="35" TopLine="112"/>
       </Position27>
       <Position28>
         <Filename Value="udbm.pas"/>
-        <Caret Line="95" Column="3" TopLine="92"/>
+        <Caret Line="119" Column="35" TopLine="117"/>
       </Position28>
       <Position29>
         <Filename Value="udbm.pas"/>
-        <Caret Line="254" Column="30" TopLine="222"/>
+        <Caret Line="217" Column="32" TopLine="190"/>
       </Position29>
       <Position30>
         <Filename Value="udbm.pas"/>
-        <Caret Line="95" Column="34" TopLine="84"/>
+        <Caret Line="154" Column="13" TopLine="125"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

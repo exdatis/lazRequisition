@@ -32,7 +32,7 @@ uses
 
 procedure TdlgOpenDataSets.openDataSets;
 const
-  MAX_PROGRESS : Integer = 3;
+  MAX_PROGRESS : Integer = 5;
 begin
   self.progBar.Position:= 0;
   self.progBar.Max:= MAX_PROGRESS;
@@ -46,6 +46,14 @@ begin
   Application.ProcessMessages;
   // open dataSet template
   dbm.qTemplate.Open;
+  self.progBar.StepBy(1);
+  Application.ProcessMessages;
+  // open dataSet template
+  dbm.qDocStorageIn.Open;
+  self.progBar.StepBy(1);
+  Application.ProcessMessages;
+  // open dataSet template
+  dbm.qRequisition.Open;
   self.progBar.StepBy(1);
   Application.ProcessMessages;
   //return ok

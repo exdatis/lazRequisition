@@ -44,6 +44,7 @@ object dbm: Tdbm
   end
   object qStorages: TSQLQuery
     PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'm_id'
@@ -98,6 +99,7 @@ object dbm: Tdbm
   end
   object qProducts: TSQLQuery
     PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'art_id'
@@ -445,5 +447,398 @@ object dbm: Tdbm
     DataSet = qTemplate
     left = 240
     top = 284
+  end
+  object qRequisition: TSQLQuery
+    PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 't_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 't_datum'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 't_magacin'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 't_out'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 't_notes'
+        DataType = ftMemo
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 't_operater'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 't_time'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 't_potvrda'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end    
+      item
+        Name = 't_uradjen'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end    
+      item
+        Name = 't_storniran'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end    
+      item
+        Name = 't_doc'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = qRequisitionAfterDelete
+    AfterPost = qRequisitionAfterPost
+    BeforeOpen = qRequisitionBeforeOpen
+    BeforePost = qRequisitionBeforePost
+    OnNewRecord = qRequisitionNewRecord
+    Database = dbh
+    Transaction = dbt
+    SQL.Strings = (
+      'SELECT'
+      '  t_id,'
+      '  t_datum,'
+      '  t_magacin,'
+      '  t_out,'
+      '  t_notes,'
+      '  t_operater,'
+      '  t_time,'
+      '  t_potvrda,'
+      '  t_uradjen,'
+      '  t_storniran,'
+      '  t_doc'
+      'FROM'
+      '  trebovanje'
+      'where'
+      '  t_magacin = :t_magacin'
+      'order by'
+      '  t_id'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE trebovanje'
+      'SET'
+      '  t_datum=:t_datum,'
+      '  t_magacin=:t_magacin,'
+      '  t_out=:t_out,'
+      '  t_notes=:t_notes,'
+      '  t_operater=:t_operater,'
+      '  t_time=:t_time,'
+      '  t_potvrda=:t_potvrda,'
+      '  t_uradjen=:t_uradjen,'
+      '  t_storniran=:t_storniran,'
+      '  t_doc=:t_doc'
+      ' WHERE'
+      '   t_id=:t_id'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO'
+      '  trebovanje(t_id,'
+      #9'     t_datum,'
+      #9'     t_magacin,'
+      #9'     t_out,'
+      #9'     t_notes,'
+      #9'     t_operater,'
+      #9'     t_time,'
+      '             t_potvrda,'
+      '             t_uradjen,'
+      '             t_storniran,'
+      '             t_doc)'
+      '    VALUES ( :t_id,'
+      #9'     :t_datum,'
+      #9'     :t_magacin,'
+      #9'     :t_out,'
+      #9'     :t_notes,'
+      #9'     :t_operater,'
+      #9'     :t_time,'
+      '             :t_potvrda,'
+      '             :t_uradjen,'
+      '             :t_storniran,'
+      '             :t_doc)'
+      ''
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM'
+      '  trebovanje'
+      'WHERE'
+      '  t_id = :t_id'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 't_magacin'
+        ParamType = ptInput
+      end>
+    left = 241
+    top = 68
+    object qRequisitiont_id: TLongintField
+      DisplayLabel = 'ID'
+      DisplayWidth = 3
+      FieldKind = fkData
+      FieldName = 't_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qRequisitiont_datum: TDateField
+      DisplayLabel = 'Datum'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 't_datum'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      DisplayFormat = 'dd.MM.yyyy'
+    end
+    object docName: TStringField
+      DisplayLabel = 'Dokument'
+      DisplayWidth = 11
+      FieldKind = fkLookup
+      FieldName = 'docName'
+      Index = 2
+      KeyFields = 't_doc'
+      LookupCache = False
+      LookupDataSet = qDocStorageIn
+      LookupKeyFields = 'doc_id'
+      LookupResultField = 'doc_naziv'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object userStorage: TStringField
+      DisplayLabel = 'Magacin'
+      DisplayWidth = 20
+      FieldKind = fkLookup
+      FieldName = 'userStorage'
+      Index = 3
+      KeyFields = 't_magacin'
+      LookupCache = False
+      LookupDataSet = qStorages
+      LookupKeyFields = 'm_id'
+      LookupResultField = 'm_naziv'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object supplierStorage: TStringField
+      DisplayLabel = 'Dobavljač'
+      DisplayWidth = 20
+      FieldKind = fkLookup
+      FieldName = 'supplierStorage'
+      Index = 4
+      KeyFields = 't_out'
+      LookupCache = False
+      LookupDataSet = qStorages
+      LookupKeyFields = 'm_id'
+      LookupResultField = 'm_naziv'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object qRequisitiont_magacin: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 't_magacin'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object qRequisitiont_out: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 't_out'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object qRequisitiont_notes: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 't_notes'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      BlobType = ftBlob
+      Transliterate = False
+    end
+    object qRequisitiont_operater: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 't_operater'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object qRequisitiont_time: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 't_time'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object qRequisitiont_potvrda: TStringField
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 't_potvrda'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 7
+    end
+    object qRequisitiont_uradjen: TStringField
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 't_uradjen'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 7
+    end
+    object qRequisitiont_storniran: TStringField
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 't_storniran'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 7
+    end
+    object qRequisitiont_doc: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 't_doc'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object dsRequisition: TDataSource
+    DataSet = qRequisition
+    left = 312
+    top = 94
+  end
+  object qDocStorageIn: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'doc_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'doc_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end>
+    Database = dbh
+    Transaction = dbt
+    SQL.Strings = (
+      'SELECT'
+      '  doc_id,'
+      '  doc_naziv'
+      'FROM'
+      '  doc_mulaz'
+      'order by'
+      '  doc_naziv'
+    )
+    Params = <>
+    left = 422
+    top = 46
+    object qDocStorageIndoc_id: TLongintField
+      DisplayLabel = 'ID'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'doc_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qDocStorageIndoc_naziv: TStringField
+      DisplayLabel = 'Dokument'
+      DisplayWidth = 15
+      FieldKind = fkData
+      FieldName = 'doc_naziv'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object dsDocStorageIn: TDataSource
+    DataSet = qDocStorageIn
+    left = 483
+    top = 69
   end
 end
