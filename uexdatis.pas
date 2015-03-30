@@ -7,6 +7,9 @@ interface
 uses
   Classes, SysUtils, umain, Graphics;
 
+var
+  EMPTY_SET_ERROR : String = 'Prazan skup podataka.';
+  EDIT_MOD_ERROR : String = 'Izaberite akciju, novi zapis ili izmenu';
 procedure mainAfterConnect;
 procedure mainAfterDisconnect;
 procedure enableStorageSettings;

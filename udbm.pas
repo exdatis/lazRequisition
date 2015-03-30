@@ -104,9 +104,11 @@ procedure Tdbm.qTemplateBeforePost(DataSet: TDataSet);
 const
   ID_KEY : String = 'tmp_id';
   SEQUENCE_NAME : String = 'tmptr_tmp_id_seq';
+  FK_STORAGE_FIELD : String = 'tmp_magacin';
 var
   currHost, currPort : String;
   new_id : Integer = -1;
+  currStorage : Integer = -1;
 begin
   { check server before}
   currHost:= getCurrentHost;
@@ -116,11 +118,16 @@ begin
   if not checkServer(getCurrentHost, getCurrentPort) then
       cancelAll(TSQLQuery(DataSet))
     else
-      if TSQLQuery(DataSet).FieldByName(ID_KEY).IsNull then
-        begin
-          new_id:= getNewKey(SEQUENCE_NAME);
-          TSQLQuery(DataSet).FieldByName(ID_KEY).AsInteger:= new_id;
-        end;
+      begin
+        if TSQLQuery(DataSet).FieldByName(ID_KEY).IsNull then
+          begin
+            new_id:= getNewKey(SEQUENCE_NAME);
+            TSQLQuery(DataSet).FieldByName(ID_KEY).AsInteger:= new_id;
+          end;
+        //magacin kao spoljni kljuc
+        currStorage:= getUserStorageId;
+        TSQLQuery(DataSet).FieldByName(FK_STORAGE_FIELD).AsInteger:= currStorage;
+      end;
 end;
 
 function Tdbm.checkServer(const currHost, currPort : String) : Boolean;
@@ -218,7 +225,7 @@ end;
 
 procedure Tdbm.postChanges(var dataSet: TSQLQuery);
 var
-  currPosition : Integer;
+  currPosition : Integer = -1;
   idKey : String;
 begin
   {save position}

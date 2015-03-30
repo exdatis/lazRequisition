@@ -1,4 +1,5 @@
 inherited frmDefRequisition: TfrmDefRequisition
+  OnCreate = FormCreate
   inherited lblFormCaption: TLabel
     Caption = 'Standardno trebovanje (minimalne zalihe)'
   end
@@ -81,6 +82,7 @@ inherited frmDefRequisition: TfrmDefRequisition
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
+      OnClick = sbtnFindProductClick
     end
     object Label2: TLabel
       Left = 483
@@ -121,7 +123,7 @@ inherited frmDefRequisition: TfrmDefRequisition
       Alignment = taCenter
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
-      Caption = 'Jedinica mere'
+      Caption = 'Količina'
       Color = clSilver
       ParentColor = False
       Transparent = False
@@ -156,6 +158,7 @@ inherited frmDefRequisition: TfrmDefRequisition
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
+      OnKeyPress = dbProductKeyPress
     end
   end
   object Panel2: TPanel[3]
@@ -168,16 +171,16 @@ inherited frmDefRequisition: TfrmDefRequisition
     ChildSizing.LeftRightSpacing = 1
     ChildSizing.TopBottomSpacing = 3
     ChildSizing.VerticalSpacing = 3
-    ClientHeight = 35
-    ClientWidth = 796
+    ClientHeight = 33
+    ClientWidth = 794
     TabOrder = 2
     object cmbSearchArg: TComboBox
       Cursor = crHandPoint
-      Left = 2
+      Left = 7
       Height = 27
-      Top = 4
+      Top = 2
       Width = 417
-      Align = alLeft
+      Anchors = [akTop, akLeft, akRight]
       Constraints.MaxHeight = 27
       Constraints.MinHeight = 27
       ItemHeight = 0
@@ -187,19 +190,20 @@ inherited frmDefRequisition: TfrmDefRequisition
         'Pronadji po nazivu'
         'Pronadji po šifri'
       )
+      OnChange = cmbSearchArgChange
       Style = csDropDownList
       TabOrder = 0
       Text = 'Izaberite osnov za pretragu'
     end
     object edtSearchProduct: TEdit
-      Left = 419
+      Left = 428
       Height = 27
-      Top = 4
-      Width = 369
-      Align = alLeft
-      Anchors = [akTop, akLeft, akRight]
+      Top = 3
+      Width = 359
+      Anchors = [akTop, akRight]
       Constraints.MaxHeight = 27
       Constraints.MinHeight = 27
+      OnKeyUp = edtSearchProductKeyUp
       TabOrder = 1
     end
   end
@@ -224,6 +228,184 @@ inherited frmDefRequisition: TfrmDefRequisition
     OnMouseMove = dbgDefaultRequisitionMouseMove
     OnTitleClick = dbgDefaultRequisitionTitleClick
   end
-  inherited alTemplate: TActionList[5]
+  object panelProductDlg: TPanel[5]
+    Left = 18
+    Height = 242
+    Top = 96
+    Width = 415
+    Caption = 'panelProductDlg'
+    ClientHeight = 242
+    ClientWidth = 415
+    TabOrder = 4
+    Visible = False
+    object dbgProductsFound: TDBGrid
+      Left = 6
+      Height = 192
+      Top = 4
+      Width = 401
+      AlternateColor = clScrollBar
+      Color = clSilver
+      Columns = <>
+      DataSource = dsFindProduct
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ReadOnly = True
+      ShowHint = True
+      TabOrder = 0
+      TitleFont.Height = -12
+      OnKeyPress = dbgProductsFoundKeyPress
+    end
+    object btnThisProduct: TButton
+      Cursor = crHandPoint
+      Left = 232
+      Height = 25
+      Top = 204
+      Width = 75
+      Caption = 'Prihvati'
+      OnClick = btnThisProductClick
+      TabOrder = 1
+    end
+    object btnNotThisProduct: TButton
+      Cursor = crHandPoint
+      Left = 314
+      Height = 25
+      Top = 204
+      Width = 75
+      Caption = 'Odustani'
+      OnClick = btnNotThisProductClick
+      TabOrder = 2
+    end
+  end
+  inherited alTemplate: TActionList[6]
+    object acFProductByName: TAction[10]
+      Caption = 'Pronadji po nazivu'
+      Hint = 'Pretraga po delu naziva'
+      OnExecute = acFProductByNameExecute
+    end
+    object acFProductByCode: TAction[11]
+      Caption = 'Pronadji po delu šifre'
+      OnExecute = acFProductByCodeExecute
+    end
+  end
+  object dsFindProduct: TDataSource[7]
+    DataSet = qFindProduct
+    left = 623
+    top = 309
+  end
+  object popFindProduct: TPopupMenu[8]
+    left = 555
+    top = 196
+    object MenuItem1: TMenuItem
+      Action = acFProductByCode
+    end
+    object MenuItem2: TMenuItem
+      Action = acFProductByName
+    end
+  end
+  object qFindProduct: TSQLQuery[9]
+    FieldDefs = <    
+      item
+        Name = 'art_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'art_sifra'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'art_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end    
+      item
+        Name = 'jm_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 15
+      end    
+      item
+        Name = 'ag_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end>
+    Database = dbm.dbh
+    Transaction = dbm.dbt
+    SQL.Strings = (
+      'SELECT'
+      '  art_id,'
+      '  art_sifra,'
+      '  art_naziv,'
+      '  jm_naziv,'
+      '   ag_naziv'
+      'FROM'
+      '  vproduct'
+    )
+    Params = <>
+    left = 475
+    top = 307
+    object qFindProductart_id: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'art_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object qFindProductart_sifra: TStringField
+      DisplayLabel = 'Šifra'
+      DisplayWidth = 6
+      FieldKind = fkData
+      FieldName = 'art_sifra'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qFindProductart_naziv: TStringField
+      DisplayLabel = 'Proizvod'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'art_naziv'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 70
+    end
+    object qFindProductjm_naziv: TStringField
+      DisplayLabel = 'Mera'
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'jm_naziv'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qFindProductag_naziv: TStringField
+      DisplayLabel = 'Grupa'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ag_naziv'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
   end
 end

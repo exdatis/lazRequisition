@@ -6,15 +6,21 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, ActnList, DbCtrls, Buttons, DBGrids, utemplate;
+  ExtCtrls, ActnList, DbCtrls, Buttons, DBGrids, Menus, utemplate, db, sqldb;
 
 type
 
   { TfrmDefRequisition }
 
   TfrmDefRequisition = class(TfrmTemplate)
+    acFProductByName: TAction;
+    acFProductByCode: TAction;
+    btnThisProduct: TButton;
+    btnNotThisProduct: TButton;
     cmbSearchArg: TComboBox;
+    dsFindProduct: TDataSource;
     dbgDefaultRequisition: TDBGrid;
+    dbgProductsFound: TDBGrid;
     dbProduct: TDBEdit;
     dbQuantity: TDBEdit;
     dbMeasure: TDBEdit;
@@ -23,14 +29,37 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
     Panel2: TPanel;
+    panelProductDlg: TPanel;
+    popFindProduct: TPopupMenu;
+    qFindProductag_naziv: TStringField;
+    qFindProductart_id: TLongintField;
+    qFindProductart_naziv: TStringField;
+    qFindProductart_sifra: TStringField;
+    qFindProductjm_naziv: TStringField;
     sbtnFindProduct: TSpeedButton;
+    qFindProduct: TSQLQuery;
+    procedure acFProductByCodeExecute(Sender: TObject);
+    procedure acFProductByNameExecute(Sender: TObject);
+    procedure btnNotThisProductClick(Sender: TObject);
+    procedure btnThisProductClick(Sender: TObject);
+    procedure cmbSearchArgChange(Sender: TObject);
     procedure dbgDefaultRequisitionMouseEnter(Sender: TObject);
     procedure dbgDefaultRequisitionMouseMove(Sender: TObject;
       Shift: TShiftState; X, Y: Integer);
     procedure dbgDefaultRequisitionTitleClick(Column: TColumn);
+    procedure dbgProductsFoundKeyPress(Sender: TObject; var Key: char);
+    procedure dbProductKeyPress(Sender: TObject; var Key: char);
+    procedure edtSearchProductKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
+    procedure sbtnFindProductClick(Sender: TObject);
   private
     { private declarations }
+    sql_find_product : String;
+    function doFindProduct(const sql_clause : String) : Boolean;
   public
     { public declarations }
     procedure doNewRec; override;
@@ -61,6 +90,99 @@ begin
   Application.ProcessMessages;
 end;
 
+procedure TfrmDefRequisition.cmbSearchArgChange(Sender: TObject);
+begin
+  //obrisi tekst i dodeli fokus polju za pretragu
+  edtSearchProduct.Clear;
+  edtSearchProduct.SetFocus;
+end;
+
+procedure TfrmDefRequisition.acFProductByNameExecute(Sender: TObject);
+var
+  sql_clause : String;
+begin
+  // proveri dali je u insert ili edit modu
+  if not(dbm.qTemplate.State in [dsInsert, dsEdit]) then
+    begin
+      ShowMessage(EDIT_MOD_ERROR);
+      Exit;
+    end;
+  sql_clause:= ' WHERE lower(art_naziv) LIKE lower(:art_naziv) Order By art_naziv';
+  //run query
+  if doFindProduct(sql_clause) then
+    begin
+      if qFindProduct.IsEmpty then
+        begin
+          ShowMessage(EMPTY_SET_ERROR);
+          Exit;
+        end;
+      // ako postoji samo jedan zapis
+      if(qFindProduct.RecordCount < 2) then
+        begin
+          dbm.qTemplate.FieldByName('tmp_artikal').AsInteger:= qFindProduct.Fields[0].AsInteger;
+          dbm.qTemplate.FieldByName('art_naziv').AsString:= qFindProduct.FieldByName('art_naziv').AsString;
+          dbm.qTemplate.FieldByName('jm_naziv').AsString:= qFindProduct.FieldByName('jm_naziv').AsString;
+          Exit;
+        end;
+      //else show result
+      panelProductDlg.Visible:= True;
+      dbgProductsFound.SetFocus;
+    end;
+end;
+
+
+procedure TfrmDefRequisition.acFProductByCodeExecute(Sender: TObject);
+var
+  sql_clause : String;
+begin
+  // proveri dali je u insert ili edit modu
+  if not(dbm.qTemplate.State in [dsInsert, dsEdit]) then
+    begin
+      ShowMessage(EDIT_MOD_ERROR);
+      Exit;
+    end;
+  sql_clause:= ' WHERE lower(art_sifra) LIKE lower(:art_sifra) Order By art_naziv';
+  //run query
+  if doFindProduct(sql_clause) then
+    begin
+      if qFindProduct.IsEmpty then
+        begin
+          ShowMessage(EMPTY_SET_ERROR);
+          Exit;
+        end;
+      // ako postoji samo jedan zapis
+      if(qFindProduct.RecordCount < 2) then
+        begin
+          dbm.qTemplate.FieldByName('tmp_artikal').AsInteger:= qFindProduct.Fields[0].AsInteger;
+          dbm.qTemplate.FieldByName('art_naziv').AsString:= qFindProduct.FieldByName('art_naziv').AsString;
+          dbm.qTemplate.FieldByName('jm_naziv').AsString:= qFindProduct.FieldByName('jm_naziv').AsString;
+          dbQuantity.SetFocus;  //naredni za popunjavanje
+          Exit;
+        end;
+      //else show result
+      panelProductDlg.Visible:= True;
+      dbgProductsFound.SetFocus;
+    end;
+end;
+
+
+procedure TfrmDefRequisition.btnNotThisProductClick(Sender: TObject);
+begin
+  panelProductDlg.Visible:= False;
+  dbProduct.SetFocus;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmDefRequisition.btnThisProductClick(Sender: TObject);
+begin
+  dbm.qTemplate.FieldByName('tmp_artikal').AsInteger:= qFindProduct.Fields[0].AsInteger;
+  dbm.qTemplate.FieldByName('art_naziv').AsString:= qFindProduct.FieldByName('art_naziv').AsString;
+  dbm.qTemplate.FieldByName('jm_naziv').AsString:= qFindProduct.FieldByName('jm_naziv').AsString;
+  panelProductDlg.Visible:= False;
+  dbQuantity.SetFocus;
+  Application.ProcessMessages;
+end;
+
 procedure TfrmDefRequisition.dbgDefaultRequisitionMouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
 begin
@@ -75,9 +197,85 @@ begin
   Application.ProcessMessages;
 end;
 
+procedure TfrmDefRequisition.dbgProductsFoundKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if Key = #32 then
+    btnThisProduct.Click; //space
+end;
+
+procedure TfrmDefRequisition.dbProductKeyPress(Sender: TObject; var Key: char);
+begin
+  if Key = #13 then
+    acFProductByName.Execute;
+end;
+
+procedure TfrmDefRequisition.edtSearchProductKeyUp(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+var
+  currArg : String = '';
+begin
+  case cmbSearchArg.ItemIndex of
+    1: currArg:= 'art_naziv'; // trazi po imenu proizvoda
+    2: currArg:= 'art_sifra'; // trazi po sifri proizvoda;
+  else
+    currArg:= 'art_naziv'; // trazi po imenu proizvoda;
+  end;
+  if not dbm.qTemplate.Locate(currArg, edtSearchProduct.Text, [loCaseInsensitive, loPartialKey]) then
+    begin
+      Beep;
+      edtSearchProduct.SetFocus;
+      edtSearchProduct.SelectAll;
+    end;
+end;
+
+procedure TfrmDefRequisition.FormCreate(Sender: TObject);
+begin
+  sql_find_product:= 'SELECT art_id, art_sifra, art_naziv, jm_naziv, ag_naziv ' +
+                      'FROM  vproduct ';
+end;
+
+procedure TfrmDefRequisition.sbtnFindProductClick(Sender: TObject);
+begin
+  popFindProduct.PopUp(Mouse.CursorPos.X, Mouse.CursorPos.Y);
+end;
+
+function TfrmDefRequisition.doFindProduct(const sql_clause: String) : Boolean;
+var
+  sql, search_param : String;
+begin
+  //kreiraj upit
+  sql:= sql_find_product + sql_clause;
+  //zatvori upit
+  qFindProduct.DisableControls;
+  qFindProduct.Close;
+  qFindProduct.SQL.Clear;
+  qFindProduct.SQL.Text:= sql;
+  //param
+  search_param:= '%' + dbProduct.Text + '%';
+  qFindProduct.Params[0].AsString:= search_param;
+  try
+    qFindProduct.Open;
+  except
+    on e : Exception do
+    begin
+      qFindProduct.Close;
+      qFindProduct.EnableControls;
+      ShowMessage(e.Message);
+      result:= False;
+      Exit;
+    end;
+  end;
+  // omoguci kontrole
+  qFindProduct.EnableControls;
+  result:= True;
+end;
+
 procedure TfrmDefRequisition.doNewRec;
 begin
   inherited doNewRec;
+  //set focus
+  dbProduct.SetFocus;
   onNewRec(dbm.qTemplate);
 end;
 
@@ -134,6 +332,7 @@ end;
 procedure TfrmDefRequisition.doCloseForm;
 begin
   inherited doCloseForm;
+  onCheckDataSets(dbm.qTemplate);
   self.Close;
   enableStorageSettings;
 end;
