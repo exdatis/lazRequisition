@@ -226,6 +226,7 @@ object frmMain: TfrmMain
         Constraints.MaxHeight = 27
         Constraints.MinHeight = 27
         ItemHeight = 0
+        OnChange = cmbUserStorageChange
         Sorted = True
         Style = csDropDownList
         TabOrder = 0
@@ -255,6 +256,7 @@ object frmMain: TfrmMain
         Constraints.MaxHeight = 27
         Constraints.MinHeight = 27
         ItemHeight = 0
+        OnChange = cmbSupplierStorageChange
         Sorted = True
         Style = csDropDownList
         TabOrder = 1
@@ -879,6 +881,11 @@ object frmMain: TfrmMain
       Caption = 'Standardno trebovanje'
       Hint = 'Standardno trebovanje'
       OnExecute = acDefaultRequisitionExecute
+    end
+    object acRequisition: TAction
+      Caption = 'Nalozi trebovanja'
+      Hint = 'Trebovanje robe'
+      OnExecute = acRequisitionExecute
     end
   end
 end

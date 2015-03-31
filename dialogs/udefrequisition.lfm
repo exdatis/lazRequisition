@@ -274,6 +274,14 @@ inherited frmDefRequisition: TfrmDefRequisition
       OnClick = btnNotThisProductClick
       TabOrder = 2
     end
+    object Label4: TLabel
+      Left = 16
+      Height = 17
+      Top = 209
+      Width = 134
+      Caption = 'Taster: SPACE -> Prihvati'
+      ParentColor = False
+    end
   end
   inherited alTemplate: TActionList[6]
     object acFProductByName: TAction[10]

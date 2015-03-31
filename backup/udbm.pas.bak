@@ -171,8 +171,8 @@ procedure Tdbm.qRequisitionNewRecord(DataSet: TDataSet);
 var
   sql_select_date : String;
   currOperater : Integer = -1;
-  userStorage : Integer = -1;
-  supplierStorage : Integer = -1;
+  currUserStorage : Integer = -1;
+  currSupplierStorage : Integer = -1;
 begin
   qRequisition.FieldByName('t_potvrda').AsString:= 'Ne';
   qRequisition.FieldByName('t_storniran').AsString:= 'Ne';
@@ -182,11 +182,11 @@ begin
   currOperater:= getUserId;
   qRequisition.FieldByName('t_operater').AsInteger:= currOperater;
   // korisnikov, dobavljacev magacin
-  userStorage:= getUserStorageId;
-  supplierStorage:= getSupplierStorageId;
+  currUserStorage:= getUserStorageId;
+  currSupplierStorage:= getSupplierStorageId;
 
-  qRequisition.FieldByName('t_magacin').AsInteger:= userStorage;
-  qRequisition.FieldByName('t_out').AsInteger:= supplierStorage;
+  qRequisition.FieldByName('t_magacin').AsInteger:= currUserStorage;
+  qRequisition.FieldByName('t_out').AsInteger:= currSupplierStorage;
   //select date from db server
   sql_select_date:= 'select current_date';
   qGeneral.Close;

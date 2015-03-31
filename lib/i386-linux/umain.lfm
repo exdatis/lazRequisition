@@ -866,6 +866,9 @@ object frmMain: TfrmMain
       object MenuItem4: TMenuItem
         Action = acDefaultRequisition
       end
+      object MenuItem5: TMenuItem
+        Action = acRequisition
+      end
     end
   end
   object aclMain: TActionList
@@ -881,6 +884,11 @@ object frmMain: TfrmMain
       Caption = 'Standardno trebovanje'
       Hint = 'Standardno trebovanje'
       OnExecute = acDefaultRequisitionExecute
+    end
+    object acRequisition: TAction
+      Caption = 'Nalozi trebovanja'
+      Hint = 'Trebovanje robe'
+      OnExecute = acRequisitionExecute
     end
   end
 end

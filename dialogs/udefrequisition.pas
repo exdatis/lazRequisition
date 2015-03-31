@@ -29,6 +29,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    Label4: TLabel;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     Panel2: TPanel;

@@ -122,6 +122,7 @@ begin
           dbm.qTemplate.FieldByName('tmp_artikal').AsInteger:= qFindProduct.Fields[0].AsInteger;
           dbm.qTemplate.FieldByName('art_naziv').AsString:= qFindProduct.FieldByName('art_naziv').AsString;
           dbm.qTemplate.FieldByName('jm_naziv').AsString:= qFindProduct.FieldByName('jm_naziv').AsString;
+          dbQuantity.SetFocus;  //naredni za popunjavanje
           Exit;
         end;
       //else show result

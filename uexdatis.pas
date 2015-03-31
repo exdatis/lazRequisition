@@ -10,6 +10,9 @@ uses
 var
   EMPTY_SET_ERROR : String = 'Prazan skup podataka.';
   EDIT_MOD_ERROR : String = 'Izaberite akciju, novi zapis ili izmenu';
+  NO_ORDER_ERROR : String = 'Nije izabran nalog(osnov).';
+  READ_ONLY_ERROR : String = 'Ovaj podatak nemožete menjati.';
+
 procedure mainAfterConnect;
 procedure mainAfterDisconnect;
 procedure enableStorageSettings;

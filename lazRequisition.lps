@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="12">
+    <Units Count="13">
       <Unit0>
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -11,8 +11,8 @@
         <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="49" Y="16"/>
-        <UsageCount Value="70"/>
+        <CursorPos X="5" Y="23"/>
+        <UsageCount Value="79"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -24,9 +24,9 @@
         <UnitName Value="umain"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="63"/>
-        <CursorPos X="5" Y="81"/>
-        <UsageCount Value="70"/>
+        <TopLine Value="616"/>
+        <CursorPos X="20" Y="575"/>
+        <UsageCount Value="79"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -37,12 +37,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="udbm"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="134"/>
-        <CursorPos X="56" Y="166"/>
-        <UsageCount Value="69"/>
+        <TopLine Value="223"/>
+        <CursorPos X="12" Y="242"/>
+        <UsageCount Value="78"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -52,9 +51,9 @@
         <UnitName Value="uexdatis"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="50"/>
-        <CursorPos X="3" Y="63"/>
-        <UsageCount Value="65"/>
+        <TopLine Value="35"/>
+        <CursorPos X="3" Y="15"/>
+        <UsageCount Value="74"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -67,7 +66,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="44" Y="21"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="70"/>
       </Unit4>
       <Unit5>
         <Filename Value="dialogs/uopendatasets.pas"/>
@@ -80,7 +79,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="15"/>
         <CursorPos X="19" Y="56"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -91,12 +90,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="utemplate"/>
-        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="200"/>
         <CursorPos X="1" Y="222"/>
-        <UsageCount Value="55"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="64"/>
       </Unit6>
       <Unit7>
         <Filename Value="dialogs/udeleteconfirmation.pas"/>
@@ -108,7 +105,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="67" Y="15"/>
-        <UsageCount Value="50"/>
+        <UsageCount Value="59"/>
       </Unit7>
       <Unit8>
         <Filename Value="dialogs/usavechanges.pas"/>
@@ -119,7 +116,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="42" Y="13"/>
-        <UsageCount Value="49"/>
+        <UsageCount Value="58"/>
       </Unit8>
       <Unit9>
         <Filename Value="dialogs/udefrequisition.pas"/>
@@ -128,11 +125,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="udefrequisition"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="93"/>
-        <CursorPos X="46" Y="114"/>
-        <UsageCount Value="38"/>
+        <TopLine Value="306"/>
+        <CursorPos X="28" Y="307"/>
+        <UsageCount Value="47"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit9>
@@ -142,7 +139,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="555"/>
         <CursorPos X="32" Y="555"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit10>
       <Unit11>
         <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/blcksock.pas"/>
@@ -150,132 +147,148 @@
         <WindowIndex Value="0"/>
         <TopLine Value="362"/>
         <CursorPos X="5" Y="310"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="storage/urequisition.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRequisition"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="urequisition"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="46"/>
+        <CursorPos X="39" Y="64"/>
+        <UsageCount Value="29"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit12>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="95" Column="34" TopLine="84"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="28" Column="40" TopLine="1"/>
       </Position1>
       <Position2>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="238" Column="50" TopLine="221"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="36" Column="18" TopLine="19"/>
       </Position2>
       <Position3>
-        <Filename Value="umain.pas"/>
-        <Caret Line="559" Column="3" TopLine="537"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="38" Column="18" TopLine="21"/>
       </Position3>
       <Position4>
-        <Filename Value="umain.pas"/>
-        <Caret Line="282" Column="21" TopLine="265"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="39" Column="18" TopLine="22"/>
       </Position4>
       <Position5>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="245" Column="50" TopLine="228"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="38" Column="18" TopLine="21"/>
       </Position5>
       <Position6>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="95" Column="59" TopLine="90"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="39" Column="18" TopLine="22"/>
       </Position6>
       <Position7>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="96" Column="59" TopLine="91"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="38" Column="18" TopLine="21"/>
       </Position7>
       <Position8>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="97" Column="59" TopLine="92"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="39" Column="18" TopLine="22"/>
       </Position8>
       <Position9>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="98" Column="59" TopLine="93"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="38" Column="18" TopLine="21"/>
       </Position9>
       <Position10>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="99" Column="59" TopLine="94"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="39" Column="18" TopLine="22"/>
       </Position10>
       <Position11>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="100" Column="59" TopLine="95"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="38" Column="18" TopLine="21"/>
       </Position11>
       <Position12>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="101" Column="59" TopLine="96"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="39" Column="18" TopLine="22"/>
       </Position12>
       <Position13>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="102" Column="59" TopLine="97"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="38" Column="72" TopLine="20"/>
       </Position13>
       <Position14>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="103" Column="59" TopLine="98"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="39" Column="72" TopLine="21"/>
       </Position14>
       <Position15>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="104" Column="59" TopLine="99"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="41" Column="72" TopLine="23"/>
       </Position15>
       <Position16>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="105" Column="59" TopLine="100"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="43" Column="72" TopLine="25"/>
       </Position16>
       <Position17>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="106" Column="59" TopLine="101"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="72" Column="7" TopLine="44"/>
       </Position17>
       <Position18>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="107" Column="59" TopLine="102"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="85" Column="31" TopLine="1"/>
       </Position18>
       <Position19>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="108" Column="59" TopLine="103"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="74" Column="5" TopLine="48"/>
       </Position19>
       <Position20>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="109" Column="59" TopLine="104"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="10" Column="25" TopLine="28"/>
       </Position20>
       <Position21>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="110" Column="59" TopLine="105"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="96" Column="22" TopLine="93"/>
       </Position21>
       <Position22>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="111" Column="59" TopLine="106"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="99" Column="22" TopLine="96"/>
       </Position22>
       <Position23>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="112" Column="59" TopLine="107"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="106" Column="31" TopLine="103"/>
       </Position23>
       <Position24>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="113" Column="59" TopLine="108"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="98" Column="62" TopLine="194"/>
       </Position24>
       <Position25>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="131" Column="42" TopLine="106"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="545" Column="22" TopLine="510"/>
       </Position25>
       <Position26>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="165" Column="3" TopLine="163"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="547" Column="22" TopLine="512"/>
       </Position26>
       <Position27>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="114" Column="35" TopLine="112"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="574" Column="20" TopLine="550"/>
       </Position27>
       <Position28>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="119" Column="35" TopLine="117"/>
+        <Filename Value="uexdatis.pas"/>
+        <Caret Line="14" Column="63" TopLine="1"/>
       </Position28>
       <Position29>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="217" Column="32" TopLine="190"/>
+        <Filename Value="dialogs/udefrequisition.pas"/>
+        <Caret Line="338" Column="26" TopLine="167"/>
       </Position29>
       <Position30>
-        <Filename Value="udbm.pas"/>
-        <Caret Line="154" Column="13" TopLine="125"/>
+        <Filename Value="storage/urequisition.pas"/>
+        <Caret Line="216" Column="17" TopLine="34"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

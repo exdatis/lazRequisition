@@ -16,6 +16,7 @@ type
   TfrmMain = class(TForm)
     aclMain: TActionList;
     acDefaultRequisition: TAction;
+    acRequisition: TAction;
     btnGetDb: TButton;
     btnConnect: TButton;
     btnSaveDbIni: TButton;
@@ -43,10 +44,12 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
     Panel1: TPanel;
     StatusBar1: TStatusBar;
     ledConnection: TuELED;
     procedure acDefaultRequisitionExecute(Sender: TObject);
+    procedure acRequisitionExecute(Sender: TObject);
     procedure btnConnectClick(Sender: TObject);
     procedure btnGetDbClick(Sender: TObject);
     procedure btnSaveDbIniClick(Sender: TObject);
@@ -95,7 +98,7 @@ const
   NO_CONNECTION_ERROR : String = 'Nema konekcije sa bazom podataka.';
 implementation
 uses
-  udbm, uapppwd, uopendatasets, udefrequisition;
+  udbm, uapppwd, uopendatasets, udefrequisition, urequisition;
 {$R *.lfm}
 
 { TfrmMain }
@@ -535,6 +538,41 @@ begin
     newForm.Parent:= formPanel;
     newForm.Align:= alClient;
     newForm.Show;
+    // dodeli necemu fokus zbog precica
+    newForm.dbgDefaultRequisition.SetFocus;
+    {onemoguci izmene}
+    disableStorages;
+    Application.ProcessMessages;
+  finally
+    Screen.Cursor:= crDefault;
+  end;
+end;
+
+procedure TfrmMain.acRequisitionExecute(Sender: TObject);
+var
+  newForm : TfrmRequisition;
+begin
+  {close any forms}
+  clearOldForms;
+  {proveri konekciju sa bazom}
+  if not dbm.dbh.Connected then
+    begin
+      ShowMessage(NO_CONNECTION_ERROR);
+      Exit;
+    end;
+  {show work commitment}
+  Screen.Cursor:= crHourGlass;
+  try
+    {create new}
+    newForm:= TfrmRequisition.Create(nil);
+    {set dbGrid title images}
+    //newForm.setDbGridTitleImages;
+    {set parent ctrl}
+    newForm.Parent:= formPanel;
+    newForm.Align:= alClient;
+    newForm.Show;
+    // dodeli necemu fokus zbog precica
+    newForm.DBGrid1.SetFocus;
     {onemoguci izmene}
     disableStorages;
     Application.ProcessMessages;

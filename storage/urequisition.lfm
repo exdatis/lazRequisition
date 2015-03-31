@@ -1,0 +1,354 @@
+inherited frmRequisition: TfrmRequisition
+  OnShow = FormShow
+  inherited lblFormCaption: TLabel
+    Caption = 'Trebovanje robe'
+  end
+  object Panel2: TPanel[2]
+    Left = 0
+    Height = 31
+    Top = 17
+    Width = 812
+    Align = alTop
+    BorderStyle = bsSingle
+    ChildSizing.LeftRightSpacing = 1
+    ChildSizing.TopBottomSpacing = 1
+    ChildSizing.VerticalSpacing = 1
+    ClientHeight = 31
+    ClientWidth = 812
+    TabOrder = 1
+    object bitBtnOrders: TBitBtn
+      Cursor = crHandPoint
+      Left = 2
+      Height = 27
+      Hint = 'Nalozi trebovanja'
+      Top = 2
+      Width = 221
+      Align = alLeft
+      Caption = 'Nalozi trebovanja'
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+        FF00FFFFFF004E4F4FFF4E4F4FFF4E4F4FFF4E4F4FFF4E4F4FFF4E4F4FFF4E4F
+        4FFF4E4F4FFF4E4F4FFF4E4F4FFF4E4F4FFF4E4F4FFF4E4F4FFFFFFFFF00FFFF
+        FF00FFFFFF00545756FFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFEFE
+        FEFFFEFEFEFFFEFEFEFFFEFEFEFFFEFEFEFFFFFFFFFF545756FFFFFFFF00FFFF
+        FF00FFFFFF0004733AFFF3F4F4FFF2F3F3FFF1F2F2FFF0F1F1FFF0F0F0FFECEC
+        ECFFEBEBEBFFEAEAEAFFE9E9E9FFEBECECFFFEFEFEFF5C5F5EFFFFFFFF00FFFF
+        FF00FFFFFF00137C46FF04733AFFF4F4F4FFF3F3F3FFF2F3F3FFF1F2F2FF8A8A
+        FFFF8A8AFFFF8A8AFFFF8A8AFFFFEAEAEAFFFEFEFEFF646766FFFFFFFF00FFFF
+        FF00FFFFFF00228552FF1D824EFF04733AFFF4F5F5FFF3F4F4FFF2F3F3FFF2F2
+        F2FFF1F1F1FFF0F0F0FFEFF0F0FFEEEFEFFFFEFEFEFF6C6F6EFF40976AFF3B94
+        66FF369162FF318E5EFF2C8B5AFF278856FF04733AFFF2F3F3FFF1F2F2FFF0F1
+        F1FFEFF0F0FFEEEFEFFFEDEEEEFFF0F0F0FFFEFEFEFF747776FF4FA176FF4A9D
+        72FF459A6EFF40976AFF3B9466FF369162FF318E5EFF04733AFF7171FFFF7171
+        FFFF7171FFFF7171FFFF7171FFFFF1F2F2FFFEFEFEFF7C7F7EFF5DAA82FF58A7
+        7EFF53A37AFF4FA076FF4A9D72FF459A6EFF04733AFFF7F8F8FFF7F8F8FFF6F7
+        F7FFF5F6F6FFF4F5F5FFF3F4F4FFF3F3F3FFFEFEFEFF848786FF6CB38EFF67B0
+        8AFFFFFFFF005DAA82FF58A67EFF04733AFFF7F8F8FFF7F8F8FFF4F5F5FFF4F5
+        F5FFF4F5F5FFF3F4F4FFF2F3F3FFF4F5F5FFFEFEFEFF8C8E8DFF7BBC9AFF76B9
+        96FFFFFFFF006CB38EFF04733AFFF7F8F8FFF7F8F8FFF7F8F8FF5151FFFF5151
+        FFFF5151FFFF5151FFFF5151FFFFF2F3F3FFFEFEFEFF949695FFFFFFFF00FFFF
+        FF00FFFFFF0004733AFFF7F8F8FFF7F8F8FFF7F8F8FFF7F8F8FFF7F8F8FFF7F8
+        F8FFF7F8F8FFF7F8F8FFF7F8F8FFF7F8F8FFFEFEFEFF9C9E9DFF93CBAEFF8FC9
+        ABFFFFFFFF00A4A6A5FFF7F8F8FFF7F8F8FFF4F5F5FFF4F5F5FFF4F5F5FFF4F5
+        F5FFF4F5F5FFF4F5F5FFF4F5F5FFF7F8F8FFFEFEFEFFA4A6A5FFA7D7BEFFA2D4
+        BAFFFFFFFF00ACAEADFFF7F8F8FFF7F8F8FF0000FFFF0000FFFF0000FFFF0000
+        FFFF0000FFFF0000FFFF0000FFFFF4F5F5FFFEFEFEFFACAEADFFFFFFFF00FFFF
+        FF00FFFFFF00B4B6B5FFF7F8F8FFF7F8F8FFF7F8F8FFF7F8F8FFF7F8F8FFF7F8
+        F8FFF7F8F8FFF7F8F8FFF7F8F8FFF7F8F8FFFEFEFEFFB4B6B5FFC5E9D6FFC0E6
+        D2FFFFFFFF00BCBEBDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBCBEBDFFC7EAD8FFC7EA
+        D8FFFFFFFF00C5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6
+        C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FF
+      }
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object bitBtnItems: TBitBtn
+      Cursor = crHandPoint
+      Left = 223
+      Height = 27
+      Hint = 'Trebovani proizvodi'
+      Top = 2
+      Width = 221
+      Align = alLeft
+      Caption = 'Stavke trebovanja'
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000
+        FFFF0000FFFF0000FFFF0000FFFF0000FFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00995B1EC496581AC9FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00868688FF868688FF868688FF868688FF9F6327CFAF7841FFAD753DFF9759
+        1BD1868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00AB723A06A86E35D9B5804BFFCCA37AFFCCA37AFFAE76
+        3FFF97591BDB95571906FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00AF7841B8AC743CF7C19263FFCEA67EFFCDA47CFFB17A
+        44FF9A5D20F7985A1DBBFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00868688FF868688FF868688FF868688FFB5804BFFD0A983FFCFA881FFA266
+        2BFF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B17A44FFD2AC87FFD1AB85FFA66C
+        32FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B7834FFFD3AE8AFFD3AE8AFFAB72
+        3AFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00868688FF868688FF868688FF868688FFBE9369FFD2B597FFD1B394FFB687
+        57FF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C29A71FFD4B89CFFD3B699FFBA8D
+        61FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C49D75FFD5B99EFFD4B89CFFBD92
+        67FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00868688FF868688FF868688FF868688FFC59E77FFC59E77FFC29A71FFC198
+        6EFF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+      }
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+    end
+  end
+  object enbForms: TExtendedNotebook[3]
+    Left = 0
+    Height = 408
+    Top = 48
+    Width = 812
+    ActivePage = tsOrders
+    Align = alClient
+    ShowTabs = False
+    TabIndex = 0
+    TabOrder = 2
+    OnChange = enbFormsChange
+    object tsOrders: TTabSheet
+      Caption = 'tsOrders'
+      ClientHeight = 404
+      ClientWidth = 802
+      object GroupBox1: TGroupBox
+        Left = 5
+        Height = 168
+        Top = 0
+        Width = 790
+        Anchors = [akTop, akLeft, akRight]
+        Caption = ' Obrada podataka '
+        ClientHeight = 150
+        ClientWidth = 788
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 7
+          Height = 17
+          Top = 8
+          Width = 47
+          Caption = 'Datum *'
+          ParentColor = False
+        end
+        object dbOrderDate: TDBZVDateTimePicker
+          Left = 79
+          Height = 23
+          Top = 4
+          Width = 95
+          DataField = 't_datum'
+          DataSource = dbm.dsRequisition
+          ReadOnly = False
+          CenturyFrom = 1941
+          DateDisplayOrder = ddoDMY
+          MaxDate = 2958465
+          MinDate = -53780
+          TabOrder = 0
+          TrailingSeparator = False
+          TextForNullDate = 'NULL'
+          LeadingZeros = True
+          Kind = dtkDate
+          TimeFormat = tf24
+          TimeDisplay = tdHMS
+          DateMode = dmComboBox
+          UseDefaultSeparators = True
+          HideDateTimeParts = []
+          MonthNames = 'Long'
+        end
+        object Label2: TLabel
+          Left = 181
+          Height = 17
+          Top = 8
+          Width = 66
+          Caption = 'Dokument *'
+          ParentColor = False
+        end
+        object dblDoc: TDBLookupComboBox
+          Left = 256
+          Height = 26
+          Top = 2
+          Width = 232
+          Anchors = [akTop, akLeft, akRight]
+          AutoComplete = True
+          AutoSize = False
+          DataField = 't_doc'
+          DataSource = dbm.dsRequisition
+          KeyField = 'doc_id'
+          ListField = 'doc_naziv'
+          ListFieldIndex = 0
+          ListSource = dbm.dsDocStorageIn
+          LookupCache = False
+          TabOrder = 1
+        end
+        object Label3: TLabel
+          Left = 492
+          Height = 17
+          Top = 8
+          Width = 53
+          Caption = 'Magacin *'
+          ParentColor = False
+        end
+        object dblUserStorage: TDBLookupComboBox
+          Cursor = crHandPoint
+          Left = 554
+          Height = 26
+          Top = 2
+          Width = 229
+          Anchors = [akTop, akRight]
+          AutoComplete = True
+          AutoSize = False
+          DataField = 't_magacin'
+          DataSource = dbm.dsRequisition
+          KeyField = 'm_id'
+          ListField = 'm_naziv'
+          ListFieldIndex = 0
+          ListSource = dbm.dsStorages
+          LookupCache = False
+          TabOrder = 2
+        end
+        object Label4: TLabel
+          Left = 7
+          Height = 17
+          Top = 37
+          Width = 62
+          Caption = 'Dobavljač *'
+          ParentColor = False
+        end
+        object dblSupplierStorage: TDBLookupComboBox
+          Cursor = crHandPoint
+          Left = 79
+          Height = 26
+          Top = 31
+          Width = 409
+          Anchors = [akTop, akLeft, akRight]
+          AutoComplete = True
+          AutoSize = False
+          DataField = 't_out'
+          DataSource = dbm.dsRequisition
+          KeyField = 'm_id'
+          ListField = 'm_naziv'
+          ListFieldIndex = 0
+          ListSource = dbm.dsStorages
+          LookupCache = False
+          TabOrder = 3
+        end
+        object dbmNotes: TDBMemo
+          Left = 7
+          Height = 83
+          Top = 61
+          Width = 481
+          Anchors = [akTop, akLeft, akRight]
+          DataField = 't_notes'
+          DataSource = dbm.dsRequisition
+          ScrollBars = ssAutoBoth
+          TabOrder = 4
+        end
+        object Panel3: TPanel
+          Left = 492
+          Height = 113
+          Top = 31
+          Width = 291
+          Anchors = [akTop, akLeft, akRight]
+          ClientHeight = 113
+          ClientWidth = 291
+          TabOrder = 5
+          object Label5: TLabel
+            Left = 1
+            Height = 17
+            Top = 1
+            Width = 289
+            Align = alTop
+            Alignment = taCenter
+            Caption = 'Status dokumenta'
+            Color = clSilver
+            ParentColor = False
+            Transparent = False
+          end
+          object dbcApplied: TDBCheckBox
+            Cursor = crHandPoint
+            Left = 6
+            Height = 23
+            Top = 30
+            Width = 274
+            Caption = ' Potvrdjen nalog trebovanja'
+            DataField = 't_potvrda'
+            DataSource = dbm.dsRequisition
+            TabOrder = 0
+            ValueChecked = 'Da'
+            ValueUnchecked = 'Ne'
+          end
+          object dbcFinished: TDBCheckBox
+            Cursor = crHandPoint
+            Left = 6
+            Height = 23
+            Top = 57
+            Width = 274
+            Caption = ' Realizovan nalog(obradjen)'
+            DataField = 't_uradjen'
+            DataSource = dbm.dsRequisition
+            OnClick = dbcFinishedClick
+            ReadOnly = True
+            TabOrder = 1
+            ValueChecked = 'Da'
+            ValueUnchecked = 'Ne'
+          end
+          object dbcCanceled: TDBCheckBox
+            Cursor = crHandPoint
+            Left = 6
+            Height = 23
+            Top = 84
+            Width = 274
+            Caption = ' Storniran nalog'
+            DataField = 't_storniran'
+            DataSource = dbm.dsRequisition
+            TabOrder = 2
+            ValueChecked = 'Da'
+            ValueUnchecked = 'Ne'
+          end
+        end
+      end
+      object DBGrid1: TDBGrid
+        Cursor = crHandPoint
+        Left = 5
+        Height = 227
+        Hint = 'Klikni naslov za sortiranje'
+        Top = 174
+        Width = 790
+        AlternateColor = clScrollBar
+        Anchors = [akTop, akLeft, akRight]
+        Color = clSilver
+        Columns = <>
+        DataSource = dbm.dsRequisition
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ReadOnly = True
+        ShowHint = True
+        TabOrder = 1
+        TitleFont.Height = -12
+        OnMouseMove = DBGrid1MouseMove
+        OnTitleClick = DBGrid1TitleClick
+      end
+    end
+    object tsItems: TTabSheet
+      Caption = 'tsItems'
+    end
+  end
+  inherited alTemplate: TActionList[4]
+  end
+end
