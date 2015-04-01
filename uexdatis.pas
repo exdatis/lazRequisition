@@ -7,11 +7,20 @@ interface
 uses
   Classes, SysUtils, umain, Graphics;
 
+type
+  ENoOrderException = class(Exception);
+type
+  ESaveOrderException = class(Exception);
+type
+  EAppliedDoc = class(Exception);
+
 var
   EMPTY_SET_ERROR : String = 'Prazan skup podataka.';
   EDIT_MOD_ERROR : String = 'Izaberite akciju, novi zapis ili izmenu';
   NO_ORDER_ERROR : String = 'Nije izabran nalog(osnov).';
   READ_ONLY_ERROR : String = 'Ovaj podatak nemožete menjati.';
+  SAVE_ORDER_ERROR : String = 'Sačuvajte najpre promene u nalogu.';
+  APPLIED_DOC_ERROR : String = 'Evidentirani, stornirani dokumenti se nemogu menjati.';
 
 procedure mainAfterConnect;
 procedure mainAfterDisconnect;

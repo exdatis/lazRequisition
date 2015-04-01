@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, sqldb, sqldblib, db, pqconnection, FileUtil, blcksock,
-  Dialogs;
+  Dialogs, Forms, Controls;
 
 type
 
@@ -349,6 +349,7 @@ var
   currPosition : Integer = -1;
   idKey : String;
 begin
+  Screen.Cursor:= crSQLWait;
   {save position}
   idKey:= dataSet.Fields[0].FieldName;
   currPosition:= dataSet.FieldByName(idKey).AsInteger;
@@ -372,6 +373,7 @@ begin
     dataSet.Locate(idKey, currPosition, []);
   finally
     dataSet.EnableControls;
+    Screen.Cursor:= crDefault;
   end;
 end;
 

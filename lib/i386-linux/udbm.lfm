@@ -14,7 +14,7 @@ object dbm: Tdbm
     top = 176
   end
   object dbh: TPQConnection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     AfterConnect = dbhAfterConnect
     AfterDisconnect = dbhAfterDisconnect
@@ -36,7 +36,7 @@ object dbm: Tdbm
     top = 28
   end
   object dbt: TSQLTransaction
-    Active = False
+    Active = True
     Action = caNone
     Database = dbh
     left = 51
@@ -44,6 +44,7 @@ object dbm: Tdbm
   end
   object qStorages: TSQLQuery
     PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'm_id'
@@ -57,6 +58,7 @@ object dbm: Tdbm
         Precision = -1
         Size = 50
       end>
+    Active = True
     Database = dbh
     Transaction = dbt
     SQL.Strings = (
@@ -98,6 +100,7 @@ object dbm: Tdbm
   end
   object qProducts: TSQLQuery
     PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'art_id'
@@ -135,6 +138,7 @@ object dbm: Tdbm
         Precision = -1
         Size = 30
       end>
+    Active = True
     Database = dbh
     Transaction = dbt
     SQL.Strings = (
@@ -448,6 +452,7 @@ object dbm: Tdbm
   end
   object qRequisition: TSQLQuery
     PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 't_id'
@@ -515,6 +520,7 @@ object dbm: Tdbm
         Precision = -1
         Size = 0
       end>
+    Active = True
     AfterDelete = qRequisitionAfterDelete
     AfterPost = qRequisitionAfterPost
     BeforeOpen = qRequisitionBeforeOpen
@@ -781,6 +787,7 @@ object dbm: Tdbm
     top = 94
   end
   object qDocStorageIn: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'doc_id'
@@ -794,6 +801,7 @@ object dbm: Tdbm
         Precision = -1
         Size = 30
       end>
+    Active = True
     Database = dbh
     Transaction = dbt
     SQL.Strings = (
