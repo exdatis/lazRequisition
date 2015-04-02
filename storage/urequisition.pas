@@ -80,12 +80,19 @@ type
     procedure acFProductByNameExecute(Sender: TObject);
     procedure bitBtnItemsClick(Sender: TObject);
     procedure bitBtnOrdersClick(Sender: TObject);
+    procedure btnNotThisProductClick(Sender: TObject);
+    procedure btnThisProductClick(Sender: TObject);
+    procedure cmbSearchArgChange(Sender: TObject);
     procedure dbcAppliedChange(Sender: TObject);
     procedure dbcCanceledChange(Sender: TObject);
     procedure dbcFinishedClick(Sender: TObject);
+    procedure dbgProductsFoundKeyPress(Sender: TObject; var Key: char);
     procedure DBGrid1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure dbProductKeyPress(Sender: TObject; var Key: char);
+    procedure edtSearchProductKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
     procedure enbFormsChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -96,6 +103,7 @@ type
     procedure qItemsBeforeOpen(DataSet: TDataSet);
     procedure qItemsBeforePost(DataSet: TDataSet);
     procedure qItemsNewRecord(DataSet: TDataSet);
+    procedure sbtnFindProductClick(Sender: TObject);
   private
     { private declarations }
     sql_find_product : String;
@@ -166,6 +174,13 @@ procedure TfrmRequisition.dbcFinishedClick(Sender: TObject);
 begin
    ShowMessage(READ_ONLY_ERROR);
    btnCancel.SetFocus;
+end;
+
+procedure TfrmRequisition.dbgProductsFoundKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if Key = #32 then
+    btnThisProduct.Click; //space
 end;
 
 procedure TfrmRequisition.dbcCanceledChange(Sender: TObject);
@@ -281,6 +296,30 @@ begin
   Application.ProcessMessages;
 end;
 
+procedure TfrmRequisition.btnNotThisProductClick(Sender: TObject);
+begin
+  panelProductDlg.Visible:= False;
+  dbProduct.SetFocus;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmRequisition.btnThisProductClick(Sender: TObject);
+begin
+  qItems.FieldByName('ts_artikal').AsInteger:= qFindProduct.Fields[0].AsInteger;
+  qItems.FieldByName('art_naziv').AsString:= qFindProduct.FieldByName('art_naziv').AsString;
+  qItems.FieldByName('jm_naziv').AsString:= qFindProduct.FieldByName('jm_naziv').AsString;
+  panelProductDlg.Visible:= False;
+  dbQuantity.SetFocus;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmRequisition.cmbSearchArgChange(Sender: TObject);
+begin
+  //obrisi tekst i dodeli fokus polju za pretragu
+  edtSearchProduct.Clear;
+  edtSearchProduct.SetFocus;
+end;
+
 procedure TfrmRequisition.acFProductByCodeExecute(Sender: TObject);
 var
   sql_clause : String;
@@ -328,6 +367,31 @@ begin
   Application.ProcessMessages;
 end;
 
+procedure TfrmRequisition.dbProductKeyPress(Sender: TObject; var Key: char);
+begin
+  if Key = #13 then
+    acFProductByName.Execute;
+end;
+
+procedure TfrmRequisition.edtSearchProductKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  currArg : String = '';
+begin
+  case cmbSearchArg.ItemIndex of
+    1: currArg:= 'art_naziv'; // trazi po imenu proizvoda
+    2: currArg:= 'art_sifra'; // trazi po sifri proizvoda;
+  else
+    currArg:= 'art_naziv'; // trazi po imenu proizvoda;
+  end;
+  if not qItems.Locate(currArg, edtSearchProduct.Text, [loCaseInsensitive, loPartialKey]) then
+    begin
+      Beep;
+      edtSearchProduct.SetFocus;
+      edtSearchProduct.SelectAll;
+    end;
+end;
+
 procedure TfrmRequisition.FormShow(Sender: TObject);
 var
   newTitle : String;
@@ -353,20 +417,23 @@ procedure TfrmRequisition.qItemsBeforeDelete(DataSet: TDataSet);
 begin
   if (LowerCase(dbm.qRequisition.FieldByName('t_storniran').AsString) = LowerCase('Da')) then
     begin
-      btnCancel.Click;
-      raise EAppliedDoc(APPLIED_DOC_ERROR);
+      qItems.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      ShowMessage(APPLIED_DOC_ERROR);
       Exit;
     end;
   if (LowerCase(dbm.qRequisition.FieldByName('t_potvrda').AsString) = LowerCase('Da')) then
     begin
-      btnCancel.Click;
-      raise EAppliedDoc(APPLIED_DOC_ERROR);
+      qItems.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      ShowMessage(APPLIED_DOC_ERROR);
       Exit;
     end;
   if (LowerCase(dbm.qRequisition.FieldByName('t_uradjen').AsString) = LowerCase('Da')) then
     begin
-      btnCancel.Click;
-      raise EAppliedDoc(APPLIED_DOC_ERROR);
+      qItems.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      ShowMessage(APPLIED_DOC_ERROR);
       Exit;
     end;
 end;
@@ -423,19 +490,19 @@ begin
   if (LowerCase(dbm.qRequisition.FieldByName('t_storniran').AsString) = LowerCase('Da')) then
     begin
       btnCancel.Click;
-      raise EAppliedDoc(APPLIED_DOC_ERROR);
+      ShowMessage(APPLIED_DOC_ERROR);
       Exit;
     end;
   if (LowerCase(dbm.qRequisition.FieldByName('t_potvrda').AsString) = LowerCase('Da')) then
     begin
       btnCancel.Click;
-      raise EAppliedDoc(APPLIED_DOC_ERROR);
+      ShowMessage(APPLIED_DOC_ERROR);
       Exit;
     end;
   if (LowerCase(dbm.qRequisition.FieldByName('t_uradjen').AsString) = LowerCase('Da')) then
     begin
       btnCancel.Click;
-      raise EAppliedDoc(APPLIED_DOC_ERROR);
+      ShowMessage(APPLIED_DOC_ERROR);
       Exit;
     end;
   //ShowMessage(currHost);
@@ -458,6 +525,11 @@ end;
 procedure TfrmRequisition.qItemsNewRecord(DataSet: TDataSet);
 begin
   TSQLQuery(DataSet).FieldByName('ts_kolicina').AsFloat:= 1;
+end;
+
+procedure TfrmRequisition.sbtnFindProductClick(Sender: TObject);
+begin
+  popFindProduct.PopUp(Mouse.CursorPos.X, Mouse.CursorPos.Y);
 end;
 
 function TfrmRequisition.doFindProduct(const sql_clause: String): Boolean;
@@ -554,20 +626,17 @@ begin
     1:begin
          if (LowerCase(dbm.qRequisition.FieldByName('t_storniran').AsString) = LowerCase('Da')) then
            begin
-             btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          if (LowerCase(dbm.qRequisition.FieldByName('t_potvrda').AsString) = LowerCase('Da')) then
            begin
-             btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          if (LowerCase(dbm.qRequisition.FieldByName('t_uradjen').AsString) = LowerCase('Da')) then
            begin
-             btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          onRemoveRec(qItems);
@@ -588,19 +657,19 @@ begin
          if (LowerCase(dbm.qRequisition.FieldByName('t_storniran').AsString) = LowerCase('Da')) then
            begin
              btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          if (LowerCase(dbm.qRequisition.FieldByName('t_potvrda').AsString) = LowerCase('Da')) then
            begin
              btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          if (LowerCase(dbm.qRequisition.FieldByName('t_uradjen').AsString) = LowerCase('Da')) then
            begin
              btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          onSaveRec(qItems);
@@ -630,19 +699,19 @@ begin
          if (LowerCase(dbm.qRequisition.FieldByName('t_storniran').AsString) = LowerCase('Da')) then
            begin
              btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          if (LowerCase(dbm.qRequisition.FieldByName('t_potvrda').AsString) = LowerCase('Da')) then
            begin
              btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          if (LowerCase(dbm.qRequisition.FieldByName('t_uradjen').AsString) = LowerCase('Da')) then
            begin
              btnCancel.Click;
-             raise EAppliedDoc(APPLIED_DOC_ERROR);
+             ShowMessage(APPLIED_DOC_ERROR);
              Exit;
            end;
          onEditRec(qItems);

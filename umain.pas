@@ -239,6 +239,7 @@ begin
   dbm.dbh.DatabaseName:= cmbDb.Text;
   try
     dbm.dbh.Connected:= True;
+    dbm.dbt.Active:= True;
   except
     on e : Exception do
     begin

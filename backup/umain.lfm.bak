@@ -866,6 +866,9 @@ object frmMain: TfrmMain
       object MenuItem4: TMenuItem
         Action = acDefaultRequisition
       end
+      object MenuItem5: TMenuItem
+        Action = acRequisition
+      end
     end
   end
   object aclMain: TActionList

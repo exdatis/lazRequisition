@@ -382,6 +382,7 @@ inherited frmRequisition: TfrmRequisition
           ParentShowHint = False
           ShowHint = True
           TabOrder = 0
+          OnKeyPress = dbProductKeyPress
         end
         object Label6: TLabel
           Left = 7
@@ -442,6 +443,7 @@ inherited frmRequisition: TfrmRequisition
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
           }
+          OnClick = sbtnFindProductClick
         end
         object Label7: TLabel
           Left = 483
@@ -552,6 +554,7 @@ inherited frmRequisition: TfrmRequisition
           Anchors = [akTop, akRight]
           Constraints.MaxHeight = 27
           Constraints.MinHeight = 27
+          OnKeyUp = edtSearchProductKeyUp
           TabOrder = 1
         end
       end
@@ -597,6 +600,7 @@ inherited frmRequisition: TfrmRequisition
           ShowHint = True
           TabOrder = 0
           TitleFont.Height = -12
+          OnKeyPress = dbgProductsFoundKeyPress
         end
         object btnThisProduct: TButton
           Cursor = crHandPoint
@@ -605,6 +609,7 @@ inherited frmRequisition: TfrmRequisition
           Top = 204
           Width = 75
           Caption = 'Prihvati'
+          OnClick = btnThisProductClick
           TabOrder = 1
         end
         object btnNotThisProduct: TButton
@@ -614,6 +619,7 @@ inherited frmRequisition: TfrmRequisition
           Top = 204
           Width = 75
           Caption = 'Odustani'
+          OnClick = btnNotThisProductClick
           TabOrder = 2
         end
         object Label9: TLabel
@@ -972,8 +978,10 @@ inherited frmRequisition: TfrmRequisition
     left = 583
     top = 224
     object MenuItem1: TMenuItem
+      Action = acFProductByCode
     end
     object MenuItem2: TMenuItem
+      Action = acFProductByName
     end
   end
 end
