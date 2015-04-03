@@ -58,6 +58,7 @@ type
     Panel4: TPanel;
     panelProductDlg: TPanel;
     popFindProduct: TPopupMenu;
+    prgBar: TProgressBar;
     qFindProduct: TSQLQuery;
     qFindProductag_naziv: TStringField;
     qFindProductart_id: TLongintField;
@@ -82,6 +83,7 @@ type
     procedure bitBtnOrdersClick(Sender: TObject);
     procedure btnNotThisProductClick(Sender: TObject);
     procedure btnThisProductClick(Sender: TObject);
+    procedure cmbSearchArgChange(Sender: TObject);
     procedure dbcAppliedChange(Sender: TObject);
     procedure dbcCanceledChange(Sender: TObject);
     procedure dbcFinishedClick(Sender: TObject);
@@ -109,6 +111,7 @@ type
     function doFindProduct(const sql_clause : String) : Boolean;
     procedure reopenItems;
     procedure onPageItems;
+    procedure genItems;
   public
     { public declarations }
     procedure doNewRec; override;
@@ -310,6 +313,13 @@ begin
   panelProductDlg.Visible:= False;
   dbQuantity.SetFocus;
   Application.ProcessMessages;
+end;
+
+procedure TfrmRequisition.cmbSearchArgChange(Sender: TObject);
+begin
+  //obrisi tekst i dodeli fokus polju za pretragu
+  edtSearchProduct.Clear;
+  edtSearchProduct.SetFocus;
 end;
 
 procedure TfrmRequisition.acFProductByCodeExecute(Sender: TObject);
@@ -586,6 +596,11 @@ begin
   Screen.Cursor:= crDefault;
   //set active page
   enbForms.ActivePageIndex:= 1;
+end;
+
+procedure TfrmRequisition.genItems;
+begin
+  //generisi stavke
 end;
 
 procedure TfrmRequisition.doNewRec;

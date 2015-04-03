@@ -58,6 +58,7 @@ type
     Panel4: TPanel;
     panelProductDlg: TPanel;
     popFindProduct: TPopupMenu;
+    prgBar: TProgressBar;
     qFindProduct: TSQLQuery;
     qFindProductag_naziv: TStringField;
     qFindProductart_id: TLongintField;
@@ -110,6 +111,7 @@ type
     function doFindProduct(const sql_clause : String) : Boolean;
     procedure reopenItems;
     procedure onPageItems;
+    procedure genItems;
   public
     { public declarations }
     procedure doNewRec; override;
@@ -594,6 +596,13 @@ begin
   Screen.Cursor:= crDefault;
   //set active page
   enbForms.ActivePageIndex:= 1;
+end;
+
+procedure TfrmRequisition.genItems;
+const
+  MAX_PROGRESS : Integer = 5;
+begin
+  //generisi stavke
 end;
 
 procedure TfrmRequisition.doNewRec;

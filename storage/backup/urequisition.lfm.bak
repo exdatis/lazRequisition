@@ -512,6 +512,15 @@ inherited frmRequisition: TfrmRequisition
           Caption = 'Generiši stavke trebovanja prema tabeli minimalnih zalha (standardno trebovanje)'
           TabOrder = 3
         end
+        object prgBar: TProgressBar
+          Cursor = crSQLWait
+          Left = 16
+          Height = 20
+          Top = 63
+          Width = 771
+          TabOrder = 4
+          Visible = False
+        end
       end
       object Panel4: TPanel
         Left = 4
@@ -542,6 +551,7 @@ inherited frmRequisition: TfrmRequisition
             'Pronadji po nazivu'
             'Pronadji po šifri'
           )
+          OnChange = cmbSearchArgChange
           Style = csDropDownList
           TabOrder = 0
           Text = 'Izaberite osnov za pretragu'
