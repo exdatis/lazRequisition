@@ -8,7 +8,9 @@ begin
     (select
       tmp_artikal,
       tmp_kol
-    where
+     from
+      tmptr
+     where
       tmp_magacin = $1)
     loop
       insert into trebovanje_stavke

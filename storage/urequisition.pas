@@ -81,12 +81,16 @@ type
     procedure acFProductByNameExecute(Sender: TObject);
     procedure bitBtnItemsClick(Sender: TObject);
     procedure bitBtnOrdersClick(Sender: TObject);
+    procedure btnGetItemsClick(Sender: TObject);
     procedure btnNotThisProductClick(Sender: TObject);
     procedure btnThisProductClick(Sender: TObject);
     procedure cmbSearchArgChange(Sender: TObject);
     procedure dbcAppliedChange(Sender: TObject);
     procedure dbcCanceledChange(Sender: TObject);
     procedure dbcFinishedClick(Sender: TObject);
+    procedure dbgItemsMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure dbgItemsTitleClick(Column: TColumn);
     procedure dbgProductsFoundKeyPress(Sender: TObject; var Key: char);
     procedure DBGrid1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
@@ -176,6 +180,19 @@ procedure TfrmRequisition.dbcFinishedClick(Sender: TObject);
 begin
    ShowMessage(READ_ONLY_ERROR);
    btnCancel.SetFocus;
+end;
+
+procedure TfrmRequisition.dbgItemsMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  dbgItems.Cursor:= crHandPoint;
+end;
+
+procedure TfrmRequisition.dbgItemsTitleClick(Column: TColumn);
+begin
+  if not qItems.IsEmpty then
+    qItems.IndexFieldNames:= Column.FieldName;
+  Application.ProcessMessages;
 end;
 
 procedure TfrmRequisition.dbgProductsFoundKeyPress(Sender: TObject;
@@ -296,6 +313,11 @@ begin
   //set active page
   enbForms.ActivePageIndex:= 0;
   Application.ProcessMessages;
+end;
+
+procedure TfrmRequisition.btnGetItemsClick(Sender: TObject);
+begin
+  genItems;
 end;
 
 procedure TfrmRequisition.btnNotThisProductClick(Sender: TObject);
@@ -601,8 +623,72 @@ end;
 procedure TfrmRequisition.genItems;
 const
   MAX_PROGRESS : Integer = 5;
+var
+  sql : String = '';
+  thisStorage : Integer = -1;
+  thisOrder : Integer = -1;
 begin
   //generisi stavke
+  btnGetItems.Visible:= False;
+  //progress
+  prgBar.Max:= MAX_PROGRESS;
+  prgBar.Visible:= True;
+  //set sql on qGeneral
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  //progress
+  prgBar.StepBy(1);
+  Application.ProcessMessages;
+  //create sql
+  sql:= 'SELECT * FROM set_requisition_items(:storage_id, :order_id)';
+  thisStorage:= getUserStorageId;
+  thisOrder:= dbm.qRequisition.FieldByName('t_id').AsInteger;
+  //progress
+  prgBar.StepBy(1);
+  Application.ProcessMessages;
+  //set params
+  dbm.qGeneral.SQL.Text:= sql;
+  dbm.qGeneral.Params[0].AsInteger:= thisStorage;
+  dbm.qGeneral.Params[1].AsInteger:= thisOrder;
+  //progress
+  prgBar.StepBy(1);
+  Application.ProcessMessages;
+  try
+    dbm.qGeneral.Open;
+    //progress
+    prgBar.StepBy(1);
+    Application.ProcessMessages;
+  except
+    on e : Exception do
+    begin
+      prgBar.Visible:= False;
+      btnGetItems.Visible:= True;
+      btnGetItems.Enabled:= False;
+      ShowMessage(e.Message);
+      dbm.qGeneral.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      Exit;
+    end;
+  end;
+  //else
+  if not dbm.qGeneral.IsEmpty then
+    if dbm.qGeneral.Fields[0].AsInteger = 1 then
+      begin
+        dbm.qGeneral.ApplyUpdates;
+        dbm.dbt.CommitRetaining;
+        //progress
+        prgBar.StepBy(1);
+        Application.ProcessMessages;
+        reopenItems;
+        ShowMessage('Uspešno generisane stavke.');
+      end;
+  //reset progress
+  prgBar.Position:= 0;
+  prgBar.Visible:= False;
+
+  btnGetItems.Visible:= True;
+  btnGetItems.Enabled:= False;
+  Application.ProcessMessages;
 end;
 
 procedure TfrmRequisition.doNewRec;

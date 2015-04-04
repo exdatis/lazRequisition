@@ -510,6 +510,7 @@ inherited frmRequisition: TfrmRequisition
           Top = 59
           Width = 780
           Caption = 'Generiši stavke trebovanja prema tabeli minimalnih zalha (standardno trebovanje)'
+          OnClick = btnGetItemsClick
           TabOrder = 3
         end
         object prgBar: TProgressBar
@@ -585,6 +586,8 @@ inherited frmRequisition: TfrmRequisition
         ShowHint = True
         TabOrder = 2
         TitleFont.Height = -12
+        OnMouseMove = dbgItemsMouseMove
+        OnTitleClick = dbgItemsTitleClick
       end
       object panelProductDlg: TPanel
         Left = 13
