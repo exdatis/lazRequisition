@@ -12,7 +12,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="5" Y="24"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -26,7 +26,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="648"/>
         <CursorPos X="29" Y="672"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -41,7 +41,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="284"/>
         <CursorPos X="55" Y="309"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="103"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -53,7 +53,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="6" Y="11"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="99"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -66,7 +66,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="44" Y="21"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="95"/>
       </Unit4>
       <Unit5>
         <Filename Value="dialogs/uopendatasets.pas"/>
@@ -77,9 +77,9 @@
         <UnitName Value="uopendatasets"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="33"/>
-        <CursorPos X="17" Y="60"/>
-        <UsageCount Value="91"/>
+        <TopLine Value="8"/>
+        <CursorPos X="40" Y="33"/>
+        <UsageCount Value="93"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -93,7 +93,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="203"/>
         <CursorPos X="1" Y="222"/>
-        <UsageCount Value="87"/>
+        <UsageCount Value="89"/>
       </Unit6>
       <Unit7>
         <Filename Value="dialogs/udeleteconfirmation.pas"/>
@@ -105,7 +105,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="67" Y="15"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="84"/>
       </Unit7>
       <Unit8>
         <Filename Value="dialogs/usavechanges.pas"/>
@@ -116,7 +116,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="42" Y="13"/>
-        <UsageCount Value="81"/>
+        <UsageCount Value="83"/>
       </Unit8>
       <Unit9>
         <Filename Value="dialogs/udefrequisition.pas"/>
@@ -128,7 +128,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="94"/>
         <CursorPos X="29" Y="98"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="72"/>
       </Unit9>
       <Unit10>
         <Filename Value="storage/urequisition.pas"/>
@@ -141,34 +141,11 @@
         <WindowIndex Value="0"/>
         <TopLine Value="117"/>
         <CursorPos X="18" Y="140"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit10>
       <Unit11>
-        <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/pingsend.pas"/>
-        <UnitName Value="pingsend"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="555"/>
-        <CursorPos X="32" Y="555"/>
-        <UsageCount Value="4"/>
-      </Unit11>
-      <Unit12>
-        <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/blcksock.pas"/>
-        <UnitName Value="blcksock"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="362"/>
-        <CursorPos X="5" Y="310"/>
-        <UsageCount Value="4"/>
-      </Unit12>
-      <Unit13>
-        <Filename Value="/usr/lib/lazarus/lcl/include/containedaction.inc"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="73"/>
-        <CursorPos X="1" Y="98"/>
-        <UsageCount Value="9"/>
-      </Unit13>
-      <Unit14>
         <Filename Value="storage/ustoragein.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmStorageIn"/>
@@ -178,11 +155,34 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="77"/>
-        <CursorPos X="30" Y="81"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="160"/>
+        <CursorPos X="29" Y="184"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/pingsend.pas"/>
+        <UnitName Value="pingsend"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="555"/>
+        <CursorPos X="32" Y="555"/>
+        <UsageCount Value="4"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/blcksock.pas"/>
+        <UnitName Value="blcksock"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="362"/>
+        <CursorPos X="5" Y="310"/>
+        <UsageCount Value="4"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="/usr/lib/lazarus/lcl/include/containedaction.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="73"/>
+        <CursorPos X="1" Y="98"/>
+        <UsageCount Value="9"/>
       </Unit14>
     </Units>
     <General>
@@ -191,123 +191,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="13" Column="51" TopLine="1"/>
+        <Caret Line="152" Column="1" TopLine="138"/>
       </Position1>
       <Position2>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="20" Column="51" TopLine="1"/>
+        <Caret Line="153" Column="1" TopLine="138"/>
       </Position2>
       <Position3>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="21" Column="51" TopLine="1"/>
+        <Caret Line="156" Column="1" TopLine="138"/>
       </Position3>
       <Position4>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="22" Column="51" TopLine="1"/>
+        <Caret Line="168" Column="1" TopLine="138"/>
       </Position4>
       <Position5>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="35" Column="38" TopLine="1"/>
+        <Caret Line="172" Column="1" TopLine="146"/>
       </Position5>
       <Position6>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="36" Column="52" TopLine="24"/>
+        <Caret Line="175" Column="1" TopLine="146"/>
       </Position6>
       <Position7>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="52" Column="52" TopLine="40"/>
+        <Caret Line="83" Column="1" TopLine="64"/>
       </Position7>
       <Position8>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="51" Column="52" TopLine="39"/>
+        <Caret Line="103" Column="3" TopLine="92"/>
       </Position8>
       <Position9>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="50" Column="52" TopLine="38"/>
+        <Caret Line="105" Column="1" TopLine="92"/>
       </Position9>
       <Position10>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="49" Column="52" TopLine="37"/>
+        <Caret Line="114" Column="1" TopLine="92"/>
       </Position10>
       <Position11>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="48" Column="52" TopLine="36"/>
+        <Caret Line="116" Column="1" TopLine="92"/>
       </Position11>
       <Position12>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="47" Column="52" TopLine="35"/>
+        <Caret Line="118" Column="1" TopLine="92"/>
       </Position12>
       <Position13>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="48" Column="52" TopLine="36"/>
+        <Caret Line="119" Column="1" TopLine="92"/>
       </Position13>
       <Position14>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="47" Column="52" TopLine="35"/>
+        <Caret Line="121" Column="1" TopLine="92"/>
       </Position14>
       <Position15>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="48" Column="52" TopLine="36"/>
+        <Caret Line="122" Column="1" TopLine="92"/>
       </Position15>
       <Position16>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="47" Column="52" TopLine="35"/>
+        <Caret Line="123" Column="1" TopLine="92"/>
       </Position16>
       <Position17>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="48" Column="66" TopLine="34"/>
+        <Caret Line="124" Column="1" TopLine="93"/>
       </Position17>
       <Position18>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="53" Column="66" TopLine="39"/>
+        <Caret Line="83" Column="1" TopLine="64"/>
       </Position18>
       <Position19>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="52" Column="66" TopLine="38"/>
+        <Caret Line="122" Column="14" TopLine="105"/>
       </Position19>
       <Position20>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="71" Column="26" TopLine="48"/>
+        <Caret Line="137" Column="1" TopLine="107"/>
       </Position20>
       <Position21>
-        <Filename Value="umain.pas"/>
-        <Caret Line="101" Column="74" TopLine="83"/>
+        <Filename Value="storage/ustoragein.pas"/>
+        <Caret Line="150" Column="1" TopLine="132"/>
       </Position21>
       <Position22>
-        <Filename Value="umain.pas"/>
-        <Caret Line="582" Column="16" TopLine="552"/>
+        <Filename Value="storage/ustoragein.pas"/>
+        <Caret Line="152" Column="1" TopLine="132"/>
       </Position22>
       <Position23>
-        <Filename Value="umain.pas"/>
-        <Caret Line="584" Column="16" TopLine="554"/>
+        <Filename Value="storage/ustoragein.pas"/>
+        <Caret Line="154" Column="1" TopLine="132"/>
       </Position23>
       <Position24>
-        <Filename Value="umain.pas"/>
-        <Caret Line="611" Column="21" TopLine="587"/>
+        <Filename Value="storage/ustoragein.pas"/>
+        <Caret Line="155" Column="1" TopLine="132"/>
       </Position24>
       <Position25>
-        <Filename Value="umain.pas"/>
-        <Caret Line="612" Column="21" TopLine="588"/>
+        <Filename Value="storage/ustoragein.pas"/>
+        <Caret Line="156" Column="1" TopLine="132"/>
       </Position25>
       <Position26>
-        <Filename Value="umain.pas"/>
-        <Caret Line="613" Column="21" TopLine="589"/>
+        <Filename Value="storage/ustoragein.pas"/>
+        <Caret Line="157" Column="1" TopLine="132"/>
       </Position26>
       <Position27>
-        <Filename Value="umain.pas"/>
-        <Caret Line="677" Column="29" TopLine="653"/>
+        <Filename Value="storage/ustoragein.pas"/>
+        <Caret Line="160" Column="1" TopLine="132"/>
       </Position27>
       <Position28>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="220" Column="49" TopLine="199"/>
+        <Caret Line="172" Column="1" TopLine="154"/>
       </Position28>
       <Position29>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="229" Column="49" TopLine="208"/>
+        <Caret Line="174" Column="1" TopLine="154"/>
       </Position29>
       <Position30>
         <Filename Value="storage/ustoragein.pas"/>
-        <Caret Line="74" Column="30" TopLine="70"/>
+        <Caret Line="177" Column="1" TopLine="154"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

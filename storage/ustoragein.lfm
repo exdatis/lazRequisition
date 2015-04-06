@@ -313,6 +313,7 @@ inherited frmStorageIn: TfrmStorageIn
           Top = 119
           Width = 291
           Caption = 'Generiši prijem po predatnici broj:'
+          OnClick = btnGenAllClick
           TabOrder = 6
         end
       end
