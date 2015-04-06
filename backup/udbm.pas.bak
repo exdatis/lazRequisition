@@ -106,6 +106,7 @@ var
   dbm: Tdbm;
 const
   DB_PORT : String = '5432';
+  LOG_FILE : String = 'netLog.log';
 
 implementation
 uses
@@ -372,6 +373,8 @@ var
   errorMsg : String;
   svr : TTCPBlockSocket;
   test : Integer = -1;   //greska kao inicijalna vrednost nula(o) je ok
+  logList : TStringList;
+  logMsg : String;
 begin
   svr := TTCPBlockSocket.Create;
   svr.ConnectionTimeout:= 1; //jedan sekund, nemoze manje
@@ -385,6 +388,15 @@ begin
   end;
   if test <> 0 then
     begin
+      logList:= TStringList.Create;
+      //load if exist
+      if FileExistsUTF8(LOG_FILE) then
+        logList.LoadFromFile(LOG_FILE);
+      //create log error message
+      logMsg:= 'Mreza u prekidu: ' + FormatDateTime('dd.MM.yyyy hh:nn', Now);
+      logList.Append(logMsg);
+      logList.Free;
+      //show message
       errorMsg:= 'Mrežna konekcija u prekidu!' + #13#10;
       errorMsg:= errorMsg + 'Pozovite Dejana ili Bobana:' + #13#10;
       errorMsg:= errorMsg + 'Ratkov Dejan: 062-804-8441' + #13#10;

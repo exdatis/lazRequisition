@@ -847,7 +847,6 @@ object dbm: Tdbm
   end
   object qStorageIn: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'mu_id'

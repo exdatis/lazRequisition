@@ -847,7 +847,6 @@ object dbm: Tdbm
   end
   object qStorageIn: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'mu_id'
@@ -999,6 +998,7 @@ object dbm: Tdbm
     left = 322
     top = 193
     object qStorageInmu_id: TLongintField
+      Alignment = taLeftJustify
       DisplayLabel = 'ID'
       DisplayWidth = 5
       FieldKind = fkData
@@ -1115,7 +1115,7 @@ object dbm: Tdbm
     end
     object qStorageInusrStorage: TStringField
       DisplayLabel = 'Magacin'
-      DisplayWidth = 15
+      DisplayWidth = 20
       FieldKind = fkLookup
       FieldName = 'usrStorage'
       Index = 10
@@ -1131,7 +1131,7 @@ object dbm: Tdbm
     end
     object qStorageInsupplierStorage: TStringField
       DisplayLabel = 'Dobavljač'
-      DisplayWidth = 15
+      DisplayWidth = 20
       FieldKind = fkLookup
       FieldName = 'supplierStorage'
       Index = 11
