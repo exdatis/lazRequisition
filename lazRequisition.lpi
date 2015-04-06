@@ -17,7 +17,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
-      <BuildNr Value="17"/>
+      <BuildNr Value="19"/>
       <StringTable Comments="App by Morar" CompanyName="ExDatis" FileDescription="Requisition" InternalName="PhRequisition" OriginalFilename="lazRequisition" ProductName="Requisition" ProductVersion="3"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -54,7 +54,7 @@
         <PackageName Value="LCL"/>
       </Item7>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="12">
       <Unit0>
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -136,6 +136,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="urequisition"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="storage/ustoragein.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmStorageIn"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ustoragein"/>
+      </Unit11>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

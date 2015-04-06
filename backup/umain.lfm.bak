@@ -870,6 +870,12 @@ object frmMain: TfrmMain
         Action = acRequisition
       end
     end
+    object MenuItem6: TMenuItem
+      Caption = 'Prijem robe u magacin'
+      object MenuItem7: TMenuItem
+        Action = acStorageIn
+      end
+    end
   end
   object aclMain: TActionList
     left = 416
@@ -889,6 +895,11 @@ object frmMain: TfrmMain
       Caption = 'Nalozi trebovanja'
       Hint = 'Trebovanje robe'
       OnExecute = acRequisitionExecute
+    end
+    object acStorageIn: TAction
+      Caption = 'Interni prijem robe'
+      Hint = 'Interni prijem robe'
+      OnExecute = acStorageInExecute
     end
   end
 end

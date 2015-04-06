@@ -606,7 +606,7 @@ object dbm: Tdbm
     top = 68
     object qRequisitiont_id: TLongintField
       DisplayLabel = 'ID'
-      DisplayWidth = 3
+      DisplayWidth = 5
       FieldKind = fkData
       FieldName = 't_id'
       Index = 0
@@ -844,5 +844,324 @@ object dbm: Tdbm
     DataSet = qDocStorageIn
     left = 483
     top = 69
+  end
+  object qStorageIn: TSQLQuery
+    PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'mu_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'mu_doc'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'mu_datum'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'mu_magacin'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'mu_notes'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end    
+      item
+        Name = 'mu_out'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'mu_storno'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end    
+      item
+        Name = 'mu_evident'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end    
+      item
+        Name = 'mu_operater'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'mu_time'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'mu_osnov'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = qStorageInAfterDelete
+    AfterPost = qStorageInAfterPost
+    BeforeOpen = qStorageInBeforeOpen
+    BeforePost = qStorageInBeforePost
+    OnNewRecord = qStorageInNewRecord
+    Database = dbh
+    Transaction = dbt
+    SQL.Strings = (
+      'SELECT'
+      '  mu_id,'
+      '  mu_doc,'
+      '  mu_datum,'
+      '  mu_magacin,'
+      '  mu_notes,'
+      '  mu_out,'
+      '  mu_storno,'
+      '  mu_evident,'
+      '  mu_operater,'
+      '  mu_time,'
+      '  mu_osnov'
+      'FROM'
+      '  mu_nalog'
+      'where'
+      '  mu_magacin = :mu_magacin'
+      'order by'
+      '  mu_id'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE'
+      '  mu_nalog'
+      'SET'
+      '   mu_doc= :mu_doc,'
+      '   mu_datum= :mu_datum,'
+      '   mu_magacin= :mu_magacin,'
+      '   mu_notes= :mu_notes,'
+      '   mu_out= :mu_out,'
+      '   mu_storno= :mu_storno,'
+      '   mu_evident= :mu_evident,'
+      '   mu_operater= :mu_operater,'
+      '   mu_time= :mu_time,'
+      '   mu_osnov= :mu_osnov'
+      'WHERE'
+      '   mu_id= :mu_id'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO'
+      '  mu_nalog(mu_id,'
+      #9'   mu_doc,'
+      #9'   mu_datum,'
+      #9'   mu_magacin,'
+      #9'   mu_notes,'
+      #9'   mu_out,'
+      #9'   mu_storno,'
+      '           mu_evident,'
+      '           mu_operater,'
+      '           mu_time,'
+      '           mu_osnov)'
+      '    VALUES (:mu_id,'
+      #9'    :mu_doc,'
+      #9'    :mu_datum,'
+      #9'    :mu_magacin,'
+      #9'    :mu_notes,'
+      #9'    :mu_out,'
+      #9'    :mu_storno,'
+      '            :mu_evident,'
+      '            :mu_operater,'
+      '            :mu_time,'
+      '            :mu_osnov)'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM'
+      '  mu_nalog'
+      'WHERE'
+      '  mu_id = :mu_id'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'mu_magacin'
+        ParamType = ptInput
+      end>
+    left = 322
+    top = 193
+    object qStorageInmu_id: TLongintField
+      Alignment = taLeftJustify
+      DisplayLabel = 'ID'
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'mu_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qStorageInmu_doc: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'mu_doc'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object qStorageInmu_datum: TDateField
+      DisplayLabel = 'Datum'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'mu_datum'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = 'dd.MM.yyyy'
+    end
+    object qStorageInmu_magacin: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'mu_magacin'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object qStorageInmu_notes: TStringField
+      DisplayWidth = 70
+      FieldKind = fkData
+      FieldName = 'mu_notes'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 70
+    end
+    object qStorageInmu_out: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'mu_out'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object qStorageInmu_storno: TStringField
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'mu_storno'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 7
+    end
+    object qStorageInmu_evident: TStringField
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'mu_evident'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 7
+    end
+    object qStorageInmu_operater: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'mu_operater'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object qStorageInmu_time: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'mu_time'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object qStorageInusrStorage: TStringField
+      DisplayLabel = 'Magacin'
+      DisplayWidth = 20
+      FieldKind = fkLookup
+      FieldName = 'usrStorage'
+      Index = 10
+      KeyFields = 'mu_magacin'
+      LookupCache = False
+      LookupDataSet = qStorages
+      LookupKeyFields = 'm_id'
+      LookupResultField = 'm_naziv'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object qStorageInsupplierStorage: TStringField
+      DisplayLabel = 'Dobavljač'
+      DisplayWidth = 20
+      FieldKind = fkLookup
+      FieldName = 'supplierStorage'
+      Index = 11
+      KeyFields = 'mu_out'
+      LookupCache = False
+      LookupDataSet = qStorages
+      LookupKeyFields = 'm_id'
+      LookupResultField = 'm_naziv'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object qStorageInmu_osnov: TStringField
+      DisplayLabel = 'Osnov'
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'mu_osnov'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object dsStorageIn: TDataSource
+    DataSet = qStorageIn
+    left = 331
+    top = 254
   end
 end

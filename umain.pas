@@ -17,6 +17,7 @@ type
     aclMain: TActionList;
     acDefaultRequisition: TAction;
     acRequisition: TAction;
+    acStorageIn: TAction;
     btnGetDb: TButton;
     btnConnect: TButton;
     btnSaveDbIni: TButton;
@@ -45,11 +46,14 @@ type
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
     Panel1: TPanel;
     StatusBar1: TStatusBar;
     ledConnection: TuELED;
     procedure acDefaultRequisitionExecute(Sender: TObject);
     procedure acRequisitionExecute(Sender: TObject);
+    procedure acStorageInExecute(Sender: TObject);
     procedure btnConnectClick(Sender: TObject);
     procedure btnGetDbClick(Sender: TObject);
     procedure btnSaveDbIniClick(Sender: TObject);
@@ -98,7 +102,7 @@ const
   NO_CONNECTION_ERROR : String = 'Nema konekcije sa bazom podataka.';
 implementation
 uses
-  udbm, uapppwd, uopendatasets, udefrequisition, urequisition;
+  udbm, uapppwd, uopendatasets, udefrequisition, urequisition, ustoragein;
 {$R *.lfm}
 
 { TfrmMain }
@@ -582,6 +586,39 @@ begin
   end;
 end;
 
+procedure TfrmMain.acStorageInExecute(Sender: TObject);
+var
+  newForm : TfrmStorageIn;
+begin
+  {close any forms}
+  clearOldForms;
+  {proveri konekciju sa bazom}
+  if not dbm.dbh.Connected then
+    begin
+      ShowMessage(NO_CONNECTION_ERROR);
+      Exit;
+    end;
+  {show work commitment}
+  Screen.Cursor:= crHourGlass;
+  try
+    {create new}
+    newForm:= TfrmStorageIn.Create(nil);
+    {set dbGrid title images}
+    //newForm.setDbGridTitleImages;
+    {set parent ctrl}
+    newForm.Parent:= formPanel;
+    newForm.Align:= alClient;
+    newForm.Show;
+    // dodeli necemu fokus zbog precica
+    newForm.dbgOrder.SetFocus;
+    {onemoguci izmene}
+    disableStorages;
+    Application.ProcessMessages;
+  finally
+    Screen.Cursor:= crDefault;
+  end;
+end;
+
 procedure TfrmMain.btnSaveDbIniClick(Sender: TObject);
 begin
   writeDbIni;
@@ -610,12 +647,56 @@ end;
 
 procedure TfrmMain.cmbSupplierStorageChange(Sender: TObject);
 begin
+  // set cursor(show progress)
+  Screen.Cursor:= crSQLWait;
+  //set storages
   setStorages;
+  //reopen datasets
+  dbm.qTemplate.Close;
+  dbm.qRequisition.Close;
+  dbm.qStorageIn.Close;
+  try
+    dbm.qTemplate.Open;
+    dbm.qRequisition.Open;
+    dbm.qStorageIn.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      self.Close;
+      Application.Terminate;
+    end;
+  end;
+  //set cursor(default)
+  Screen.Cursor:= crDefault;
 end;
 
 procedure TfrmMain.cmbUserStorageChange(Sender: TObject);
 begin
+  // set cursor(show progress)
+  Screen.Cursor:= crSQLWait;
+  //set storages
   setStorages;
+  //reopen datasets
+  dbm.qTemplate.Close;
+  dbm.qRequisition.Close;
+  dbm.qStorageIn.Close;
+  try
+    dbm.qTemplate.Open;
+    dbm.qRequisition.Open;
+    dbm.qStorageIn.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      self.Close;
+      Application.Terminate;
+    end;
+  end;
+  //set cursor(default)
+  Screen.Cursor:= crDefault;
 end;
 
 procedure TfrmMain.edtHostChange(Sender: TObject);
