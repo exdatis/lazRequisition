@@ -17,7 +17,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
-      <BuildNr Value="21"/>
+      <BuildNr Value="22"/>
       <StringTable Comments="App by Morar" CompanyName="ExDatis" FileDescription="Requisition" InternalName="PhRequisition" OriginalFilename="lazRequisition" ProductName="Requisition" ProductVersion="3"/>
     </VersionInfo>
     <BuildModes Count="1">
