@@ -48,6 +48,8 @@ type
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
     Panel1: TPanel;
     StatusBar1: TStatusBar;
     ledConnection: TuELED;

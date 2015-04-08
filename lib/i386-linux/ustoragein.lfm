@@ -123,10 +123,10 @@ inherited frmStorageIn: TfrmStorageIn
     Height = 408
     Top = 48
     Width = 812
-    ActivePage = tsItems
+    ActivePage = tsOrder
     Align = alClient
     ShowTabs = False
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 2
     object tsOrder: TTabSheet
       Caption = 'tsOrder'
@@ -292,6 +292,7 @@ inherited frmStorageIn: TfrmStorageIn
             Caption = ' Evidentiran nalog prijema'
             DataField = 'mu_evident'
             DataSource = dbm.dsStorageIn
+            OnChange = dbcAppliedChange
             TabOrder = 0
             ValueChecked = 'Da'
             ValueUnchecked = 'Ne'
@@ -305,6 +306,7 @@ inherited frmStorageIn: TfrmStorageIn
             Caption = ' Storniran nalog prijema'
             DataField = 'mu_storno'
             DataSource = dbm.dsStorageIn
+            OnChange = dbcCanceledChange
             TabOrder = 1
             ValueChecked = 'Da'
             ValueUnchecked = 'Ne'
@@ -575,6 +577,8 @@ inherited frmStorageIn: TfrmStorageIn
         ShowHint = True
         TabOrder = 2
         TitleFont.Height = -12
+        OnMouseMove = dbgItemsMouseMove
+        OnTitleClick = dbgItemsTitleClick
       end
     end
   end
@@ -647,7 +651,6 @@ inherited frmStorageIn: TfrmStorageIn
   end
   object qItems: TSQLQuery[6]
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'mus_id'

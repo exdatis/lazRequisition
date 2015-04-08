@@ -915,7 +915,9 @@ object dbm: Tdbm
         Size = 30
       end>
     AfterDelete = qStorageInAfterDelete
+    AfterOpen = qStorageInAfterOpen
     AfterPost = qStorageInAfterPost
+    AfterScroll = qStorageInAfterScroll
     BeforeOpen = qStorageInBeforeOpen
     BeforePost = qStorageInBeforePost
     OnNewRecord = qStorageInNewRecord

@@ -82,7 +82,9 @@ type
     procedure qRequisitionBeforePost(DataSet: TDataSet);
     procedure qRequisitionNewRecord(DataSet: TDataSet);
     procedure qStorageInAfterDelete(DataSet: TDataSet);
+    procedure qStorageInAfterOpen(DataSet: TDataSet);
     procedure qStorageInAfterPost(DataSet: TDataSet);
+    procedure qStorageInAfterScroll(DataSet: TDataSet);
     procedure qStorageInBeforeOpen(DataSet: TDataSet);
     procedure qStorageInBeforePost(DataSet: TDataSet);
     procedure qStorageInNewRecord(DataSet: TDataSet);
@@ -92,6 +94,8 @@ type
     procedure qTemplateBeforePost(DataSet: TDataSet);
   private
     { private declarations }
+    // storage_in state
+    storage_in_state : Integer; // 0 nije storniran, 1 storniran
   public
     { public declarations }
     function checkServer(const currHost, currPort : String) : Boolean;
@@ -232,9 +236,27 @@ begin
   postChanges(TSQLQuery(DataSet));
 end;
 
+procedure Tdbm.qStorageInAfterOpen(DataSet: TDataSet);
+begin
+  // samo je storno bitan
+  if (TSQLQuery(DataSet).FieldByName('mu_storno').AsString = 'Da') then
+    storage_in_state:= 1
+  else
+    storage_in_state:= 0;
+end;
+
 procedure Tdbm.qStorageInAfterPost(DataSet: TDataSet);
 begin
   postChanges(TSQLQuery(DataSet));
+end;
+
+procedure Tdbm.qStorageInAfterScroll(DataSet: TDataSet);
+begin
+  // samo je storno bitan
+  if (TSQLQuery(DataSet).FieldByName('mu_storno').AsString = 'Da') then
+    storage_in_state:= 1
+  else
+    storage_in_state:= 0;
 end;
 
 procedure Tdbm.qStorageInBeforeOpen(DataSet: TDataSet);

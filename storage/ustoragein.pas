@@ -85,6 +85,11 @@ type
     procedure btnNotThisProductClick(Sender: TObject);
     procedure btnThisProductClick(Sender: TObject);
     procedure cmbSearchArgChange(Sender: TObject);
+    procedure dbcAppliedChange(Sender: TObject);
+    procedure dbcCanceledChange(Sender: TObject);
+    procedure dbgItemsMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure dbgItemsTitleClick(Column: TColumn);
     procedure dbgOrderMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure dbgOrderTitleClick(Column: TColumn);
@@ -109,6 +114,8 @@ type
     procedure reopenItems;
     procedure onPageItems;
     procedure genInput;
+    // evidencija
+    procedure applyRecord;
   public
     { public declarations }
     procedure doNewRec; override;
@@ -171,6 +178,85 @@ begin
   //obrisi tekst i dodeli fokus polju za pretragu
   edtSearchProduct.Clear;
   edtSearchProduct.SetFocus;
+end;
+
+procedure TfrmStorageIn.dbcAppliedChange(Sender: TObject);
+const
+  Applied_error : String = 'Kliknite storno za brisanje evidencije.';
+begin
+  if (dbm.qStorageIn.FieldByName('mu_evident').AsString = 'Ne') then
+    begin
+      ShowMessage(Applied_error);
+      btnCancel.Click;
+    end
+  else
+    applyRecord;
+end;
+
+procedure TfrmStorageIn.dbcCanceledChange(Sender: TObject);
+var
+  sql : String;
+  currOrder : Integer = -1;
+  appliedMsg : String;
+begin
+  if (dbm.qStorageIn.IsEmpty) then
+    begin
+      btnCancel.Click;
+      Exit;
+    end;
+  if (dbm.qStorageIn.FieldByName('mu_storno').AsString = 'Ne') then
+    Exit;
+
+  if(dbm.qStorageIn.FieldByName('mu_evident').AsString = 'Ne') then
+    if (dbm.qStorageIn.FieldByName('mu_storno').AsString = 'Da') then
+      begin
+        btnCancel.Click;
+        Exit;
+      end;
+
+  Screen.Cursor:= crSQLWait;
+  // pripremi qGeneral
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  currOrder:= dbm.qStorageIn.FieldByName('mu_id').AsInteger;
+  // napravi proceduru jer ovde treba select upit
+  sql:= 'SELECT * FROM drop_storage_in(' + IntToStr(currOrder) + ')';
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      dbm.qStorageIn.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      Exit;
+    end;
+  end;
+  //success msg
+  appliedMsg:= 'Nalog je storniran.';
+  dbm.qStorageIn.FieldByName('mu_evident').AsString := 'Ne';
+  //commit
+  dbm.qStorageIn.ApplyUpdates;
+  dbm.qGeneral.ApplyUpdates;
+  dbm.dbt.CommitRetaining;
+  Screen.Cursor:= crDefault;
+  ShowMessage(appliedMsg);
+end;
+
+procedure TfrmStorageIn.dbgItemsMouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
+begin
+  dbgItems.Cursor:= crHandPoint;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmStorageIn.dbgItemsTitleClick(Column: TColumn);
+begin
+  if not qItems.IsEmpty then
+    qItems.IndexFieldNames:= Column.FieldName;
+  Application.ProcessMessages;
 end;
 
 procedure TfrmStorageIn.acFProductByNameExecute(Sender: TObject);
@@ -586,6 +672,46 @@ begin
   successMsgText:= 'Kreirana je prijemnica broj: ' + IntToStr(new_id);
   ShowMessage(successMsgText);
   Application.ProcessMessages;
+end;
+
+procedure TfrmStorageIn.applyRecord;
+var
+  sql : String;
+  currOrder : Integer = -1;
+  appliedMsg : String;
+begin
+  if (dbm.qStorageIn.IsEmpty) then
+    Exit;
+  reopenItems;
+  Screen.Cursor:= crSQLWait;
+  // pripremi qGeneral
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  currOrder:= dbm.qStorageIn.FieldByName('mu_id').AsInteger;
+  sql:= 'SELECT * FROM aplly_storage_in(' + IntToStr(currOrder)  + ')';
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      dbm.qStorageIn.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      Exit;
+    end;
+  end;
+  //success msg
+  appliedMsg:= 'Evidentirano slogova: ' + IntToStr(dbm.qGeneral.Fields[0].AsInteger);
+  // set storno val
+  dbm.qStorageIn.FieldByName('mu_storno').AsString:= 'Ne';
+  //commit
+  dbm.qStorageIn.ApplyUpdates;
+  dbm.qGeneral.ApplyUpdates;
+  dbm.dbt.CommitRetaining;
+  Screen.Cursor:= crDefault;
+  ShowMessage(appliedMsg);
 end;
 
 procedure TfrmStorageIn.doNewRec;

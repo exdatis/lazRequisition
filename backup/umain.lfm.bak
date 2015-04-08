@@ -876,6 +876,12 @@ object frmMain: TfrmMain
         Action = acStorageIn
       end
     end
+    object MenuItem8: TMenuItem
+      Caption = 'Izdavanje robe'
+    end
+    object MenuItem9: TMenuItem
+      Caption = 'Izveštaji'
+    end
   end
   object aclMain: TActionList
     left = 416

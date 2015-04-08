@@ -381,9 +381,9 @@ object frmMain: TfrmMain
       ShowHint = True
     end
     object Image1: TImage
-      Left = 592
-      Height = 89
-      Top = 388
+      Left = 603
+      Height = 85
+      Top = 392
       Width = 192
       Align = alCustom
       Anchors = [akRight, akBottom]
@@ -875,6 +875,12 @@ object frmMain: TfrmMain
       object MenuItem7: TMenuItem
         Action = acStorageIn
       end
+    end
+    object MenuItem8: TMenuItem
+      Caption = 'Izdavanje robe'
+    end
+    object MenuItem9: TMenuItem
+      Caption = 'Izveštaji'
     end
   end
   object aclMain: TActionList

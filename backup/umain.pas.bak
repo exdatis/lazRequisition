@@ -48,6 +48,8 @@ type
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
     Panel1: TPanel;
     StatusBar1: TStatusBar;
     ledConnection: TuELED;
@@ -647,7 +649,29 @@ end;
 
 procedure TfrmMain.cmbSupplierStorageChange(Sender: TObject);
 begin
+  // set cursor(show progress)
+  Screen.Cursor:= crSQLWait;
+  //set storages
   setStorages;
+  //reopen datasets
+  dbm.qTemplate.Close;
+  dbm.qRequisition.Close;
+  dbm.qStorageIn.Close;
+  try
+    dbm.qTemplate.Open;
+    dbm.qRequisition.Open;
+    dbm.qStorageIn.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      self.Close;
+      Application.Terminate;
+    end;
+  end;
+  //set cursor(default)
+  Screen.Cursor:= crDefault;
 end;
 
 procedure TfrmMain.cmbUserStorageChange(Sender: TObject);
