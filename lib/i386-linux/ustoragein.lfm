@@ -21,7 +21,7 @@ inherited frmStorageIn: TfrmStorageIn
       Cursor = crHandPoint
       Left = 2
       Height = 25
-      Hint = 'Nalozi trebovanja'
+      Hint = 'Nalozi prijema'
       Top = 2
       Width = 221
       Align = alLeft
@@ -71,7 +71,7 @@ inherited frmStorageIn: TfrmStorageIn
       Cursor = crHandPoint
       Left = 223
       Height = 25
-      Hint = 'Trebovani proizvodi'
+      Hint = 'Primljeni proizvodi'
       Top = 2
       Width = 221
       Align = alLeft
@@ -123,10 +123,10 @@ inherited frmStorageIn: TfrmStorageIn
     Height = 408
     Top = 48
     Width = 812
-    ActivePage = tsOrder
+    ActivePage = tsItems
     Align = alClient
     ShowTabs = False
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 2
     object tsOrder: TTabSheet
       Caption = 'tsOrder'

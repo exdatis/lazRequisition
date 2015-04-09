@@ -9,7 +9,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, lazcontrols, zvdatetimectrls, umain, udbm, uexdatis, uapppwd,
   uopendatasets, utemplate, udeleteconfirmation, usavechanges, udefrequisition,
-  urequisition, ustoragein
+  urequisition, ustoragein, ustorageout
   { you can add units after this };
 
 {$R *.res}
@@ -20,7 +20,8 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdbm, dbm);
-  Application.CreateForm(TfrmStorageIn, frmStorageIn);
+  //Application.CreateForm(TfrmStorageOut, frmStorageOut);
+  //Application.CreateForm(TfrmStorageIn, frmStorageIn);
   //Application.CreateForm(TfrmRequisition, frmRequisition);
   //Application.CreateForm(TfrmDefRequisition, frmDefRequisition);
   //Application.CreateForm(TdlgAppPwd, dlgAppPwd);

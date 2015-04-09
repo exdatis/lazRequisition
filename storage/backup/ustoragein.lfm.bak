@@ -21,7 +21,7 @@ inherited frmStorageIn: TfrmStorageIn
       Cursor = crHandPoint
       Left = 2
       Height = 25
-      Hint = 'Nalozi trebovanja'
+      Hint = 'Nalozi prijema'
       Top = 2
       Width = 221
       Align = alLeft
@@ -71,7 +71,7 @@ inherited frmStorageIn: TfrmStorageIn
       Cursor = crHandPoint
       Left = 223
       Height = 25
-      Hint = 'Trebovani proizvodi'
+      Hint = 'Primljeni proizvodi'
       Top = 2
       Width = 221
       Align = alLeft

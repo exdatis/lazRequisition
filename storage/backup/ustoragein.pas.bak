@@ -205,10 +205,8 @@ begin
       Exit;
     end;
   if (dbm.qStorageIn.FieldByName('mu_storno').AsString = 'Ne') then
-    begin
-      btnCancel.Click;
-      Exit;
-    end;
+    Exit;
+
   if(dbm.qStorageIn.FieldByName('mu_evident').AsString = 'Ne') then
     if (dbm.qStorageIn.FieldByName('mu_storno').AsString = 'Da') then
       begin

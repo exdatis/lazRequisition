@@ -13,6 +13,8 @@ type
   { Tdbm }
 
   Tdbm = class(TDataModule)
+    dsDocStorageOut: TDataSource;
+    dsStorageOut: TDataSource;
     dsStorageIn: TDataSource;
     dsDocStorageIn: TDataSource;
     dsRequisition: TDataSource;
@@ -23,6 +25,8 @@ type
     dbLib: TSQLDBLibraryLoader;
     qDocStorageIndoc_id: TLongintField;
     qDocStorageIndoc_naziv: TStringField;
+    qDocStorageOutdoc_id: TLongintField;
+    qDocStorageOutdoc_naziv: TStringField;
     qGeneral: TSQLQuery;
     dbt: TSQLTransaction;
     qProductsag_naziv: TStringField;
@@ -54,6 +58,17 @@ type
     qStorageInmu_storno: TStringField;
     qStorageInmu_time: TStringField;
     qStorageInusrStorage: TStringField;
+    qStorageOutmi_datum: TDateField;
+    qStorageOutmi_doc: TLongintField;
+    qStorageOutmi_evident: TStringField;
+    qStorageOutmi_id: TLongintField;
+    qStorageOutmi_magacin: TLongintField;
+    qStorageOutmi_notes: TStringField;
+    qStorageOutmi_operater: TLongintField;
+    qStorageOutmi_osnov: TStringField;
+    qStorageOutmi_out: TLongintField;
+    qStorageOutmi_storno: TStringField;
+    qStorageOutmi_time: TStringField;
     qStorages: TSQLQuery;
     qStoragesm_id: TLongintField;
     qStoragesm_naziv: TStringField;
@@ -72,6 +87,10 @@ type
     docName: TStringField;
     qStorageIn: TSQLQuery;
     qStorageInsupplierStorage: TStringField;
+    qStorageOut: TSQLQuery;
+    qStorageOutusrStorage: TStringField;
+    qStorageOutoutStorage: TStringField;
+    qDocStorageOut: TSQLQuery;
     supplierStorage: TStringField;
     userStorage: TStringField;
     procedure dbhAfterConnect(Sender: TObject);
@@ -88,6 +107,11 @@ type
     procedure qStorageInBeforeOpen(DataSet: TDataSet);
     procedure qStorageInBeforePost(DataSet: TDataSet);
     procedure qStorageInNewRecord(DataSet: TDataSet);
+    procedure qStorageOutAfterDelete(DataSet: TDataSet);
+    procedure qStorageOutAfterPost(DataSet: TDataSet);
+    procedure qStorageOutBeforeOpen(DataSet: TDataSet);
+    procedure qStorageOutBeforePost(DataSet: TDataSet);
+    procedure qStorageOutNewRecord(DataSet: TDataSet);
     procedure qTemplateAfterDelete(DataSet: TDataSet);
     procedure qTemplateAfterPost(DataSet: TDataSet);
     procedure qTemplateBeforeOpen(DataSet: TDataSet);
@@ -342,6 +366,101 @@ begin
   end;
   // inace procitaj rezultat
   TSQLQuery(DataSet).FieldByName('mu_datum').AsDateTime:= qGeneral.Fields[0].AsDateTime;
+end;
+
+procedure Tdbm.qStorageOutAfterDelete(DataSet: TDataSet);
+begin
+  postChanges(TSQLQuery(DataSet));
+end;
+
+procedure Tdbm.qStorageOutAfterPost(DataSet: TDataSet);
+begin
+  postChanges(TSQLQuery(DataSet));
+end;
+
+procedure Tdbm.qStorageOutBeforeOpen(DataSet: TDataSet);
+var
+  currUserStorage : Integer = -1;
+begin
+  currUserStorage:= getUserStorageId; //param
+  TSQLQuery(DataSet).Params[0].AsInteger:= currUserStorage;
+end;
+
+procedure Tdbm.qStorageOutBeforePost(DataSet: TDataSet);
+const
+  ID_KEY : String = 'mi_id';
+  SEQUENCE_NAME : String = 'mi_nalog_mi_id_seq';
+  TIME_FIELD : String = 'mi_time'; //obavezan
+var
+  currHost, currPort : String;
+  new_id : Integer = -1;
+  sqlSelectTime : String = 'select current_time';
+begin
+  { check server before}
+  currHost:= getCurrentHost;
+  currPort:= getCurrentPort;
+  //ShowMessage(currHost);
+  //ShowMessage(currPort);
+  if not checkServer(getCurrentHost, getCurrentPort) then
+      cancelAll(TSQLQuery(DataSet))
+    else
+      begin
+        if TSQLQuery(DataSet).FieldByName(ID_KEY).IsNull then
+          begin
+            new_id:= getNewKey(SEQUENCE_NAME);
+            TSQLQuery(DataSet).FieldByName(ID_KEY).AsInteger:= new_id;
+          end;
+        //vreme unosa
+        qGeneral.Close;
+        qGeneral.SQL.Clear;
+        qGeneral.SQL.Text:= sqlSelectTime;
+        try
+          qGeneral.Open;
+        except
+          TSQLQuery(DataSet).FieldByName(TIME_FIELD).AsString:= DateTimeToStr(Now);
+          Exit;
+        end;
+        //else time to str
+        TSQLQuery(DataSet).FieldByName(TIME_FIELD).AsString:= DateTimeToStr(qGeneral.Fields[0].AsDateTime);
+      end;
+end;
+
+procedure Tdbm.qStorageOutNewRecord(DataSet: TDataSet);
+var
+  sql_select_date : String;
+  currOperater : Integer = -1;
+  currUserStorage : Integer = -1;
+  currSupplierStorage : Integer = -1;
+begin
+  TSQLQuery(DataSet).FieldByName('mi_storno').AsString:= 'Ne';
+  TSQLQuery(DataSet).FieldByName('mi_evident').AsString:= 'Ne';
+  TSQLQuery(DataSet).FieldByName('mi_doc').AsInteger:= 1; //predatnice
+  //operater
+  currOperater:= getUserId;
+  TSQLQuery(DataSet).FieldByName('mi_operater').AsInteger:= currOperater;
+  // korisnikov, dobavljacev magacin
+  currUserStorage:= getUserStorageId;
+  currSupplierStorage:= getSupplierStorageId;
+
+  TSQLQuery(DataSet).FieldByName('mi_magacin').AsInteger:= currUserStorage;
+  //TSQLQuery(DataSet).FieldByName('mi_out').AsInteger:= currSupplierStorage;
+  //select date from db server
+  sql_select_date:= 'select current_date';
+  qGeneral.Close;
+  qGeneral.SQL.Clear;
+  qGeneral.SQL.Text:= sql_select_date;
+  try
+    qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      TSQLQuery(DataSet).FieldByName('mi_datum').AsDateTime:= Now;
+      ShowMessage(e.Message);
+      Exit;
+    end;
+  end;
+  // inace procitaj rezultat
+  TSQLQuery(DataSet).FieldByName('mi_datum').AsDateTime:= qGeneral.Fields[0].AsDateTime;
 end;
 
 procedure Tdbm.qTemplateAfterDelete(DataSet: TDataSet);

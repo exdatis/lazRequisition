@@ -878,6 +878,9 @@ object frmMain: TfrmMain
     end
     object MenuItem8: TMenuItem
       Caption = 'Izdavanje robe'
+      object MenuItem10: TMenuItem
+        Action = acStorageOut
+      end
     end
     object MenuItem9: TMenuItem
       Caption = 'Izveštaji'
@@ -906,6 +909,11 @@ object frmMain: TfrmMain
       Caption = 'Interni prijem robe'
       Hint = 'Interni prijem robe'
       OnExecute = acStorageInExecute
+    end
+    object acStorageOut: TAction
+      Caption = 'Interna predaja robe'
+      Hint = 'Interna predaja robe'
+      OnExecute = acStorageOutExecute
     end
   end
 end
