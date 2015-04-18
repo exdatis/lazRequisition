@@ -75,7 +75,7 @@ inherited frmStorageOut: TfrmStorageOut
       Top = 2
       Width = 221
       Align = alLeft
-      Caption = 'Stavke - primljena roba'
+      Caption = 'Stavke - predata roba'
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -123,10 +123,10 @@ inherited frmStorageOut: TfrmStorageOut
     Height = 408
     Top = 48
     Width = 812
-    ActivePage = tsItems
+    ActivePage = tsOrders
     Align = alClient
     ShowTabs = False
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 2
     object tsOrders: TTabSheet
       Caption = 'tsOrders'
@@ -292,6 +292,7 @@ inherited frmStorageOut: TfrmStorageOut
             Caption = ' Evidentiran nalog prijema'
             DataField = 'mi_evident'
             DataSource = dbm.dsStorageOut
+            OnChange = dbcAppliedChange
             TabOrder = 0
             ValueChecked = 'Da'
             ValueUnchecked = 'Ne'
@@ -305,6 +306,7 @@ inherited frmStorageOut: TfrmStorageOut
             Caption = ' Storniran nalog prijema'
             DataField = 'mi_storno'
             DataSource = dbm.dsStorageOut
+            OnChange = dbcCanceledChange
             TabOrder = 1
             ValueChecked = 'Da'
             ValueUnchecked = 'Ne'
@@ -732,7 +734,6 @@ inherited frmStorageOut: TfrmStorageOut
   end
   object qItems: TSQLQuery[7]
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'mis_id'

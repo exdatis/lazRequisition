@@ -81,6 +81,8 @@ type
     procedure btnNotThisProductClick(Sender: TObject);
     procedure btnThisProductClick(Sender: TObject);
     procedure cmbSearchArgChange(Sender: TObject);
+    procedure dbcAppliedChange(Sender: TObject);
+    procedure dbcCanceledChange(Sender: TObject);
     procedure dbgItemsMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure dbgItemsTitleClick(Column: TColumn);
@@ -107,6 +109,8 @@ type
     function doFindProduct(const sql_clause : String) : Boolean;
     procedure reopenItems;
     procedure onPageItems;
+    // evidencija
+    procedure applyRecord;
   public
     { public declarations }
     procedure doNewRec; override;
@@ -152,6 +156,71 @@ begin
   //obrisi tekst i dodeli fokus polju za pretragu
   edtSearchProduct.Clear;
   edtSearchProduct.SetFocus;
+end;
+
+procedure TfrmStorageOut.dbcAppliedChange(Sender: TObject);
+const
+  Applied_error : String = 'Kliknite storno za brisanje evidencije.';
+begin
+  if (dbm.qStorageOut.FieldByName('mi_evident').AsString = 'Ne') then
+    begin
+      ShowMessage(Applied_error);
+      btnCancel.Click;
+    end
+  else
+    applyRecord;
+end;
+
+procedure TfrmStorageOut.dbcCanceledChange(Sender: TObject);
+var
+  sql : String;
+  currOrder : Integer = -1;
+  appliedMsg : String;
+begin
+  if (dbm.qStorageOut.IsEmpty) then
+    begin
+      btnCancel.Click;
+      Exit;
+    end;
+  if (dbm.qStorageOut.FieldByName('mi_storno').AsString = 'Ne') then
+    Exit;
+
+  if(dbm.qStorageOut.FieldByName('mi_evident').AsString = 'Ne') then
+    if (dbm.qStorageOut.FieldByName('mi_storno').AsString = 'Da') then
+      begin
+        btnCancel.Click;
+        Exit;
+      end;
+
+  Screen.Cursor:= crSQLWait;
+  // pripremi qGeneral
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  currOrder:= dbm.qStorageOut.FieldByName('mi_id').AsInteger;
+  // napravi proceduru jer ovde treba select upit
+  sql:= 'SELECT * FROM drop_storage_out(' + IntToStr(currOrder) + ')';
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      dbm.qStorageOut.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      Exit;
+    end;
+  end;
+  //success msg
+  appliedMsg:= 'Nalog je storniran.';
+  dbm.qStorageOut.FieldByName('mi_evident').AsString := 'Ne';
+  //commit
+  dbm.qStorageOut.ApplyUpdates;
+  dbm.qGeneral.ApplyUpdates;
+  dbm.dbt.CommitRetaining;
+  Screen.Cursor:= crDefault;
+  ShowMessage(appliedMsg);
 end;
 
 procedure TfrmStorageOut.acFProductByNameExecute(Sender: TObject);
@@ -484,6 +553,46 @@ begin
   Screen.Cursor:= crDefault;
   //set active page
   enbForms.ActivePageIndex:= 1;
+end;
+
+procedure TfrmStorageOut.applyRecord;
+var
+  sql : String;
+  currOrder : Integer = -1;
+  appliedMsg : String;
+begin
+  if (dbm.qStorageOut.IsEmpty) then
+    Exit;
+  reopenItems;
+  Screen.Cursor:= crSQLWait;
+  // pripremi qGeneral
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  currOrder:= dbm.qStorageOut.FieldByName('mi_id').AsInteger;
+  sql:= 'SELECT * FROM aplly_storage_out(' + IntToStr(currOrder)  + ')';
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      dbm.qStorageOut.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      Exit;
+    end;
+  end;
+  //success msg
+  appliedMsg:= 'Evidentirano slogova: ' + IntToStr(dbm.qGeneral.Fields[0].AsInteger);
+  // set storno val
+  dbm.qStorageOut.FieldByName('mi_storno').AsString:= 'Ne';
+  //commit
+  dbm.qStorageOut.ApplyUpdates;
+  dbm.qGeneral.ApplyUpdates;
+  dbm.dbt.CommitRetaining;
+  Screen.Cursor:= crDefault;
+  ShowMessage(appliedMsg);
 end;
 
 procedure TfrmStorageOut.doNewRec;
