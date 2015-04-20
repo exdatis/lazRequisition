@@ -1,0 +1,329 @@
+object frmStock: TfrmStock
+  Left = 309
+  Height = 487
+  Top = 203
+  Width = 812
+  BorderStyle = bsNone
+  Caption = 'frmStock'
+  ClientHeight = 487
+  ClientWidth = 812
+  Font.Height = -12
+  OnClose = FormClose
+  OnShow = FormShow
+  LCLVersion = '1.2.6.0'
+  object lblFormCaption: TLabel
+    Left = 0
+    Height = 17
+    Top = 0
+    Width = 812
+    Align = alTop
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Lager lista'
+    Color = clSilver
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+    Transparent = False
+  end
+  object Panel1: TPanel
+    Left = -2
+    Height = 36
+    Top = 16
+    Width = 816
+    Anchors = [akTop, akLeft, akRight]
+    ClientHeight = 36
+    ClientWidth = 816
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Height = 17
+      Top = 11
+      Width = 122
+      Caption = 'Lager lista do datuma: '
+      ParentColor = False
+    end
+    object dateMax: TDateEdit
+      Left = 147
+      Height = 26
+      Top = 5
+      Width = 80
+      CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+      OKCaption = 'OK'
+      CancelCaption = 'Cancel'
+      DateOrder = doDMY
+      ButtonWidth = 23
+      AutoSize = False
+      CharCase = ecNormal
+      NumGlyphs = 1
+      MaxLength = 10
+      TabOrder = 0
+    end
+    object btnRunQuery: TButton
+      Cursor = crHandPoint
+      Left = 253
+      Height = 25
+      Top = 6
+      Width = 332
+      Caption = 'Izvrši upit'
+      OnClick = btnRunQueryClick
+      TabOrder = 1
+    end
+    object sBtnPrint: TSpeedButton
+      Cursor = crHandPoint
+      Left = 587
+      Height = 25
+      Hint = 'Štampa'
+      Top = 6
+      Width = 106
+      Caption = '   Print'
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000000303030E0D0C0C430C09
+        0922392F2A2D271F1D0700000000000000000000000000000000000000000000
+        00000707071C1D1D1D740C0C0C410101010F0B0B0B25757776D3BBBBB7FEBEB1
+        9EFA8FCE8DFE8FB88BE4979787A86F635A653A302B2543383202000000001111
+        1140434343E6767676FE585858FE3D3D3DED909291EDD4CCC0FECDC7A1FE3FB0
+        4AFE1EB73EFE42C059FEBCBF7DFEFDD5B1FEEADBCDFC716257320B0B0B1D4D4D
+        4DF0989899FEBABBBBFEBDBEBEFEAEAEAFFE6E6C6AFE7D775DFE147F14FE0D8B
+        41FE2680E4FEB0A4A3FEFBCFA6FEEBD7C3FE979793C21516150C1B1B1B449798
+        98FEAEAFB0FED2D3D3FED2D3D3FECDCECEFEC7C9C9FEC1C2C2FE9C9F9DFE8083
+        80FE857568FE977E66FE8D7B6BFE787A79FB1E1E1E67000000001C1C1C41BEC2
+        C1FEC5C7C7FEEBECECFEE7E8E8FEDDDDDDFE686768FE6D6C6DFE8D8D8DFEC8C9
+        C9FEC7C8C8FEC3C4C4FEB4B5B5FE5DA15AFE424D41AF0000000018181836C7CD
+        CBFEE6E9E8FEF3F4F4FEF3F4F4FEC1C2C2FE615F60FE5D5B5CFE595758FE4D4B
+        4CFE545354FE7F7F7FFED4D5D4FEBDCEBEFE5B635BA40000000013131329C8CB
+        CAFEE0E1E1FEE5E6E6FEE3E4E4FE848484FE727272FE717171FE6F6F6FFE6C6B
+        6CFE696868FE6A696AFEE7E8E8FEE3E4E4FE5B5B5B8D000000000E0E0E013F3F
+        3F47919292CBB7B8B8FE7A797AFE626162FE666565FE696869FE6D6C6CFE706F
+        6FFE727171FEADADADFEF3F4F4FEECEDEDFE2929294700000000000000000000
+        00008F827747E2C2A7FCE5C6ABFEC0A894FE9B8B7EFE766E68FE5A5859FE5A58
+        59FE7C7B7BFEDEDFDFFEE8E9E9FE8B8C8CBD0F0F0F0200000000000000000000
+        0000B1662C42F9DCC4FEFEE3CDFEFEE0C6FEFEDDC0FEFEDABBFEF5D2B4FEA995
+        86E0797979878080809A727373931E1E1E0D000000000000000000000000703C
+        1404DFB28FC7FEF4ECFEFEF1E5FEFEEDDEFEFEE9D7FEFEE5D0FEF7D3B5F59963
+        3A11000000000000000000000000000000000000000000000000000000008747
+        1615E6C4A9DBF7EBE1FCFEFBF8FEFEF9F4FEFEF6EFFEFEF3E8FEE4B6919D0000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000007E502D079D633729C386584ED9A47A73E4BD9E93B17140180000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000
+      }
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object btnClose: TButton
+      Cursor = crHandPoint
+      Left = 695
+      Height = 25
+      Hint = 'Zatvori formular'
+      Top = 6
+      Width = 115
+      Caption = 'Zatvori'
+      OnClick = btnCloseClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+    end
+  end
+  object dbgReport: TDBGrid
+    Cursor = crHandPoint
+    Left = 3
+    Height = 428
+    Hint = 'Klikni naslov polja za sortiranje'
+    Top = 55
+    Width = 805
+    AlternateColor = clScrollBar
+    Color = clSilver
+    Columns = <>
+    DataSource = dsReport
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 1
+    TitleFont.Height = -12
+    OnDrawColumnCell = dbgReportDrawColumnCell
+    OnMouseMove = dbgReportMouseMove
+    OnTitleClick = dbgReportTitleClick
+  end
+  object qReport: TSQLQuery
+    PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'art_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'art_sifra'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'art_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end    
+      item
+        Name = 'jm_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 15
+      end    
+      item
+        Name = 'ag_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'sum'
+        DataType = ftBCD
+        Precision = -1
+        Size = 4
+      end>
+    OnCalcFields = qReportCalcFields
+    Database = dbm.dbh
+    Transaction = dbm.dbt
+    SQL.Strings = (
+      'select'
+      '  a.art_id,'
+      '  a.art_sifra,'
+      '  a.art_naziv,'
+      '  a.jm_naziv,'
+      '  a.ag_naziv,'
+      '  sum(b.ka_razlika)'
+      'from'
+      '  vproduct a,'
+      '  kartica_a b'
+      'where'
+      '  b.ka_artikal = a.art_id'
+      '  and'
+      '  b.ka_datum <= :date_max'
+      '  and'
+      '  ka_magacin = :storage'
+      'group by'
+      '  a.art_id,'
+      '  a.art_sifra,'
+      '  a.art_naziv,'
+      '  a.jm_naziv,'
+      '  a.ag_naziv'
+      'order by'
+      '  a.art_sifra'
+    )
+    Params = <    
+      item
+        DataType = ftDate
+        Name = 'date_max'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftInteger
+        Name = 'storage'
+        ParamType = ptInput
+      end>
+    left = 209
+    top = 216
+    object qReportart_id: TLongintField
+      Alignment = taLeftJustify
+      DisplayLabel = 'AID'
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'art_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qReportart_sifra: TStringField
+      DisplayLabel = 'Šifra'
+      DisplayWidth = 12
+      FieldKind = fkData
+      FieldName = 'art_sifra'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qReportart_naziv: TStringField
+      DisplayLabel = 'Proizvod'
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'art_naziv'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 70
+    end
+    object qReportjm_naziv: TStringField
+      DisplayLabel = 'Mera'
+      DisplayWidth = 9
+      FieldKind = fkData
+      FieldName = 'jm_naziv'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qReportsum: TBCDField
+      DisplayLabel = 'Stanje'
+      DisplayWidth = 9
+      FieldKind = fkData
+      FieldName = 'sum'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#0.00'
+      Precision = -1
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qReportag_naziv: TStringField
+      DisplayLabel = 'Grupa'
+      DisplayWidth = 20
+      FieldKind = fkData
+      FieldName = 'ag_naziv'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qReportnegative: TBooleanField
+      DisplayLabel = 'U minusu'
+      DisplayWidth = 5
+      FieldKind = fkCalculated
+      FieldName = 'negative'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+  end
+  object dsReport: TDataSource
+    DataSet = qReport
+    left = 288
+    top = 228
+  end
+end

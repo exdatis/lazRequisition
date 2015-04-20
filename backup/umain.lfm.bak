@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 194
+  Left = 224
   Height = 535
-  Top = 173
+  Top = 174
   Width = 1036
   Caption = 'Trebovanje robe'
   ChildSizing.LeftRightSpacing = 3
@@ -878,6 +878,9 @@ object frmMain: TfrmMain
     end
     object MenuItem8: TMenuItem
       Caption = 'Izdavanje robe'
+      object MenuItem10: TMenuItem
+        Action = acStorageOut
+      end
     end
     object MenuItem9: TMenuItem
       Caption = 'Izveštaji'
@@ -911,6 +914,11 @@ object frmMain: TfrmMain
       Caption = 'Interna predaja robe'
       Hint = 'Interna predaja robe'
       OnExecute = acStorageOutExecute
+    end
+    object acStock: TAction
+      Caption = 'Lager lista'
+      Hint = 'Lager magacina'
+      OnExecute = acStockExecute
     end
   end
 end

@@ -19,6 +19,7 @@ type
     acRequisition: TAction;
     acStorageIn: TAction;
     acStorageOut: TAction;
+    acStock: TAction;
     btnGetDb: TButton;
     btnConnect: TButton;
     btnSaveDbIni: TButton;
@@ -44,6 +45,7 @@ type
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
+    MenuItem11: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -57,6 +59,7 @@ type
     ledConnection: TuELED;
     procedure acDefaultRequisitionExecute(Sender: TObject);
     procedure acRequisitionExecute(Sender: TObject);
+    procedure acStockExecute(Sender: TObject);
     procedure acStorageInExecute(Sender: TObject);
     procedure acStorageOutExecute(Sender: TObject);
     procedure btnConnectClick(Sender: TObject);
@@ -108,7 +111,7 @@ const
 implementation
 uses
   udbm, uapppwd, uopendatasets, udefrequisition, urequisition, ustoragein,
-  ustorageout;
+  ustorageout, ustock;
 {$R *.lfm}
 
 { TfrmMain }
@@ -584,6 +587,39 @@ begin
     newForm.Show;
     // dodeli necemu fokus zbog precica
     newForm.DBGrid1.SetFocus;
+    {onemoguci izmene}
+    disableStorages;
+    Application.ProcessMessages;
+  finally
+    Screen.Cursor:= crDefault;
+  end;
+end;
+
+procedure TfrmMain.acStockExecute(Sender: TObject);
+var
+  newForm : TfrmStock;
+begin
+  {close any forms}
+  clearOldForms;
+  {proveri konekciju sa bazom}
+  if not dbm.dbh.Connected then
+    begin
+      ShowMessage(NO_CONNECTION_ERROR);
+      Exit;
+    end;
+  {show work commitment}
+  Screen.Cursor:= crHourGlass;
+  try
+    {create new}
+    newForm:= TfrmStock.Create(nil);
+    {set dbGrid title images}
+    //newForm.setDbGridTitleImages;
+    {set parent ctrl}
+    newForm.Parent:= formPanel;
+    newForm.Align:= alClient;
+    newForm.Show;
+    // dodeli necemu fokus zbog precica
+    newForm.dateMax.SetFocus;
     {onemoguci izmene}
     disableStorages;
     Application.ProcessMessages;
