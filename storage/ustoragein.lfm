@@ -123,11 +123,12 @@ inherited frmStorageIn: TfrmStorageIn
     Height = 408
     Top = 48
     Width = 812
-    ActivePage = tsItems
+    ActivePage = tsOrder
     Align = alClient
     ShowTabs = False
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 2
+    OnChange = enbFormsChange
     object tsOrder: TTabSheet
       Caption = 'tsOrder'
       ClientHeight = 404

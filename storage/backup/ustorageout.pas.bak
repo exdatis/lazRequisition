@@ -93,6 +93,7 @@ type
     procedure dbProductKeyPress(Sender: TObject; var Key: char);
     procedure edtSearchProductKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure enbFormsChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure qItemsAfterDelete(DataSet: TDataSet);
@@ -366,6 +367,29 @@ begin
     end;
 end;
 
+procedure TfrmStorageOut.enbFormsChange(Sender: TObject);
+var
+  newTitle : String;
+begin
+  case enbForms.ActivePageIndex of
+    0: begin
+         newTitle:= DEFAULT_TITLE + ' [' + 'Nalozi predaje robe]';
+         lblFormCaption.Caption:= newTitle;
+         Application.ProcessMessages;
+       end;
+    1: begin
+         newTitle:= DEFAULT_TITLE + ' [' + 'Stavke - predata roba]';
+         lblFormCaption.Caption:= newTitle;
+       end;
+  else
+    begin
+      newTitle:= DEFAULT_TITLE + ' [' + 'Nalozi predaje robe]';
+      lblFormCaption.Caption:= newTitle;
+      Application.ProcessMessages;
+    end;
+  end;
+end;
+
 procedure TfrmStorageOut.FormCreate(Sender: TObject);
 begin
   sql_find_product:= 'SELECT art_id, art_sifra, art_naziv, jm_naziv, ag_naziv ' +
@@ -553,11 +577,47 @@ begin
   Screen.Cursor:= crDefault;
   //set active page
   enbForms.ActivePageIndex:= 1;
+  Application.ProcessMessages;
 end;
 
 procedure TfrmStorageOut.applyRecord;
+var
+  sql : String;
+  currOrder : Integer = -1;
+  appliedMsg : String;
 begin
-
+  if (dbm.qStorageOut.IsEmpty) then
+    Exit;
+  reopenItems;
+  Screen.Cursor:= crSQLWait;
+  // pripremi qGeneral
+  dbm.qGeneral.Close;
+  dbm.qGeneral.SQL.Clear;
+  currOrder:= dbm.qStorageOut.FieldByName('mi_id').AsInteger;
+  sql:= 'SELECT * FROM aplly_storage_out(' + IntToStr(currOrder)  + ')';
+  dbm.qGeneral.SQL.Text:= sql;
+  try
+    dbm.qGeneral.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      dbm.qStorageOut.CancelUpdates;
+      dbm.dbt.RollbackRetaining;
+      Exit;
+    end;
+  end;
+  //success msg
+  appliedMsg:= 'Evidentirano slogova: ' + IntToStr(dbm.qGeneral.Fields[0].AsInteger);
+  // set storno val
+  dbm.qStorageOut.FieldByName('mi_storno').AsString:= 'Ne';
+  //commit
+  dbm.qStorageOut.ApplyUpdates;
+  dbm.qGeneral.ApplyUpdates;
+  dbm.dbt.CommitRetaining;
+  Screen.Cursor:= crDefault;
+  ShowMessage(appliedMsg);
 end;
 
 procedure TfrmStorageOut.doNewRec;

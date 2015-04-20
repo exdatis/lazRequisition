@@ -93,6 +93,7 @@ type
     procedure dbProductKeyPress(Sender: TObject; var Key: char);
     procedure edtSearchProductKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure enbFormsChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure qItemsAfterDelete(DataSet: TDataSet);
@@ -366,6 +367,30 @@ begin
     end;
 end;
 
+procedure TfrmStorageOut.enbFormsChange(Sender: TObject);
+var
+  newTitle : String;
+begin
+  case enbForms.ActivePageIndex of
+    0: begin
+         newTitle:= DEFAULT_TITLE + ' [' + 'Nalozi predaje robe]';
+         lblFormCaption.Caption:= newTitle;
+         Application.ProcessMessages;
+       end;
+    1: begin
+         newTitle:= DEFAULT_TITLE + ' [' + 'Stavke - predata roba]';
+         lblFormCaption.Caption:= newTitle;
+         Application.ProcessMessages;
+       end;
+  else
+    begin
+      newTitle:= DEFAULT_TITLE + ' [' + 'Nalozi predaje robe]';
+      lblFormCaption.Caption:= newTitle;
+      Application.ProcessMessages;
+    end;
+  end;
+end;
+
 procedure TfrmStorageOut.FormCreate(Sender: TObject);
 begin
   sql_find_product:= 'SELECT art_id, art_sifra, art_naziv, jm_naziv, ag_naziv ' +
@@ -553,6 +578,7 @@ begin
   Screen.Cursor:= crDefault;
   //set active page
   enbForms.ActivePageIndex:= 1;
+  Application.ProcessMessages;
 end;
 
 procedure TfrmStorageOut.applyRecord;
