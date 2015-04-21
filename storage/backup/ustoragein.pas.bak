@@ -392,10 +392,6 @@ begin
     1: begin
          newTitle:= DEFAULT_TITLE + ' [' + 'Stavke prijema]';
          lblFormCaption.Caption:= newTitle;
-         if qItems.IsEmpty then
-           btnGetItems.Enabled:= True
-         else
-           btnGetItems.Enabled:= False;
          Application.ProcessMessages;
        end;
   else

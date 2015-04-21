@@ -123,10 +123,10 @@ inherited frmStorageIn: TfrmStorageIn
     Height = 408
     Top = 48
     Width = 812
-    ActivePage = tsOrder
+    ActivePage = tsItems
     Align = alClient
     ShowTabs = False
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 2
     OnChange = enbFormsChange
     object tsOrder: TTabSheet
@@ -351,12 +351,12 @@ inherited frmStorageIn: TfrmStorageIn
       ClientWidth = 802
       object GroupBox2: TGroupBox
         Left = 4
-        Height = 106
+        Height = 78
         Top = 0
         Width = 793
         Anchors = [akTop, akLeft, akRight]
         Caption = ' Obrada podataka '
-        ClientHeight = 88
+        ClientHeight = 60
         ClientWidth = 791
         TabOrder = 0
         object dbProduct: TDBEdit
@@ -496,29 +496,11 @@ inherited frmStorageIn: TfrmStorageIn
           MaxLength = 0
           TabOrder = 2
         end
-        object btnGetItems: TButton
-          Cursor = crHandPoint
-          Left = 7
-          Height = 25
-          Top = 59
-          Width = 780
-          Caption = 'Generiši stavke trebovanja prema tabeli minimalnih zalha (standardno trebovanje)'
-          TabOrder = 3
-        end
-        object prgBar: TProgressBar
-          Cursor = crSQLWait
-          Left = 16
-          Height = 20
-          Top = 63
-          Width = 771
-          TabOrder = 4
-          Visible = False
-        end
       end
       object Panel4: TPanel
         Left = 4
         Height = 35
-        Top = 110
+        Top = 81
         Width = 793
         Anchors = [akTop, akLeft, akRight]
         BorderStyle = bsSingle
@@ -564,9 +546,9 @@ inherited frmStorageIn: TfrmStorageIn
       object dbgItems: TDBGrid
         Cursor = crHandPoint
         Left = 4
-        Height = 252
+        Height = 282
         Hint = 'Klikni naslov polja za sortiranje'
-        Top = 150
+        Top = 120
         Width = 793
         AlternateColor = clScrollBar
         Anchors = [akTop, akLeft, akBottom]

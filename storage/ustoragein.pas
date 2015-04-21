@@ -19,7 +19,6 @@ type
     bitBtnItems: TBitBtn;
     bitBtnOrders: TBitBtn;
     btnGenAll: TButton;
-    btnGetItems: TButton;
     btnNotThisProduct: TButton;
     btnThisProduct: TButton;
     cmbSearchArg: TComboBox;
@@ -58,7 +57,6 @@ type
     Panel4: TPanel;
     panelProductDlg: TPanel;
     popFindProduct: TPopupMenu;
-    prgBar: TProgressBar;
     qFindProduct: TSQLQuery;
     qFindProductag_naziv: TStringField;
     qFindProductart_id: TLongintField;
