@@ -887,6 +887,9 @@ object frmMain: TfrmMain
       object MenuItem11: TMenuItem
         Action = acStock
       end
+      object MenuItem12: TMenuItem
+        Action = acProductReview
+      end
     end
   end
   object aclMain: TActionList
@@ -922,6 +925,11 @@ object frmMain: TfrmMain
       Caption = 'Lager lista'
       Hint = 'Lager magacina'
       OnExecute = acStockExecute
+    end
+    object acProductReview: TAction
+      Caption = 'Kartica artikla'
+      Hint = 'Kartica artikla'
+      OnExecute = acProductReviewExecute
     end
   end
 end

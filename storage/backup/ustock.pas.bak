@@ -32,8 +32,6 @@ type
     qReport: TSQLQuery;
     procedure btnCloseClick(Sender: TObject);
     procedure btnRunQueryClick(Sender: TObject);
-    procedure dbgReportDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbgReportMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure dbgReportTitleClick(Column: TColumn);
@@ -65,12 +63,6 @@ end;
 procedure TfrmStock.btnRunQueryClick(Sender: TObject);
 begin
   runReportQuery;
-end;
-
-procedure TfrmStock.dbgReportDrawColumnCell(Sender: TObject; const Rect: TRect;
-  DataCol: Integer; Column: TColumn; State: TGridDrawState);
-begin
-
 end;
 
 procedure TfrmStock.dbgReportMouseMove(Sender: TObject; Shift: TShiftState; X,

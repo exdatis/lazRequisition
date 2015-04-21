@@ -146,7 +146,6 @@ object frmStock: TfrmStock
     ShowHint = True
     TabOrder = 1
     TitleFont.Height = -12
-    OnDrawColumnCell = dbgReportDrawColumnCell
     OnMouseMove = dbgReportMouseMove
     OnTitleClick = dbgReportTitleClick
   end

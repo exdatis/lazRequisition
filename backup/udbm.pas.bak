@@ -13,6 +13,7 @@ type
   { Tdbm }
 
   Tdbm = class(TDataModule)
+    dsDocStorageOut: TDataSource;
     dsStorageOut: TDataSource;
     dsStorageIn: TDataSource;
     dsDocStorageIn: TDataSource;
@@ -24,6 +25,8 @@ type
     dbLib: TSQLDBLibraryLoader;
     qDocStorageIndoc_id: TLongintField;
     qDocStorageIndoc_naziv: TStringField;
+    qDocStorageOutdoc_id: TLongintField;
+    qDocStorageOutdoc_naziv: TStringField;
     qGeneral: TSQLQuery;
     dbt: TSQLTransaction;
     qProductsag_naziv: TStringField;
@@ -87,6 +90,7 @@ type
     qStorageOut: TSQLQuery;
     qStorageOutusrStorage: TStringField;
     qStorageOutoutStorage: TStringField;
+    qDocStorageOut: TSQLQuery;
     supplierStorage: TStringField;
     userStorage: TStringField;
     procedure dbhAfterConnect(Sender: TObject);

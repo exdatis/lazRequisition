@@ -138,6 +138,7 @@ object frmStock: TfrmStock
     Top = 55
     Width = 805
     AlternateColor = clScrollBar
+    Anchors = [akLeft, akRight, akBottom]
     Color = clSilver
     Columns = <>
     DataSource = dsReport
@@ -151,7 +152,6 @@ object frmStock: TfrmStock
   end
   object qReport: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'art_id'

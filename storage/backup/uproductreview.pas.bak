@@ -1,0 +1,282 @@
+unit uproductreview;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls, Graphics, Dialogs,
+  StdCtrls, ExtCtrls, EditBtn, DBGrids, Buttons, Menus;
+
+type
+
+  { TfrmProductReview }
+
+  TfrmProductReview = class(TForm)
+    btnNotThisProduct: TButton;
+    btnThisProduct: TButton;
+    btnRunQuery: TButton;
+    dbgReport: TDBGrid;
+    dsReport: TDataSource;
+    dateMin: TDateEdit;
+    dateMax: TDateEdit;
+    dbgProductsFound: TDBGrid;
+    dsFindProduct: TDataSource;
+    edtProduct: TEdit;
+    Label1: TLabel;
+    Label9: TLabel;
+    lblFormCaption: TLabel;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    Panel1: TPanel;
+    panelProductDlg: TPanel;
+    popFindProduct: TPopupMenu;
+    qFindProduct: TSQLQuery;
+    qFindProductag_naziv: TStringField;
+    qFindProductart_id: TLongintField;
+    qFindProductart_naziv: TStringField;
+    qFindProductart_sifra: TStringField;
+    qFindProductjm_naziv: TStringField;
+    qReportcurr_state: TBCDField;
+    qReportdoc_id: TLongintField;
+    qReportdoc_name: TStringField;
+    qReportmeasure: TStringField;
+    qReportnegative: TBooleanField;
+    qReportpartner: TStringField;
+    qReportrec_no: TLongintField;
+    qReportthis_date: TDateField;
+    qReportturnover: TBCDField;
+    sbtnFindProduct: TSpeedButton;
+    qReport: TSQLQuery;
+    procedure btnNotThisProductClick(Sender: TObject);
+    procedure btnRunQueryClick(Sender: TObject);
+    procedure btnThisProductClick(Sender: TObject);
+    procedure dbgProductsFoundKeyPress(Sender: TObject; var Key: char);
+    procedure edtProductKeyPress(Sender: TObject; var Key: char);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure MenuItem1Click(Sender: TObject);
+    procedure MenuItem2Click(Sender: TObject);
+    procedure qReportBeforeOpen(DataSet: TDataSet);
+    procedure qReportCalcFields(DataSet: TDataSet);
+    procedure sbtnFindProductClick(Sender: TObject);
+  private
+    { private declarations }
+    thisProduct : Integer; //trazi karticu ovog artikla-proizvoda
+    sql_find_product : String;
+    function doFindProduct(const sql_clause : String) : Boolean;
+    procedure findProductByName;
+    procedure findProductByCode;
+  public
+    { public declarations }
+  end;
+
+var
+  frmProductReview: TfrmProductReview;
+
+implementation
+uses
+  udbm, uexdatis;
+{$R *.lfm}
+
+{ TfrmProductReview }
+
+procedure TfrmProductReview.FormCreate(Sender: TObject);
+begin
+  thisProduct:= 0; //nije izabran
+  sql_find_product:= 'SELECT art_id, art_sifra, art_naziv, jm_naziv, ag_naziv ' +
+                      'FROM  vproduct ';
+end;
+
+procedure TfrmProductReview.FormShow(Sender: TObject);
+begin
+  dateMin.Date:= Now;
+  dateMax.Date:= Now;
+end;
+
+procedure TfrmProductReview.MenuItem1Click(Sender: TObject);
+begin
+  findProductByCode;
+end;
+
+procedure TfrmProductReview.MenuItem2Click(Sender: TObject);
+begin
+  findProductByName;
+end;
+
+procedure TfrmProductReview.qReportBeforeOpen(DataSet: TDataSet);
+var
+  myStorage : Integer;
+begin
+  //set params
+  TSQLQuery(DataSet).Params[0].AsDate:= dateMin.Date;
+  TSQLQuery(DataSet).Params[1].AsDate:= dateMax.Date;
+  TSQLQuery(DataSet).Params[2].AsInteger:= thisProduct;
+  myStorage:= getUserStorageId;
+  TSQLQuery(DataSet).Params[3].AsInteger:= myStorage;
+end;
+
+procedure TfrmProductReview.qReportCalcFields(DataSet: TDataSet);
+begin
+  if(TSQLQuery(DataSet).FieldByName('curr_state').AsFloat < 0) then
+    TSQLQuery(DataSet).FieldByName('negative').AsBoolean:= True
+  else
+    TSQLQuery(DataSet).FieldByName('negative').AsBoolean:= False;
+end;
+
+procedure TfrmProductReview.sbtnFindProductClick(Sender: TObject);
+begin
+  popFindProduct.PopUp(Mouse.CursorPos.X, Mouse.CursorPos.Y);
+end;
+
+procedure TfrmProductReview.btnThisProductClick(Sender: TObject);
+begin
+  thisProduct:= qFindProduct.Fields[0].AsInteger;
+  edtProduct.Text:= qFindProduct.FieldByName('art_naziv').AsString;
+  panelProductDlg.Visible:= False;
+  btnRunQuery.SetFocus;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmProductReview.dbgProductsFoundKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if(Key = #32) then
+    btnThisProduct.Click;
+end;
+
+procedure TfrmProductReview.edtProductKeyPress(Sender: TObject; var Key: char);
+begin
+  if(Key = #13) then
+    findProductByName;
+end;
+
+procedure TfrmProductReview.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  CloseAction:= caFree;
+  self:= nil;
+end;
+
+procedure TfrmProductReview.btnNotThisProductClick(Sender: TObject);
+begin
+  panelProductDlg.Visible:= False;
+  edtProduct.SetFocus;
+  Application.ProcessMessages;
+end;
+
+procedure TfrmProductReview.btnRunQueryClick(Sender: TObject);
+begin
+  Screen.Cursor:= crSQLWait;
+  qReport.DisableControls;
+  qReport.Close;
+
+  try
+    qReport.Open;
+  except
+    on e : Exception do
+    begin
+      Screen.Cursor:= crDefault;
+      ShowMessage(e.Message);
+      qReport.EnableControls;
+      Exit;
+    end;
+  end;
+
+  Screen.Cursor:= crDefault;
+  qReport.EnableControls;
+  Application.ProcessMessages;
+end;
+
+function TfrmProductReview.doFindProduct(const sql_clause: String): Boolean;
+var
+  sql, search_param : String;
+begin
+  //kreiraj upit
+  sql:= sql_find_product + sql_clause;
+  //zatvori upit
+  qFindProduct.DisableControls;
+  qFindProduct.Close;
+  qFindProduct.SQL.Clear;
+  qFindProduct.SQL.Text:= sql;
+  //param
+  search_param:= '%' + edtProduct.Text + '%';
+  qFindProduct.Params[0].AsString:= search_param;
+  try
+    qFindProduct.Open;
+  except
+    on e : Exception do
+    begin
+      qFindProduct.Close;
+      qFindProduct.EnableControls;
+      ShowMessage(e.Message);
+      result:= False;
+      Exit;
+    end;
+  end;
+  // omoguci kontrole
+  qFindProduct.EnableControls;
+  result:= True;
+end;
+
+procedure TfrmProductReview.findProductByName;
+var
+  sql_clause : String;
+begin
+  // konmkatenacijom kreiraj upit
+  sql_clause:= ' WHERE lower(art_naziv) LIKE lower(:art_naziv) Order By art_naziv';
+  //run query
+  if doFindProduct(sql_clause) then
+    begin
+      if qFindProduct.IsEmpty then
+        begin
+          ShowMessage(EMPTY_SET_ERROR);
+          Exit;
+        end;
+      // ako postoji samo jedan zapis
+      if(qFindProduct.RecordCount < 2) then
+        begin
+          thisProduct:= qFindProduct.Fields[0].AsInteger;
+          edtProduct.Text:= qFindProduct.FieldByName('art_naziv').AsString;
+
+          btnRunQuery.SetFocus;  //pokreni upit
+          Exit;
+        end;
+      //else show result
+      panelProductDlg.Visible:= True;
+      dbgProductsFound.SetFocus;
+    end;
+end;
+
+procedure TfrmProductReview.findProductByCode;
+var
+  sql_clause : String;
+begin
+  // konmkatenacijom kreiraj upit
+  sql_clause:= ' WHERE lower(art_sifra) LIKE lower(:art_sifra) Order By art_naziv';
+  //run query
+  if doFindProduct(sql_clause) then
+    begin
+      if qFindProduct.IsEmpty then
+        begin
+          ShowMessage(EMPTY_SET_ERROR);
+          Exit;
+        end;
+      // ako postoji samo jedan zapis
+      if(qFindProduct.RecordCount < 2) then
+        begin
+          thisProduct:= qFindProduct.Fields[0].AsInteger;
+          edtProduct.Text:= qFindProduct.FieldByName('art_naziv').AsString;
+
+          btnRunQuery.SetFocus;  //pokreni upit
+          Exit;
+        end;
+      //else show result
+      panelProductDlg.Visible:= True;
+      dbgProductsFound.SetFocus;
+    end;
+end;
+
+end.
+
