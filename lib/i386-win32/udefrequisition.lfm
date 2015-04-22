@@ -1,0 +1,419 @@
+inherited frmDefRequisition: TfrmDefRequisition
+  OnCreate = FormCreate
+  inherited lblFormCaption: TLabel
+    Caption = 'Standardno trebovanje (minimalne zalihe)'
+  end
+  inherited Panel1: TPanel
+    inherited btnLast: TButton
+      ParentShowHint = True
+    end
+  end
+  object GroupBox1: TGroupBox[2]
+    Left = 8
+    Height = 81
+    Top = 20
+    Width = 796
+    Anchors = [akTop, akLeft, akRight]
+    Caption = ' Obrada podataka '
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+    ChildSizing.ShrinkVertical = crsHomogenousChildResize
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ClientHeight = 63
+    ClientWidth = 794
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 7
+      Height = 17
+      Top = 9
+      Width = 417
+      Align = alCustom
+      Alignment = taCenter
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = 'Artikal'
+      Color = clSilver
+      ParentColor = False
+      Transparent = False
+    end
+    object sbtnFindProduct: TSpeedButton
+      Cursor = crHandPoint
+      Left = 428
+      Height = 48
+      Hint = 'Pronadji artikal'
+      Top = 9
+      Width = 52
+      Align = alCustom
+      Anchors = [akTop, akLeft, akRight]
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+        FF00FFFFFF003BA8DBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF003BA8DBFF3BA8DBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF003BA8
+        DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8
+        DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFFFFFFFF00FFFFFF00FFFFFF003BA8
+        DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8
+        DBFF3BA8DBFF3BA8DBFF3BA8DBFF3BA8DBFFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF003BA8DBFF3BA8DBFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF003BA8DBFFFFFFFF00403B35FF4A443EFF49443EFF3A3631FF2A26
+        23FFFFFFFF00373434FF282522FF24221FFF1A1816FF050404FFFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF0049433DFF90857CFFABA197FF7C7268FF4943
+        3EFFFFFFFF00484441FFA09488FF9F9489FF7D7369FF191715FFFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00524C46FF90867DFFAEA59BFF776D64FF5550
+        4CFFFFFFFF0045423FFF9A8F84FFA0978CFF7A7167FF1F1C1AFFFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF0078726EFFA3978CFFC2B9AFFFA6998EFF827C
+        76FFFFFFFF006F6C69FF9C9186FFBBB0A5FFA69A8EFF4F4C49FFFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00605953FF46413BFF4E4842FF38332FFF3835
+        32FFC6C6C5FF5A5856FF1D1B19FF201D1BFF131110FF111111FFFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00A3978BFFA99D90FF7F756BFF7F7469FF7D72
+        67FF4E473FFF6B6056FF84786DFF7A6E64FF776D63FF1C1A18FFFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00C8BFB7FFA89B90FF897E74FF86786AFF8E7F
+        70FFA19181FF958372FF937F6DFF897666FF7D7166FF555351FFFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00897E73FF9B8E82FF887D72FF564F
+        48FFC0BCB8FF5D564EFF857668FF7C6F63FF6C655FFFBBBAB9FFFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00E5E3E1FFCFC9C4FFACA297FF776F
+        66FFFFFFFF00776D64FFA09488FFBAB3ADFFE2E1E0FFFFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00DFDBD7FFB3A79CFFA599
+        8DFFFFFFFF00AC9F92FF94897FFFB8B4B0FFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+      }
+      OnClick = sbtnFindProductClick
+    end
+    object Label2: TLabel
+      Left = 483
+      Height = 17
+      Top = 9
+      Width = 205
+      Align = alCustom
+      Alignment = taCenter
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = 'Jedinica mere'
+      Color = clSilver
+      ParentColor = False
+      Transparent = False
+    end
+    object dbMeasure: TDBEdit
+      Left = 483
+      Height = 27
+      Top = 30
+      Width = 205
+      DataField = 'jm_naziv'
+      DataSource = dbm.dsTemplate
+      ReadOnly = True
+      Anchors = [akTop, akLeft, akRight]
+      CharCase = ecNormal
+      Color = clSilver
+      Constraints.MaxHeight = 27
+      Constraints.MinHeight = 27
+      MaxLength = 0
+      TabOrder = 0
+    end
+    object Label3: TLabel
+      Left = 690
+      Height = 17
+      Top = 9
+      Width = 97
+      Align = alCustom
+      Alignment = taCenter
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      Caption = 'Količina'
+      Color = clSilver
+      ParentColor = False
+      Transparent = False
+    end
+    object dbQuantity: TDBEdit
+      Left = 690
+      Height = 27
+      Top = 30
+      Width = 97
+      DataField = 'tmp_kol'
+      DataSource = dbm.dsTemplate
+      Anchors = [akTop, akLeft, akRight]
+      CharCase = ecNormal
+      Constraints.MaxHeight = 27
+      Constraints.MinHeight = 27
+      MaxLength = 0
+      TabOrder = 1
+    end
+    object dbProduct: TDBEdit
+      Left = 7
+      Height = 27
+      Hint = 'Enter za pretragu'
+      Top = 30
+      Width = 417
+      DataField = 'art_naziv'
+      DataSource = dbm.dsTemplate
+      Anchors = [akTop, akLeft, akRight]
+      CharCase = ecNormal
+      Constraints.MaxHeight = 27
+      Constraints.MinHeight = 27
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+      OnKeyPress = dbProductKeyPress
+    end
+  end
+  object Panel2: TPanel[3]
+    Left = 8
+    Height = 35
+    Top = 103
+    Width = 796
+    Anchors = [akTop, akLeft, akRight]
+    BorderStyle = bsSingle
+    ChildSizing.LeftRightSpacing = 1
+    ChildSizing.TopBottomSpacing = 3
+    ChildSizing.VerticalSpacing = 3
+    ClientHeight = 33
+    ClientWidth = 794
+    TabOrder = 2
+    object cmbSearchArg: TComboBox
+      Cursor = crHandPoint
+      Left = 7
+      Height = 27
+      Top = 2
+      Width = 417
+      Anchors = [akTop, akLeft, akRight]
+      Constraints.MaxHeight = 27
+      Constraints.MinHeight = 27
+      ItemHeight = 0
+      ItemIndex = 0
+      Items.Strings = (
+        'Izaberite osnov za pretragu'
+        'Pronadji po nazivu'
+        'Pronadji po šifri'
+      )
+      OnChange = cmbSearchArgChange
+      Style = csDropDownList
+      TabOrder = 0
+      Text = 'Izaberite osnov za pretragu'
+    end
+    object edtSearchProduct: TEdit
+      Left = 428
+      Height = 27
+      Top = 3
+      Width = 359
+      Anchors = [akTop, akRight]
+      Constraints.MaxHeight = 27
+      Constraints.MinHeight = 27
+      OnKeyUp = edtSearchProductKeyUp
+      TabOrder = 1
+    end
+  end
+  object dbgDefaultRequisition: TDBGrid[4]
+    Cursor = crHandPoint
+    Left = 8
+    Height = 307
+    Hint = 'Klikni naslov za sortiranje'
+    Top = 144
+    Width = 796
+    AlternateColor = clScrollBar
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = clSilver
+    Columns = <>
+    DataSource = dbm.dsTemplate
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 3
+    TitleFont.Height = -12
+    OnMouseEnter = dbgDefaultRequisitionMouseEnter
+    OnMouseMove = dbgDefaultRequisitionMouseMove
+    OnTitleClick = dbgDefaultRequisitionTitleClick
+  end
+  object panelProductDlg: TPanel[5]
+    Left = 18
+    Height = 242
+    Top = 96
+    Width = 415
+    Caption = 'panelProductDlg'
+    ClientHeight = 242
+    ClientWidth = 415
+    TabOrder = 4
+    Visible = False
+    object dbgProductsFound: TDBGrid
+      Left = 6
+      Height = 192
+      Top = 4
+      Width = 401
+      AlternateColor = clScrollBar
+      Color = clSilver
+      Columns = <>
+      DataSource = dsFindProduct
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      ReadOnly = True
+      ShowHint = True
+      TabOrder = 0
+      TitleFont.Height = -12
+      OnKeyPress = dbgProductsFoundKeyPress
+    end
+    object btnThisProduct: TButton
+      Cursor = crHandPoint
+      Left = 232
+      Height = 25
+      Top = 204
+      Width = 75
+      Caption = 'Prihvati'
+      OnClick = btnThisProductClick
+      TabOrder = 1
+    end
+    object btnNotThisProduct: TButton
+      Cursor = crHandPoint
+      Left = 314
+      Height = 25
+      Top = 204
+      Width = 75
+      Caption = 'Odustani'
+      OnClick = btnNotThisProductClick
+      TabOrder = 2
+    end
+    object Label4: TLabel
+      Left = 16
+      Height = 17
+      Top = 209
+      Width = 134
+      Caption = 'Taster: SPACE -> Prihvati'
+      ParentColor = False
+    end
+  end
+  inherited alTemplate: TActionList[6]
+    object acFProductByName: TAction[10]
+      Caption = 'Pronadji po nazivu'
+      Hint = 'Pretraga po delu naziva'
+      OnExecute = acFProductByNameExecute
+    end
+    object acFProductByCode: TAction[11]
+      Caption = 'Pronadji po delu šifre'
+      OnExecute = acFProductByCodeExecute
+    end
+  end
+  object dsFindProduct: TDataSource[7]
+    DataSet = qFindProduct
+    left = 623
+    top = 309
+  end
+  object popFindProduct: TPopupMenu[8]
+    left = 555
+    top = 196
+    object MenuItem1: TMenuItem
+      Action = acFProductByCode
+    end
+    object MenuItem2: TMenuItem
+      Action = acFProductByName
+    end
+  end
+  object qFindProduct: TSQLQuery[9]
+    FieldDefs = <    
+      item
+        Name = 'art_id'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'art_sifra'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'art_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 70
+      end    
+      item
+        Name = 'jm_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 15
+      end    
+      item
+        Name = 'ag_naziv'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end>
+    Database = dbm.dbh
+    Transaction = dbm.dbt
+    SQL.Strings = (
+      'SELECT'
+      '  art_id,'
+      '  art_sifra,'
+      '  art_naziv,'
+      '  jm_naziv,'
+      '   ag_naziv'
+      'FROM'
+      '  vproduct'
+    )
+    Params = <>
+    left = 475
+    top = 307
+    object qFindProductart_id: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'art_id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object qFindProductart_sifra: TStringField
+      DisplayLabel = 'Šifra'
+      DisplayWidth = 6
+      FieldKind = fkData
+      FieldName = 'art_sifra'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qFindProductart_naziv: TStringField
+      DisplayLabel = 'Proizvod'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'art_naziv'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 70
+    end
+    object qFindProductjm_naziv: TStringField
+      DisplayLabel = 'Mera'
+      DisplayWidth = 7
+      FieldKind = fkData
+      FieldName = 'jm_naziv'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 15
+    end
+    object qFindProductag_naziv: TStringField
+      DisplayLabel = 'Grupa'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ag_naziv'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+end

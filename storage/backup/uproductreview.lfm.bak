@@ -213,6 +213,7 @@ object frmProductReview: TfrmProductReview
     ReadOnly = True
     TabOrder = 2
     TitleFont.Height = -12
+    OnMouseMove = dbgReportMouseMove
   end
   object qFindProduct: TSQLQuery
     FieldDefs = <    

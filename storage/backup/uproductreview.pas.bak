@@ -52,6 +52,8 @@ type
     procedure btnRunQueryClick(Sender: TObject);
     procedure btnThisProductClick(Sender: TObject);
     procedure dbgProductsFoundKeyPress(Sender: TObject; var Key: char);
+    procedure dbgReportMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
     procedure edtProductKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -144,6 +146,13 @@ procedure TfrmProductReview.dbgProductsFoundKeyPress(Sender: TObject;
 begin
   if(Key = #32) then
     btnThisProduct.Click;
+end;
+
+procedure TfrmProductReview.dbgReportMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  dbgReport.Cursor:= crHandPoint;
+  Application.ProcessMessages;
 end;
 
 procedure TfrmProductReview.edtProductKeyPress(Sender: TObject; var Key: char);

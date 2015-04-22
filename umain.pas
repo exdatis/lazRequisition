@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, BCPanel, ueled, DividerBevel,
   Forms, Controls, Graphics, Dialogs, Menus, ComCtrls, ExtCtrls, ActnList,
-  StdCtrls, IniFiles, strutils;
+  StdCtrls, IniFiles, strutils, LCLIntf;
 
 type
 
@@ -21,6 +21,8 @@ type
     acStorageIn: TAction;
     acStorageOut: TAction;
     acStock: TAction;
+    acGeneralHelp: TAction;
+    acEditHelp: TAction;
     btnGetDb: TButton;
     btnConnect: TButton;
     btnSaveDbIni: TButton;
@@ -48,6 +50,9 @@ type
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
     MenuItem12: TMenuItem;
+    MenuItem13: TMenuItem;
+    MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -60,6 +65,8 @@ type
     StatusBar1: TStatusBar;
     ledConnection: TuELED;
     procedure acDefaultRequisitionExecute(Sender: TObject);
+    procedure acEditHelpExecute(Sender: TObject);
+    procedure acGeneralHelpExecute(Sender: TObject);
     procedure acProductReviewExecute(Sender: TObject);
     procedure acRequisitionExecute(Sender: TObject);
     procedure acStockExecute(Sender: TObject);
@@ -560,6 +567,44 @@ begin
     {onemoguci izmene}
     disableStorages;
     Application.ProcessMessages;
+  finally
+    Screen.Cursor:= crDefault;
+  end;
+end;
+
+procedure TfrmMain.acEditHelpExecute(Sender: TObject);
+var
+  pdfFile : String = 'ObradaPodataka.pdf';
+  pathPdfFile : String;
+begin
+
+  {$ifdef LINUX}
+    pathPdfFile:= GetUserDir + 'dbBcp/' + pdfFile;
+  {$else}
+    pathPdfFile:= 'C:\dbBcp\' + pdfFile;
+  {$endif}
+  Screen.Cursor:= crHourGlass;
+  try
+    OpenDocument(pathPdfFile);
+  finally
+    Screen.Cursor:= crDefault;
+  end;
+end;
+
+procedure TfrmMain.acGeneralHelpExecute(Sender: TObject);
+var
+  pdfFile : String = 'OpsteNapomene.pdf';
+  pathPdfFile : String;
+begin
+
+  {$ifdef LINUX}
+    pathPdfFile:= GetUserDir + 'dbBcp/' + pdfFile;
+  {$else}
+    pathPdfFile:= 'C:\dbBcp\' + pdfFile;
+  {$endif}
+  Screen.Cursor:= crHourGlass;
+  try
+    OpenDocument(pathPdfFile);
   finally
     Screen.Cursor:= crDefault;
   end;
