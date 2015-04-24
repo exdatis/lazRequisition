@@ -865,6 +865,9 @@ object frmMain: TfrmMain
         object MenuItem15: TMenuItem
           Action = acEditHelp
         end
+        object MenuItem16: TMenuItem
+          Action = acFullHelp
+        end
       end
       object MenuItem2: TMenuItem
         Action = doQuitApp
@@ -949,6 +952,11 @@ object frmMain: TfrmMain
       Caption = 'Obrada podataka'
       Hint = 'Obrada podataka'
       OnExecute = acEditHelpExecute
+    end
+    object acFullHelp: TAction
+      Caption = 'Detaljno uputstvo'
+      Hint = 'Detaljno uputstvo'
+      OnExecute = acFullHelpExecute
     end
   end
 end

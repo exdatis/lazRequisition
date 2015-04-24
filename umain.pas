@@ -23,6 +23,7 @@ type
     acStock: TAction;
     acGeneralHelp: TAction;
     acEditHelp: TAction;
+    acFullHelp: TAction;
     btnGetDb: TButton;
     btnConnect: TButton;
     btnSaveDbIni: TButton;
@@ -53,6 +54,7 @@ type
     MenuItem13: TMenuItem;
     MenuItem14: TMenuItem;
     MenuItem15: TMenuItem;
+    MenuItem16: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -66,6 +68,7 @@ type
     ledConnection: TuELED;
     procedure acDefaultRequisitionExecute(Sender: TObject);
     procedure acEditHelpExecute(Sender: TObject);
+    procedure acFullHelpExecute(Sender: TObject);
     procedure acGeneralHelpExecute(Sender: TObject);
     procedure acProductReviewExecute(Sender: TObject);
     procedure acRequisitionExecute(Sender: TObject);
@@ -575,6 +578,25 @@ end;
 procedure TfrmMain.acEditHelpExecute(Sender: TObject);
 var
   pdfFile : String = 'ObradaPodataka.pdf';
+  pathPdfFile : String;
+begin
+
+  {$ifdef LINUX}
+    pathPdfFile:= GetUserDir + 'dbBcp/' + pdfFile;
+  {$else}
+    pathPdfFile:= 'C:\dbBcp\' + pdfFile;
+  {$endif}
+  Screen.Cursor:= crHourGlass;
+  try
+    OpenDocument(pathPdfFile);
+  finally
+    Screen.Cursor:= crDefault;
+  end;
+end;
+
+procedure TfrmMain.acFullHelpExecute(Sender: TObject);
+var
+  pdfFile : String = 'DetaljnoUputstvo.pdf';
   pathPdfFile : String;
 begin
 
