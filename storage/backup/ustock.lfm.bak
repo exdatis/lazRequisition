@@ -37,9 +37,9 @@ object frmStock: TfrmStock
     TabOrder = 0
     object Label1: TLabel
       Left = 8
-      Height = 17
+      Height = 15
       Top = 11
-      Width = 122
+      Width = 120
       Caption = 'Lager lista do datuma: '
       ParentColor = False
     end
@@ -245,7 +245,7 @@ object frmStock: TfrmStock
     end
     object qReportart_sifra: TStringField
       DisplayLabel = 'Šifra'
-      DisplayWidth = 12
+      DisplayWidth = 7
       FieldKind = fkData
       FieldName = 'art_sifra'
       Index = 1
@@ -257,7 +257,7 @@ object frmStock: TfrmStock
     end
     object qReportart_naziv: TStringField
       DisplayLabel = 'Proizvod'
-      DisplayWidth = 30
+      DisplayWidth = 25
       FieldKind = fkData
       FieldName = 'art_naziv'
       Index = 2
@@ -297,7 +297,7 @@ object frmStock: TfrmStock
     end
     object qReportag_naziv: TStringField
       DisplayLabel = 'Grupa'
-      DisplayWidth = 20
+      DisplayWidth = 15
       FieldKind = fkData
       FieldName = 'ag_naziv'
       Index = 5

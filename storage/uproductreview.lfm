@@ -11,7 +11,7 @@ object frmProductReview: TfrmProductReview
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.4'
   object lblFormCaption: TLabel
     Left = 0
     Height = 17
@@ -40,20 +40,20 @@ object frmProductReview: TfrmProductReview
       Left = 6
       Height = 26
       Top = 5
-      Width = 80
+      Width = 116
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
       CancelCaption = 'Cancel'
       DateOrder = doDMY
       ButtonWidth = 23
       AutoSize = False
-      CharCase = ecNormal
       NumGlyphs = 1
       MaxLength = 10
       TabOrder = 0
+      Text = '  /  /    '
     end
     object Label1: TLabel
-      Left = 117
+      Left = 124
       Height = 15
       Top = 9
       Width = 14
@@ -64,23 +64,23 @@ object frmProductReview: TfrmProductReview
       Left = 140
       Height = 26
       Top = 4
-      Width = 80
+      Width = 116
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
       CancelCaption = 'Cancel'
       DateOrder = doDMY
       ButtonWidth = 23
       AutoSize = False
-      CharCase = ecNormal
       NumGlyphs = 1
       MaxLength = 10
       TabOrder = 1
+      Text = '  /  /    '
     end
     object edtProduct: TEdit
-      Left = 251
+      Left = 264
       Height = 26
       Top = 4
-      Width = 391
+      Width = 378
       AutoSize = False
       OnKeyPress = edtProductKeyPress
       TabOrder = 2

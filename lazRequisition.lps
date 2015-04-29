@@ -7,12 +7,9 @@
       <Unit0>
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="lazRequisition"/>
         <EditorIndex Value="9"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
         <CursorPos X="5" Y="23"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="134"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -22,12 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="umain"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="0"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="597"/>
         <CursorPos X="39" Y="599"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="134"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -39,10 +33,9 @@
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="udbm"/>
         <EditorIndex Value="2"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="426"/>
         <CursorPos X="71" Y="437"/>
-        <UsageCount Value="132"/>
+        <UsageCount Value="133"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -51,10 +44,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uexdatis"/>
         <EditorIndex Value="1"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
         <CursorPos X="6" Y="11"/>
-        <UsageCount Value="128"/>
+        <UsageCount Value="129"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -63,11 +54,8 @@
         <ComponentName Value="dlgAppPwd"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uapppwd"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
         <CursorPos X="44" Y="21"/>
-        <UsageCount Value="124"/>
+        <UsageCount Value="125"/>
       </Unit4>
       <Unit5>
         <Filename Value="dialogs/uopendatasets.pas"/>
@@ -77,10 +65,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uopendatasets"/>
         <EditorIndex Value="3"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="37"/>
         <CursorPos X="18" Y="68"/>
-        <UsageCount Value="122"/>
+        <UsageCount Value="123"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -90,11 +77,9 @@
         <ComponentName Value="frmTemplate"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="utemplate"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="203"/>
-        <CursorPos X="1" Y="222"/>
-        <UsageCount Value="118"/>
+        <CursorPos Y="222"/>
+        <UsageCount Value="119"/>
       </Unit6>
       <Unit7>
         <Filename Value="dialogs/udeleteconfirmation.pas"/>
@@ -102,22 +87,16 @@
         <ComponentName Value="dlgDeleteConfirmation"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="udeleteconfirmation"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
         <CursorPos X="67" Y="15"/>
-        <UsageCount Value="113"/>
+        <UsageCount Value="114"/>
       </Unit7>
       <Unit8>
         <Filename Value="dialogs/usavechanges.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dlgSaveChanges"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="usavechanges"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
         <CursorPos X="42" Y="13"/>
-        <UsageCount Value="112"/>
+        <UsageCount Value="113"/>
       </Unit8>
       <Unit9>
         <Filename Value="dialogs/udefrequisition.pas"/>
@@ -125,11 +104,9 @@
         <ComponentName Value="frmDefRequisition"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="udefrequisition"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="94"/>
         <CursorPos X="29" Y="98"/>
-        <UsageCount Value="101"/>
+        <UsageCount Value="102"/>
       </Unit9>
       <Unit10>
         <Filename Value="storage/urequisition.pas"/>
@@ -139,10 +116,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="urequisition"/>
         <EditorIndex Value="4"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="554"/>
         <CursorPos X="62" Y="556"/>
-        <UsageCount Value="83"/>
+        <UsageCount Value="84"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit10>
@@ -154,10 +130,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ustoragein"/>
         <EditorIndex Value="5"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="158"/>
         <CursorPos X="33" Y="162"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit11>
@@ -168,11 +143,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ustorageout"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="289"/>
         <CursorPos X="64" Y="303"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="39"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit12>
@@ -184,10 +159,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ustock"/>
         <EditorIndex Value="7"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="29"/>
         <CursorPos X="30" Y="66"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit13>
@@ -199,54 +173,43 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uproductreview"/>
         <EditorIndex Value="8"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="164"/>
         <CursorPos X="3" Y="167"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/pingsend.pas"/>
-        <UnitName Value="pingsend"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="555"/>
         <CursorPos X="32" Y="555"/>
         <UsageCount Value="4"/>
       </Unit15>
       <Unit16>
         <Filename Value="/usr/lib/lazarus/components/synalist-code-203-trunk/blcksock.pas"/>
-        <UnitName Value="blcksock"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="362"/>
         <CursorPos X="5" Y="310"/>
         <UsageCount Value="4"/>
       </Unit16>
       <Unit17>
         <Filename Value="/usr/lib/lazarus/lcl/include/containedaction.inc"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="73"/>
-        <CursorPos X="1" Y="98"/>
+        <CursorPos Y="98"/>
         <UsageCount Value="9"/>
       </Unit17>
       <Unit18>
         <Filename Value="/usr/lib/lazarus/lcl/include/customform.inc"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="1798"/>
-        <CursorPos X="1" Y="1817"/>
+        <CursorPos Y="1817"/>
         <UsageCount Value="10"/>
       </Unit18>
       <Unit19>
         <Filename Value="/usr/lib/lazarus/lcl/include/buttoncontrol.inc"/>
-        <WindowIndex Value="0"/>
         <TopLine Value="29"/>
-        <CursorPos X="1" Y="48"/>
+        <CursorPos Y="48"/>
         <UsageCount Value="10"/>
       </Unit19>
     </Units>
-    <General>
-      <ActiveWindowIndexAtStart Value="0"/>
-    </General>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="storage/uproductreview.pas"/>
@@ -326,7 +289,7 @@
       </Position19>
       <Position20>
         <Filename Value="umain.pas"/>
-        <Caret Line="10" Column="40" TopLine="1"/>
+        <Caret Line="10" Column="40"/>
       </Position20>
       <Position21>
         <Filename Value="umain.pas"/>
@@ -370,5 +333,4 @@
       </Position30>
     </JumpHistory>
   </ProjectSession>
-  <EditorMacros Count="0"/>
 </CONFIG>

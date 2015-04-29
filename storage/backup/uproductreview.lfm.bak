@@ -54,7 +54,7 @@ object frmProductReview: TfrmProductReview
     end
     object Label1: TLabel
       Left = 117
-      Height = 17
+      Height = 15
       Top = 9
       Width = 14
       Caption = 'do'
@@ -191,9 +191,9 @@ object frmProductReview: TfrmProductReview
     end
     object Label9: TLabel
       Left = 16
-      Height = 17
+      Height = 15
       Top = 209
-      Width = 134
+      Width = 132
       Caption = 'Taster: SPACE -> Prihvati'
       ParentColor = False
     end
@@ -343,7 +343,6 @@ object frmProductReview: TfrmProductReview
   end
   object qReport: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'rec_no'
@@ -459,7 +458,7 @@ object frmProductReview: TfrmProductReview
     end
     object qReportdoc_name: TStringField
       DisplayLabel = 'Dokument'
-      DisplayWidth = 15
+      DisplayWidth = 12
       FieldKind = fkData
       FieldName = 'doc_name'
       Index = 2
@@ -482,7 +481,7 @@ object frmProductReview: TfrmProductReview
     end
     object qReportpartner: TStringField
       DisplayLabel = 'Mag/Dob.'
-      DisplayWidth = 15
+      DisplayWidth = 12
       FieldKind = fkData
       FieldName = 'partner'
       Index = 4
@@ -511,7 +510,7 @@ object frmProductReview: TfrmProductReview
     end
     object qReportcurr_state: TBCDField
       DisplayLabel = 'Stanje'
-      DisplayWidth = 10
+      DisplayWidth = 7
       FieldKind = fkData
       FieldName = 'curr_state'
       Index = 6
@@ -528,7 +527,7 @@ object frmProductReview: TfrmProductReview
     end
     object qReportmeasure: TStringField
       DisplayLabel = 'Mera'
-      DisplayWidth = 12
+      DisplayWidth = 11
       FieldKind = fkData
       FieldName = 'measure'
       Index = 7

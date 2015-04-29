@@ -17,7 +17,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
-      <BuildNr Value="34"/>
+      <BuildNr Value="36"/>
       <StringTable Comments="App by Morar" CompanyName="ExDatis" FileDescription="Requisition" InternalName="PhRequisition" OriginalFilename="lazRequisition" ProductName="Requisition" ProductVersion="3"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -58,7 +58,6 @@
       <Unit0>
         <Filename Value="lazRequisition.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="lazRequisition"/>
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -87,7 +86,6 @@
         <ComponentName Value="dlgAppPwd"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uapppwd"/>
       </Unit4>
       <Unit5>
         <Filename Value="dialogs/uopendatasets.pas"/>
@@ -103,7 +101,6 @@
         <ComponentName Value="frmTemplate"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="utemplate"/>
       </Unit6>
       <Unit7>
         <Filename Value="dialogs/udeleteconfirmation.pas"/>
@@ -111,14 +108,12 @@
         <ComponentName Value="dlgDeleteConfirmation"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="udeleteconfirmation"/>
       </Unit7>
       <Unit8>
         <Filename Value="dialogs/usavechanges.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dlgSaveChanges"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="usavechanges"/>
       </Unit8>
       <Unit9>
         <Filename Value="dialogs/udefrequisition.pas"/>
@@ -126,7 +121,6 @@
         <ComponentName Value="frmDefRequisition"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="udefrequisition"/>
       </Unit9>
       <Unit10>
         <Filename Value="storage/urequisition.pas"/>
@@ -187,12 +181,6 @@
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">
