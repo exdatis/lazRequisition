@@ -5,9 +5,9 @@ unit ustorageout;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ExtendedNotebook, DBZVDateTimePicker, Forms,
+  Classes, SysUtils, FileUtil, ExtendedNotebook, Forms,
   Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ActnList, Buttons, ComCtrls,
-  DbCtrls, DBGrids, Menus, utemplate, db, sqldb;
+  DbCtrls, DBGrids, Menus, utemplate, DBDateTimePicker, db, sqldb;
 
 type
 
@@ -21,6 +21,7 @@ type
     btnNotThisProduct: TButton;
     btnThisProduct: TButton;
     cmbSearchArg: TComboBox;
+    dbOrderDate: TDBDateTimePicker;
     dbgItems: TDBGrid;
     dbgProductsFound: TDBGrid;
     dsItems: TDataSource;
@@ -32,7 +33,6 @@ type
     dblUserStorage: TDBLookupComboBox;
     dbMeasure: TDBEdit;
     dbmNotes: TDBMemo;
-    dbOrderDate: TDBZVDateTimePicker;
     dbProduct: TDBEdit;
     dbQuantity: TDBEdit;
     dsFindProduct: TDataSource;

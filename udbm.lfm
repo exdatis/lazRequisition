@@ -42,7 +42,6 @@ object dbm: Tdbm
   end
   object qStorages: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'm_id'
@@ -97,7 +96,6 @@ object dbm: Tdbm
   end
   object qProducts: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'art_id'
@@ -448,7 +446,6 @@ object dbm: Tdbm
   end
   object qRequisition: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 't_id'
@@ -782,7 +779,6 @@ object dbm: Tdbm
     top = 94
   end
   object qDocStorageIn: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'doc_id'

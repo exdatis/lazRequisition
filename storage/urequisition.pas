@@ -5,9 +5,9 @@ unit urequisition;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ExtendedNotebook, DBZVDateTimePicker, Forms,
+  Classes, SysUtils, FileUtil, ExtendedNotebook, Forms,
   Controls, Graphics, Dialogs, ExtCtrls, ActnList, Buttons, ComCtrls, StdCtrls,
-  DbCtrls, DBGrids, Menus, utemplate, db, sqldb;
+  DbCtrls, DBGrids, Menus, utemplate, DBDateTimePicker, db, sqldb;
 
 type
 
@@ -22,6 +22,7 @@ type
     btnNotThisProduct: TButton;
     btnThisProduct: TButton;
     cmbSearchArg: TComboBox;
+    dbOrderDate: TDBDateTimePicker;
     dbgItems: TDBGrid;
     dbgProductsFound: TDBGrid;
     dbMeasure: TDBEdit;
@@ -37,7 +38,6 @@ type
     dblSupplierStorage: TDBLookupComboBox;
     dblUserStorage: TDBLookupComboBox;
     dbmNotes: TDBMemo;
-    dbOrderDate: TDBZVDateTimePicker;
     edtSearchProduct: TEdit;
     enbForms: TExtendedNotebook;
     GroupBox1: TGroupBox;

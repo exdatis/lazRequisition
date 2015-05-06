@@ -44,16 +44,20 @@ object frmStock: TfrmStock
       ParentColor = False
     end
     object dateMax: TDateEdit
-      Left = 147
-      Height = 26
-      Top = 5
-      Width = 116
+      Left = 131
+      Height = 25
+      Top = 6
+      Width = 130
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
       CancelCaption = 'Cancel'
       DateOrder = doDMY
       ButtonWidth = 23
       AutoSize = False
+      Constraints.MaxHeight = 25
+      Constraints.MaxWidth = 130
+      Constraints.MinHeight = 25
+      Constraints.MinWidth = 130
       NumGlyphs = 1
       MaxLength = 10
       TabOrder = 0

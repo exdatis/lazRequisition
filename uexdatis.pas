@@ -42,7 +42,7 @@ begin
   frmMain.btnSaveDbIni.Enabled:= False;
   frmMain.btnGetDb.Enabled:= False;
   frmMain.cmbDb.Enabled:= False;
-  frmMain.btnConnect.Caption:= 'Izmena parametara';
+  frmMain.btnConnect.Caption:= 'Izmena parametara/Rekonekcija';
   frmMain.btnConnect.Hint:= 'Omogući izmene';
   frmMain.isConnected:= True;
   frmMain.ledConnection.Color:= clGreen;

@@ -10,7 +10,7 @@ object frmStock: TfrmStock
   Font.Height = -12
   OnClose = FormClose
   OnShow = FormShow
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.4'
   object lblFormCaption: TLabel
     Left = 0
     Height = 17
@@ -44,27 +44,31 @@ object frmStock: TfrmStock
       ParentColor = False
     end
     object dateMax: TDateEdit
-      Left = 147
-      Height = 26
-      Top = 5
-      Width = 80
+      Left = 131
+      Height = 25
+      Top = 6
+      Width = 130
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
       CancelCaption = 'Cancel'
       DateOrder = doDMY
       ButtonWidth = 23
       AutoSize = False
-      CharCase = ecNormal
+      Constraints.MaxHeight = 25
+      Constraints.MaxWidth = 130
+      Constraints.MinHeight = 25
+      Constraints.MinWidth = 130
       NumGlyphs = 1
       MaxLength = 10
       TabOrder = 0
+      Text = '  /  /    '
     end
     object btnRunQuery: TButton
       Cursor = crHandPoint
-      Left = 253
+      Left = 264
       Height = 25
       Top = 6
-      Width = 332
+      Width = 321
       Caption = 'Izvrši upit'
       OnClick = btnRunQueryClick
       TabOrder = 1

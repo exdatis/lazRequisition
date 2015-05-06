@@ -13,7 +13,7 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.4'
   object StatusBar1: TStatusBar
     Left = 3
     Height = 23
@@ -127,7 +127,7 @@ object frmMain: TfrmMain
       Top = 184
       Width = 200
       Caption = ' Izbor baze podataka '
-      ClientHeight = 90
+      ClientHeight = 88
       ClientWidth = 196
       TabOrder = 3
       object btnGetDb: TButton
@@ -196,7 +196,7 @@ object frmMain: TfrmMain
       Top = 296
       Width = 200
       Caption = ' Korisnik aplikacije '
-      ClientHeight = 130
+      ClientHeight = 128
       ClientWidth = 196
       ParentShowHint = False
       ShowHint = True
@@ -865,6 +865,9 @@ object frmMain: TfrmMain
         object MenuItem15: TMenuItem
           Action = acEditHelp
         end
+        object MenuItem16: TMenuItem
+          Action = acFullHelp
+        end
       end
       object MenuItem2: TMenuItem
         Action = doQuitApp
@@ -954,6 +957,11 @@ object frmMain: TfrmMain
       Caption = 'Detaljno uputstvo'
       Hint = 'Detaljno uputstvo'
       OnExecute = acFullHelpExecute
+    end
+    object acEvident: TAction
+      Caption = 'Evidencija-storniranje'
+      Hint = 'Evidencija dokumenata'
+      OnExecute = acEvidentExecute
     end
   end
 end

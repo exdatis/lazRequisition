@@ -543,6 +543,9 @@ begin
       errorMsg:= errorMsg + 'Pozovite Dejana ili Bobana:' + #13#10;
       errorMsg:= errorMsg + 'Ratkov Dejan: 062-804-8441' + #13#10;
       errorMsg:= errorMsg + 'Stefanovski Boban: 062-804-8326' + #13#10;
+      errorMsg:= errorMsg + '--------------------------------' + #13#10;
+      errorMsg:= errorMsg + 'Ponovo se konektujte!' + #13#10;
+      errorMsg:= errorMsg + 'Ili rekonektujte!' + #13#10;
       ShowMessage(errorMsg);
       result:= pingOk; // false
       Exit;

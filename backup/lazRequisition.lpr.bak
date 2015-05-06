@@ -20,7 +20,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
   Application.CreateForm(Tdbm, dbm);
-  Application.CreateForm(TfrmProductReview, frmProductReview);
+  //Application.CreateForm(TfrmProductReview, frmProductReview);
   //Application.CreateForm(TfrmStock, frmStock);
   //Application.CreateForm(TfrmStorageOut, frmStorageOut);
   //Application.CreateForm(TfrmStorageIn, frmStorageIn);

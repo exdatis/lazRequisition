@@ -8,8 +8,9 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, lazcontrols, zvdatetimectrls, umain, udbm, uexdatis, uapppwd,
-  uopendatasets, utemplate, udeleteconfirmation, usavechanges, udefrequisition,
-  urequisition, ustoragein, ustorageout, ustock, uproductreview
+  uopendatasets, utemplate, datetimectrls, udeleteconfirmation, usavechanges,
+  udefrequisition, urequisition, ustoragein, ustorageout, ustock,
+  uproductreview
   { you can add units after this };
 
 {$R *.res}
