@@ -116,7 +116,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="urequisition"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <CursorPos X="48" Y="8"/>
         <UsageCount Value="85"/>
@@ -169,7 +168,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uproductreview"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
+        <TopLine Value="132"/>
         <CursorPos X="3" Y="167"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>

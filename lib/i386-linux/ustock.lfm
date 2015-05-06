@@ -10,7 +10,7 @@ object frmStock: TfrmStock
   Font.Height = -12
   OnClose = FormClose
   OnShow = FormShow
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.4'
   object lblFormCaption: TLabel
     Left = 0
     Height = 17
@@ -37,34 +37,38 @@ object frmStock: TfrmStock
     TabOrder = 0
     object Label1: TLabel
       Left = 8
-      Height = 17
+      Height = 15
       Top = 11
-      Width = 122
+      Width = 120
       Caption = 'Lager lista do datuma: '
       ParentColor = False
     end
     object dateMax: TDateEdit
-      Left = 147
-      Height = 26
-      Top = 5
-      Width = 80
+      Left = 131
+      Height = 25
+      Top = 6
+      Width = 130
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
       CancelCaption = 'Cancel'
       DateOrder = doDMY
       ButtonWidth = 23
       AutoSize = False
-      CharCase = ecNormal
+      Constraints.MaxHeight = 25
+      Constraints.MaxWidth = 130
+      Constraints.MinHeight = 25
+      Constraints.MinWidth = 130
       NumGlyphs = 1
       MaxLength = 10
       TabOrder = 0
+      Text = '  /  /    '
     end
     object btnRunQuery: TButton
       Cursor = crHandPoint
-      Left = 253
+      Left = 264
       Height = 25
       Top = 6
-      Width = 332
+      Width = 321
       Caption = 'Izvrši upit'
       OnClick = btnRunQueryClick
       TabOrder = 1
@@ -245,7 +249,7 @@ object frmStock: TfrmStock
     end
     object qReportart_sifra: TStringField
       DisplayLabel = 'Šifra'
-      DisplayWidth = 12
+      DisplayWidth = 7
       FieldKind = fkData
       FieldName = 'art_sifra'
       Index = 1
@@ -257,7 +261,7 @@ object frmStock: TfrmStock
     end
     object qReportart_naziv: TStringField
       DisplayLabel = 'Proizvod'
-      DisplayWidth = 30
+      DisplayWidth = 25
       FieldKind = fkData
       FieldName = 'art_naziv'
       Index = 2
@@ -297,7 +301,7 @@ object frmStock: TfrmStock
     end
     object qReportag_naziv: TStringField
       DisplayLabel = 'Grupa'
-      DisplayWidth = 20
+      DisplayWidth = 15
       FieldKind = fkData
       FieldName = 'ag_naziv'
       Index = 5

@@ -4,6 +4,50 @@ inherited frmStorageOut: TfrmStorageOut
   inherited lblFormCaption: TLabel
     Caption = 'Interno izdavanje robe iz magacina'
   end
+  inherited Panel1: TPanel
+    ClientHeight = 27
+    ClientWidth = 808
+    inherited btnFirst: TButton
+      Height = 25
+      Width = 82
+    end
+    inherited btnPrior: TButton
+      Left = 85
+      Height = 25
+    end
+    inherited btnNext: TButton
+      Left = 177
+      Height = 25
+    end
+    inherited btnLast: TButton
+      Left = 269
+      Height = 25
+    end
+    inherited btnNew: TButton
+      Left = 349
+      Height = 25
+    end
+    inherited btnDelete: TButton
+      Left = 425
+      Height = 25
+    end
+    inherited btnSave: TButton
+      Left = 501
+      Height = 25
+    end
+    inherited btnCancel: TButton
+      Left = 577
+      Height = 25
+    end
+    inherited btnEdit: TButton
+      Left = 653
+      Height = 25
+    end
+    inherited btnClose: TButton
+      Left = 729
+      Height = 25
+    end
+  end
   object Panel2: TPanel[2]
     Left = 0
     Height = 31
@@ -14,13 +58,13 @@ inherited frmStorageOut: TfrmStorageOut
     ChildSizing.LeftRightSpacing = 1
     ChildSizing.TopBottomSpacing = 1
     ChildSizing.VerticalSpacing = 1
-    ClientHeight = 29
-    ClientWidth = 810
+    ClientHeight = 27
+    ClientWidth = 808
     TabOrder = 1
     object bitBtnOrders: TBitBtn
       Cursor = crHandPoint
       Left = 2
-      Height = 25
+      Height = 23
       Hint = 'Nalozi predatnica'
       Top = 2
       Width = 221
@@ -70,7 +114,7 @@ inherited frmStorageOut: TfrmStorageOut
     object bitBtnItems: TBitBtn
       Cursor = crHandPoint
       Left = 223
-      Height = 25
+      Height = 23
       Hint = 'Izdati proizvodi'
       Top = 2
       Width = 221
@@ -131,61 +175,37 @@ inherited frmStorageOut: TfrmStorageOut
     OnChange = enbFormsChange
     object tsOrders: TTabSheet
       Caption = 'tsOrders'
-      ClientHeight = 404
-      ClientWidth = 802
+      ClientHeight = 400
+      ClientWidth = 804
       object GroupBox1: TGroupBox
         Left = 5
         Height = 137
         Top = 0
-        Width = 790
+        Width = 792
         Anchors = [akTop, akLeft, akRight]
         Caption = ' Obrada podataka '
-        ClientHeight = 119
+        ClientHeight = 117
         ClientWidth = 788
         TabOrder = 0
         object Label1: TLabel
           Left = 7
-          Height = 17
+          Height = 15
           Top = 8
-          Width = 47
+          Width = 44
           Caption = 'Datum *'
           ParentColor = False
         end
-        object dbOrderDate: TDBZVDateTimePicker
-          Left = 79
-          Height = 23
-          Top = 4
-          Width = 95
-          DataField = 'mi_datum'
-          DataSource = dbm.dsStorageOut
-          ReadOnly = False
-          CenturyFrom = 1941
-          DateDisplayOrder = ddoDMY
-          MaxDate = 2958465
-          MinDate = -53780
-          TabOrder = 0
-          TrailingSeparator = False
-          TextForNullDate = 'NULL'
-          LeadingZeros = True
-          Kind = dtkDate
-          TimeFormat = tf24
-          TimeDisplay = tdHMS
-          DateMode = dmComboBox
-          UseDefaultSeparators = True
-          HideDateTimeParts = []
-          MonthNames = 'Long'
-        end
         object Label2: TLabel
-          Left = 181
-          Height = 17
+          Left = 186
+          Height = 15
           Top = 8
-          Width = 66
+          Width = 64
           Caption = 'Dokument *'
           ParentColor = False
         end
         object dblDoc: TDBLookupComboBox
           Left = 256
-          Height = 26
+          Height = 23
           Top = 2
           Width = 232
           Anchors = [akTop, akLeft, akRight]
@@ -198,20 +218,20 @@ inherited frmStorageOut: TfrmStorageOut
           ListFieldIndex = 0
           ListSource = dbm.dsDocStorageOut
           LookupCache = False
-          TabOrder = 1
+          TabOrder = 0
         end
         object Label3: TLabel
           Left = 492
-          Height = 17
+          Height = 15
           Top = 8
-          Width = 57
+          Width = 54
           Caption = 'Potrošač *'
           ParentColor = False
         end
         object dblUserStorage: TDBLookupComboBox
           Cursor = crHandPoint
           Left = 554
-          Height = 26
+          Height = 23
           Top = 2
           Width = 229
           Anchors = [akTop, akRight]
@@ -224,20 +244,20 @@ inherited frmStorageOut: TfrmStorageOut
           ListFieldIndex = 0
           ListSource = dbm.dsStorages
           LookupCache = False
-          TabOrder = 2
+          TabOrder = 1
         end
         object Label4: TLabel
           Left = 7
-          Height = 17
+          Height = 15
           Top = 37
-          Width = 62
+          Width = 60
           Caption = 'Dobavljač *'
           ParentColor = False
         end
         object dblSupplierStorage: TDBLookupComboBox
           Cursor = crHandPoint
           Left = 79
-          Height = 26
+          Height = 23
           Top = 31
           Width = 409
           Anchors = [akTop, akLeft, akRight]
@@ -250,7 +270,7 @@ inherited frmStorageOut: TfrmStorageOut
           ListFieldIndex = 0
           ListSource = dbm.dsStorages
           LookupCache = False
-          TabOrder = 3
+          TabOrder = 2
         end
         object dbmNotes: TDBMemo
           Left = 7
@@ -261,7 +281,7 @@ inherited frmStorageOut: TfrmStorageOut
           DataField = 'mi_notes'
           DataSource = dbm.dsStorageOut
           ScrollBars = ssAutoBoth
-          TabOrder = 4
+          TabOrder = 3
         end
         object Panel3: TPanel
           Left = 492
@@ -271,10 +291,10 @@ inherited frmStorageOut: TfrmStorageOut
           Anchors = [akTop, akLeft, akRight]
           ClientHeight = 83
           ClientWidth = 291
-          TabOrder = 5
+          TabOrder = 4
           object Label5: TLabel
             Left = 1
-            Height = 17
+            Height = 15
             Top = 1
             Width = 289
             Align = alTop
@@ -313,14 +333,44 @@ inherited frmStorageOut: TfrmStorageOut
             ValueUnchecked = 'Ne'
           end
         end
+        object dbOrderDate: TDBDateTimePicker
+          Cursor = crHandPoint
+          Left = 79
+          Height = 23
+          Top = 2
+          Width = 103
+          DataField = 'mi_datum'
+          DataSource = dbm.dsStorageOut
+          ReadOnly = False
+          CenturyFrom = 1941
+          DateDisplayOrder = ddoDMY
+          MaxDate = 2958465
+          MinDate = -53780
+          AutoSize = False
+          TabOrder = 5
+          TrailingSeparator = False
+          TextForNullDate = 'NULL'
+          LeadingZeros = True
+          Constraints.MaxHeight = 23
+          Constraints.MaxWidth = 103
+          Constraints.MinHeight = 23
+          Constraints.MinWidth = 103
+          Kind = dtkDate
+          TimeFormat = tf24
+          TimeDisplay = tdHMS
+          DateMode = dmComboBox
+          UseDefaultSeparators = True
+          HideDateTimeParts = []
+          MonthNames = 'Long'
+        end
       end
       object dbgOrders: TDBGrid
         Cursor = crHandPoint
         Left = 5
-        Height = 259
+        Height = 255
         Hint = 'Klikni naslov polja za sortiranje'
         Top = 142
-        Width = 790
+        Width = 792
         AlternateColor = clScrollBar
         Anchors = [akTop, akLeft, akRight, akBottom]
         Color = clSilver
@@ -346,8 +396,8 @@ inherited frmStorageOut: TfrmStorageOut
         Width = 793
         Anchors = [akTop, akLeft, akRight]
         Caption = ' Obrada podataka '
-        ClientHeight = 62
-        ClientWidth = 791
+        ClientHeight = 60
+        ClientWidth = 789
         TabOrder = 0
         object dbProduct: TDBEdit
           Left = 7
@@ -497,19 +547,19 @@ inherited frmStorageOut: TfrmStorageOut
         ChildSizing.LeftRightSpacing = 1
         ChildSizing.TopBottomSpacing = 3
         ChildSizing.VerticalSpacing = 3
-        ClientHeight = 33
-        ClientWidth = 791
+        ClientHeight = 31
+        ClientWidth = 789
         TabOrder = 1
         object cmbSearchArg: TComboBox
           Cursor = crHandPoint
           Left = 7
-          Height = 27
+          Height = 23
           Top = 2
           Width = 414
           Anchors = [akTop, akLeft, akRight]
           Constraints.MaxHeight = 27
           Constraints.MinHeight = 27
-          ItemHeight = 0
+          ItemHeight = 15
           ItemIndex = 0
           Items.Strings = (
             'Izaberite osnov za pretragu'

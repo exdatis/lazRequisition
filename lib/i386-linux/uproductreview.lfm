@@ -11,7 +11,7 @@ object frmProductReview: TfrmProductReview
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.4'
   object lblFormCaption: TLabel
     Left = 0
     Height = 17
@@ -37,23 +37,27 @@ object frmProductReview: TfrmProductReview
     ClientWidth = 813
     TabOrder = 0
     object dateMin: TDateEdit
-      Left = 6
-      Height = 26
+      Left = 5
+      Height = 25
       Top = 5
-      Width = 80
+      Width = 130
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
       CancelCaption = 'Cancel'
       DateOrder = doDMY
       ButtonWidth = 23
       AutoSize = False
-      CharCase = ecNormal
+      Constraints.MaxHeight = 25
+      Constraints.MaxWidth = 130
+      Constraints.MinHeight = 25
+      Constraints.MinWidth = 130
       NumGlyphs = 1
       MaxLength = 10
       TabOrder = 0
+      Text = '  /  /    '
     end
     object Label1: TLabel
-      Left = 117
+      Left = 135
       Height = 17
       Top = 9
       Width = 14
@@ -61,26 +65,26 @@ object frmProductReview: TfrmProductReview
       ParentColor = False
     end
     object dateMax: TDateEdit
-      Left = 140
+      Left = 149
       Height = 26
       Top = 4
-      Width = 80
+      Width = 116
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
       CancelCaption = 'Cancel'
       DateOrder = doDMY
       ButtonWidth = 23
       AutoSize = False
-      CharCase = ecNormal
       NumGlyphs = 1
       MaxLength = 10
       TabOrder = 1
+      Text = '  /  /    '
     end
     object edtProduct: TEdit
-      Left = 251
+      Left = 264
       Height = 26
       Top = 4
-      Width = 391
+      Width = 378
       AutoSize = False
       OnKeyPress = edtProductKeyPress
       TabOrder = 2
@@ -90,7 +94,7 @@ object frmProductReview: TfrmProductReview
       Left = 644
       Height = 26
       Hint = 'Pronadji artikal'
-      Top = 5
+      Top = 4
       Width = 39
       Align = alCustom
       Anchors = [akTop, akLeft, akRight]
@@ -135,8 +139,8 @@ object frmProductReview: TfrmProductReview
     object btnRunQuery: TButton
       Cursor = crHandPoint
       Left = 686
-      Height = 25
-      Top = 5
+      Height = 26
+      Top = 4
       Width = 123
       Caption = 'Izvrši upit'
       OnClick = btnRunQueryClick
@@ -154,10 +158,10 @@ object frmProductReview: TfrmProductReview
     TabOrder = 1
     Visible = False
     object dbgProductsFound: TDBGrid
-      Left = 6
+      Left = 18
       Height = 192
       Top = 4
-      Width = 401
+      Width = 528
       AlternateColor = clScrollBar
       Color = clSilver
       Columns = <>
@@ -343,7 +347,6 @@ object frmProductReview: TfrmProductReview
   end
   object qReport: TSQLQuery
     PacketRecords = -1
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'rec_no'
@@ -459,7 +462,7 @@ object frmProductReview: TfrmProductReview
     end
     object qReportdoc_name: TStringField
       DisplayLabel = 'Dokument'
-      DisplayWidth = 15
+      DisplayWidth = 12
       FieldKind = fkData
       FieldName = 'doc_name'
       Index = 2
@@ -482,7 +485,7 @@ object frmProductReview: TfrmProductReview
     end
     object qReportpartner: TStringField
       DisplayLabel = 'Mag/Dob.'
-      DisplayWidth = 15
+      DisplayWidth = 12
       FieldKind = fkData
       FieldName = 'partner'
       Index = 4
@@ -511,7 +514,7 @@ object frmProductReview: TfrmProductReview
     end
     object qReportcurr_state: TBCDField
       DisplayLabel = 'Stanje'
-      DisplayWidth = 10
+      DisplayWidth = 7
       FieldKind = fkData
       FieldName = 'curr_state'
       Index = 6
@@ -528,7 +531,7 @@ object frmProductReview: TfrmProductReview
     end
     object qReportmeasure: TStringField
       DisplayLabel = 'Mera'
-      DisplayWidth = 12
+      DisplayWidth = 11
       FieldKind = fkData
       FieldName = 'measure'
       Index = 7

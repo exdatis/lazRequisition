@@ -38,15 +38,19 @@ object frmProductReview: TfrmProductReview
     TabOrder = 0
     object dateMin: TDateEdit
       Left = 6
-      Height = 26
+      Height = 25
       Top = 5
-      Width = 116
+      Width = 130
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
       CancelCaption = 'Cancel'
       DateOrder = doDMY
       ButtonWidth = 23
       AutoSize = False
+      Constraints.MaxHeight = 25
+      Constraints.MaxWidth = 130
+      Constraints.MinHeight = 25
+      Constraints.MinWidth = 130
       NumGlyphs = 1
       MaxLength = 10
       TabOrder = 0
@@ -90,7 +94,7 @@ object frmProductReview: TfrmProductReview
       Left = 644
       Height = 26
       Hint = 'Pronadji artikal'
-      Top = 5
+      Top = 4
       Width = 39
       Align = alCustom
       Anchors = [akTop, akLeft, akRight]
@@ -135,8 +139,8 @@ object frmProductReview: TfrmProductReview
     object btnRunQuery: TButton
       Cursor = crHandPoint
       Left = 686
-      Height = 25
-      Top = 5
+      Height = 26
+      Top = 4
       Width = 123
       Caption = 'Izvrši upit'
       OnClick = btnRunQueryClick
