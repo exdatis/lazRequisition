@@ -17,7 +17,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
-      <BuildNr Value="46"/>
+      <BuildNr Value="48"/>
       <StringTable Comments="App by Morar" CompanyName="ExDatis" FileDescription="Requisition" InternalName="PhRequisition" OriginalFilename="lazRequisition" ProductName="Requisition" ProductVersion="3"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -31,31 +31,28 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="8">
+    <RequiredPackages Count="7">
       <Item1>
         <PackageName Value="DateTimeCtrls"/>
       </Item1>
       <Item2>
-        <PackageName Value="ZVDateTimeCtrls"/>
+        <PackageName Value="FCL"/>
       </Item2>
       <Item3>
-        <PackageName Value="FCL"/>
+        <PackageName Value="SQLDBLaz"/>
       </Item3>
       <Item4>
-        <PackageName Value="SQLDBLaz"/>
+        <PackageName Value="LazControls"/>
       </Item4>
       <Item5>
-        <PackageName Value="LazControls"/>
+        <PackageName Value="bgracontrols"/>
       </Item5>
       <Item6>
-        <PackageName Value="bgracontrols"/>
+        <PackageName Value="laz_synapse"/>
       </Item6>
       <Item7>
-        <PackageName Value="laz_synapse"/>
-      </Item7>
-      <Item8>
         <PackageName Value="LCL"/>
-      </Item8>
+      </Item7>
     </RequiredPackages>
     <Units Count="15">
       <Unit0>

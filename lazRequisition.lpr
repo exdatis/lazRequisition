@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, lazcontrols, zvdatetimectrls, umain, udbm, uexdatis, uapppwd,
+  Forms, lazcontrols, umain, udbm, uexdatis, uapppwd,
   uopendatasets, utemplate, datetimectrls, udeleteconfirmation, usavechanges,
   udefrequisition, urequisition, ustoragein, ustorageout, ustock,
   uproductreview

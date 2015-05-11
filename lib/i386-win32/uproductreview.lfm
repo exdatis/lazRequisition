@@ -37,7 +37,7 @@ object frmProductReview: TfrmProductReview
     ClientWidth = 813
     TabOrder = 0
     object dateMin: TDateEdit
-      Left = 6
+      Left = 5
       Height = 25
       Top = 5
       Width = 130
@@ -57,15 +57,15 @@ object frmProductReview: TfrmProductReview
       Text = '  /  /    '
     end
     object Label1: TLabel
-      Left = 124
-      Height = 15
+      Left = 135
+      Height = 17
       Top = 9
       Width = 14
       Caption = 'do'
       ParentColor = False
     end
     object dateMax: TDateEdit
-      Left = 140
+      Left = 149
       Height = 26
       Top = 4
       Width = 116
@@ -158,10 +158,10 @@ object frmProductReview: TfrmProductReview
     TabOrder = 1
     Visible = False
     object dbgProductsFound: TDBGrid
-      Left = 6
+      Left = 18
       Height = 192
       Top = 4
-      Width = 401
+      Width = 528
       AlternateColor = clScrollBar
       Color = clSilver
       Columns = <>
@@ -195,9 +195,9 @@ object frmProductReview: TfrmProductReview
     end
     object Label9: TLabel
       Left = 16
-      Height = 15
+      Height = 17
       Top = 209
-      Width = 132
+      Width = 134
       Caption = 'Taster: SPACE -> Prihvati'
       ParentColor = False
     end

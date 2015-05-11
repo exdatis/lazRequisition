@@ -874,6 +874,12 @@ object frmMain: TfrmMain
         object MenuItem18: TMenuItem
           Action = acEvident
         end
+        object MenuItem19: TMenuItem
+          Caption = '-'
+        end
+        object MenuItem20: TMenuItem
+          Action = acLostConnHelp
+        end
       end
       object MenuItem2: TMenuItem
         Action = doQuitApp
@@ -968,6 +974,11 @@ object frmMain: TfrmMain
       Caption = 'Evidencija-storniranje'
       Hint = 'Evidencija dokumenata'
       OnExecute = acEvidentExecute
+    end
+    object acLostConnHelp: TAction
+      Caption = 'Gubitak mreže'
+      Hint = 'Gubitak mreže'
+      OnExecute = acLostConnHelpExecute
     end
   end
 end

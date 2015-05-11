@@ -25,6 +25,7 @@ type
     acEditHelp: TAction;
     acFullHelp: TAction;
     acEvident: TAction;
+    acLostConnHelp: TAction;
     btnGetDb: TButton;
     btnConnect: TButton;
     btnSaveDbIni: TButton;
@@ -58,7 +59,9 @@ type
     MenuItem16: TMenuItem;
     MenuItem17: TMenuItem;
     MenuItem18: TMenuItem;
+    MenuItem19: TMenuItem;
     MenuItem2: TMenuItem;
+    MenuItem20: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -74,6 +77,7 @@ type
     procedure acEvidentExecute(Sender: TObject);
     procedure acFullHelpExecute(Sender: TObject);
     procedure acGeneralHelpExecute(Sender: TObject);
+    procedure acLostConnHelpExecute(Sender: TObject);
     procedure acProductReviewExecute(Sender: TObject);
     procedure acRequisitionExecute(Sender: TObject);
     procedure acStockExecute(Sender: TObject);
@@ -639,6 +643,25 @@ end;
 procedure TfrmMain.acGeneralHelpExecute(Sender: TObject);
 var
   pdfFile : String = 'OpsteNapomene.pdf';
+  pathPdfFile : String;
+begin
+
+  {$ifdef LINUX}
+    pathPdfFile:= GetUserDir + 'dbBcp/' + pdfFile;
+  {$else}
+    pathPdfFile:= 'C:\dbBcp\' + pdfFile;
+  {$endif}
+  Screen.Cursor:= crHourGlass;
+  try
+    OpenDocument(pathPdfFile);
+  finally
+    Screen.Cursor:= crDefault;
+  end;
+end;
+
+procedure TfrmMain.acLostConnHelpExecute(Sender: TObject);
+var
+  pdfFile : String = 'lostConn.pdf';
   pathPdfFile : String;
 begin
 
